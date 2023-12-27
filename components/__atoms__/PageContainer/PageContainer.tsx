@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 const PageContainer = styled.div`
-    margin-top: 4rem;
-    padding: 2rem;
-`;
+  margin-top: 4rem;
+  padding: 2rem;
+`
 
-export default PageContainer;
+export default PageContainer

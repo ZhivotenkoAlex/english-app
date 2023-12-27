@@ -1,36 +1,30 @@
-import { COLOR } from "../../../utils/colors";
+import { COLOR } from '../../../utils/colors'
 
-type HeadingColor = "green" | "red" | "grey" | "dark" | "orange" | "blue";
+type HeadingColor = 'green' | 'red' | 'grey' | 'dark' | 'orange' | 'blue'
 
 interface IHeading {
-    size?: number;
-    color: HeadingColor;
-    title: string;
-    fontWeight?: number;
+  size?: number
+  color: HeadingColor
+  title: string
+  fontWeight?: number
 }
 
-function Heading({
-    color,
-    title,
-    size = 24,
-    fontWeight = 600,
-    ...rest
-}: IHeading) {
-    return (
-        <div
-            style={{
-                maxWidth: "300px",
-                fontSize: size,
-                color: COLOR[color],
-                fontWeight,
-                textAlign: "center",
-                textTransform: "uppercase",
-            }}
-            {...rest}
-        >
-            {title}
-        </div>
-    );
+function Heading({ color, title, size = 24, fontWeight = 600, ...rest }: IHeading) {
+  return (
+    <div
+      style={{
+        maxWidth: '300px',
+        fontSize: size,
+        color: COLOR[color],
+        fontWeight,
+        textAlign: 'center',
+        textTransform: 'uppercase',
+      }}
+      {...rest}
+    >
+      {title}
+    </div>
+  )
 }
 
-export default Heading;
+export default Heading

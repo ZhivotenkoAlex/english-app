@@ -22,9 +22,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head>
-          {(this.props as HtmlProps & StyleTagType).styleTags}
-          </Head>
+        <Head>{(this.props as HtmlProps & StyleTagType).styleTags}</Head>
         <body>
           <Main />
           <NextScript />

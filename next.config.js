@@ -23,8 +23,8 @@ module.exports = async (phase, { defaultConfig }) => {
     },
     compiler: {
       styledComponents: {
-        displayName: false
-      }
+        displayName: false,
+      },
     },
   }
   return nextConfig

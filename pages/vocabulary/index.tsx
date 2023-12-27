@@ -25,7 +25,6 @@ function Vocabulary() {
         ogData={ogData}
       />
       Vocabulary
-
       <Image
         src="/images/forest-background.jpg"
         alt="Picture of the author"
