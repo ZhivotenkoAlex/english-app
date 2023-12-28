@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import PageContainer from '../../components/__atoms__/PageContainer/PageContainer'
+import { Typography } from '@mui/material'
 
 function Dictionary() {
   const [location, setLocation] = useState('')
@@ -9,13 +10,17 @@ function Dictionary() {
   }, [])
   const ogData = {
     image: `${location}/public/images/logo.png`,
-    title: 'EasyWay | Dictionary',
+    title: 'Dictionary | EasyWay',
     description: 'Easy way to learn English',
     type: 'website',
     url: location,
   }
 
-  return <PageContainer>Dictionary</PageContainer>
+  return (
+    <PageContainer>
+      <Typography variant="h1">Dictionary</Typography>
+    </PageContainer>
+  )
 }
 
 export default Dictionary

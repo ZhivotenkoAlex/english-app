@@ -7,6 +7,7 @@ import Input from '../../__molecules__/Input/Input'
 import Link from '../../__atoms__/Link/Link'
 import { useRouter } from 'next/router'
 import FullScreenWrapper from '../../__atoms__/FullScreenWrapper/FullScreenWrapper'
+import ROUTES from '@/helpers/routes'
 
 function RestorePasswordModal() {
   const router = useRouter()
@@ -18,7 +19,7 @@ function RestorePasswordModal() {
   }
 
   const navigateToLoginModal = useCallback(() => {
-    router.push('/login')
+    router.push(ROUTES.SIGN_UP)
   }, [router])
   return (
     <FullScreenWrapper>

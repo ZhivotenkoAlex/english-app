@@ -2,12 +2,13 @@ import { useCallback } from 'react'
 import Button from '../Button/Button'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
+import ROUTES from '@/helpers/routes'
 
 function BackButton() {
   const router = useRouter()
 
   const handleNavigateToDashboard = useCallback(() => {
-    router.push('/')
+    router.push(ROUTES.HOME)
   }, [router])
 
   return (

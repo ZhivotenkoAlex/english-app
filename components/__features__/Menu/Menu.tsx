@@ -1,29 +1,35 @@
 import styled from 'styled-components'
 import MenuItem from './MenuItem'
+import ROUTES from '@/helpers/routes'
 
 function Menu() {
   const MENU_ITEMS = [
     {
+      id: 0,
+      label: 'Dashboard',
+      path: ROUTES.DASHBOARD,
+    },
+    {
       id: 1,
       label: 'Lessons',
-      path: '/dashboard',
+      path: ROUTES.LESSONS,
     },
     {
       id: 2,
       label: 'Vocabulary',
-      path: '/vocabulary',
+      path: ROUTES.VOCABULARY,
     },
 
     {
       id: 3,
       label: 'Grammar',
-      path: '/grammar',
+      path: ROUTES.GRAMMAR,
     },
 
     {
       id: 4,
       label: 'Dictionary',
-      path: '/dictionary',
+      path: ROUTES.DICTIONARY,
     },
   ]
   return (

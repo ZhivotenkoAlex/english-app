@@ -2,6 +2,7 @@ import Title from '@/components/__features__/Title'
 import PageContainer from '../../components/__atoms__/PageContainer/PageContainer'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import { Typography } from '@mui/material'
 
 function Vocabulary() {
   const [location, setLocation] = useState('')
@@ -11,7 +12,7 @@ function Vocabulary() {
   }, [])
   const ogData = {
     image: `${location}/public/images/logo.png`,
-    title: 'EasyWay | Vocabulary',
+    title: 'Vocabulary | EasyWay',
     description: 'Easy way to learn English',
     type: 'website',
     url: location,
@@ -24,7 +25,7 @@ function Vocabulary() {
         canonical={ogData.url}
         ogData={ogData}
       />
-      Vocabulary
+      <Typography variant="h1">Vocabulary</Typography>
       <Image
         src="/images/forest-background.jpg"
         alt="Picture of the author"

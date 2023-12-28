@@ -27,13 +27,12 @@ function MenuItem({ item }: IMenuItem) {
 const Item = styled(Link)`
   display: flex;
   padding: 0 12px;
-  font-weight: 500;
   border-radius: 16px;
-  height: 32px;
   align-items: center;
   justify-content: center;
   background: transparent;
-  color: ${colors.dark};
+  color: ${colors.lightWhite};
+  text-transform: uppercase;
   cursor: pointer;
   &:hover {
     background: ${colors.lightGrey};

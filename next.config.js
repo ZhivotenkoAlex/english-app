@@ -3,7 +3,6 @@ module.exports = async (phase, { defaultConfig }) => {
    * @type {import('next').NextConfig}
    */
 
-  //TODO: remove "img.shgstatic.com"
   const nextConfig = {
     reactStrictMode: true,
     images: {

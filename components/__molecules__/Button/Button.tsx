@@ -47,6 +47,7 @@ const ButtonElement = styled('button')<{
   width: ${({ $fullWidth }) => ($fullWidth ? '100%' : 'auto')};
   border: none;
   cursor: pointer;
+  padding: 0 10px;
   color: ${colors.lightWhite};
   background: ${({ color }) => COLOR[color]};
   ${({ size }) => {

@@ -249,11 +249,11 @@ const theme = createTheme({
     },
     'menu-item': {
       fontFamily: 'Roboto',
-      fontSize: 16,
+      fontSize: 20,
       fontStyle: 'normal',
       fontWeight: 400,
       lineHeight: '24px',
-      letterSpacing: '0.15px',
+      letterSpacing: '0.3px',
     },
   },
   components: {

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import PageContainer from '../../components/__atoms__/PageContainer/PageContainer'
 import Title from '@/components/__features__/Title'
+import { Typography } from '@mui/material'
 
 function Grammar() {
   const [location, setLocation] = useState('')
@@ -10,7 +11,7 @@ function Grammar() {
   }, [])
   const ogData = {
     image: `${location}/public/images/logo.png`,
-    title: 'EasyWay | Grammar',
+    title: 'Grammar | EasyWay',
     description: 'Easy way to learn English',
     type: 'website',
     url: location,
@@ -24,7 +25,7 @@ function Grammar() {
         canonical={ogData.url}
         ogData={ogData}
       />
-      Grammar
+      <Typography variant="h1">Grammar</Typography>
     </PageContainer>
   )
 }

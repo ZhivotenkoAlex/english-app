@@ -7,6 +7,7 @@ import Button from '../../__molecules__/Button/Button'
 import Link from '../../__atoms__/Link/Link'
 import { useRouter } from 'next/router'
 import BackButton from '../../__molecules__/BackButton/BackButton'
+import ROUTES from '@/helpers/routes'
 
 function LoginModal() {
   const router = useRouter()
@@ -22,11 +23,11 @@ function LoginModal() {
   }
 
   const navigateToRegistrationModal = useCallback(() => {
-    router.push('/')
+    router.push(ROUTES.HOME)
   }, [router])
 
   const navigateToRestorePasswordModal = useCallback(() => {
-    router.push('/restore')
+    router.push(ROUTES.RESTORE_PASSWORD)
   }, [router])
 
   return (

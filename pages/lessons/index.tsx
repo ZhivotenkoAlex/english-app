@@ -14,7 +14,7 @@ function Dashboard() {
   }, [])
   const ogData = {
     image: `${location}/public/images/logo.png`,
-    title: 'Dashboard | EasyWay',
+    title: 'Lessons | EasyWay',
     description: 'Easy way to learn English',
     type: 'website',
     url: location,
@@ -32,7 +32,7 @@ function Dashboard() {
         canonical={ogData.url}
         ogData={ogData}
       />
-      <Typography variant="h1">Dashboard</Typography>
+      <Typography variant="h1">Lessons</Typography>
       <Button
         onClick={navigateToLoginModal}
         disabled={false}
