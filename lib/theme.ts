@@ -69,7 +69,6 @@ const theme = createTheme({
   typography: {
     h1: {
       color: 'rgba(0, 0, 0, 0.87)',
-      fontFamily: 'Roboto',
       fontSize: '48px',
       fontWeight: 700,
       lineHeight: '52px',
@@ -85,7 +84,6 @@ const theme = createTheme({
     },
     h2: {
       color: 'rgba(0, 0, 0, 0.87)',
-      fontFamily: 'Roboto',
       fontSize: '40px',
       fontWeight: 700,
       lineHeight: '44px',
@@ -102,7 +100,7 @@ const theme = createTheme({
       },
     },
     h3: {
-      fontFamily: 'Roboto',
+      color: 'rgba(0, 0, 0, 0.87)',
       fontSize: '32px',
       fontStyle: 'normal',
       fontWeight: 600,
@@ -118,6 +116,7 @@ const theme = createTheme({
       },
     },
     h4: {
+      color: 'rgba(0, 0, 0, 0.87)',
       fontSize: '28px',
       fontWeight: '600',
       lineHeight: '32px',
@@ -129,11 +128,13 @@ const theme = createTheme({
       },
     },
     h5: {
+      color: 'rgba(0, 0, 0, 0.87)',
       fontSize: '24px',
       fontWeight: '600',
       lineHeight: '32.02px',
     },
     h6: {
+      color: 'rgba(0, 0, 0, 0.87)',
       fontSize: '20px',
       fontWeight: '600',
       lineHeight: '28.02px',
@@ -145,6 +146,7 @@ const theme = createTheme({
       },
     },
     body1: {
+      color: 'rgba(0, 0, 0, 0.87)',
       fontSize: '16px',
       fontWeight: '400',
       lineHeight: '22px',
@@ -164,6 +166,7 @@ const theme = createTheme({
       letterSpacing: '0.15px',
     },
     body2: {
+      color: 'rgba(0, 0, 0, 0.87)',
       fontSize: '14px',
       fontWeight: '400',
       lineHeight: '20px',
@@ -177,6 +180,7 @@ const theme = createTheme({
       letterSpacing: '0.17px',
     },
     subtitle1: {
+      color: 'rgba(0, 0, 0, 0.87)',
       textAlign: 'center',
       fontSize: '16px',
       fontWeight: '600',
@@ -190,6 +194,7 @@ const theme = createTheme({
       },
     },
     subtitle2: {
+      color: 'rgba(0, 0, 0, 0.87)',
       fontSize: 14,
       fontWeight: 600,
       lineHeight: '20px',
@@ -197,6 +202,7 @@ const theme = createTheme({
     },
     // created to replace h6 with span
     subtitle4: {
+      color: 'rgba(0, 0, 0, 0.87)',
       fontSize: '20px',
       fontWeight: '600',
       lineHeight: '28.02px',
@@ -209,24 +215,27 @@ const theme = createTheme({
     },
     // created to replace h5 with span
     subtitle5: {
+      color: 'rgba(0, 0, 0, 0.87)',
       fontSize: '24px',
       fontWeight: '600',
       lineHeight: '32.02px',
     },
     subtitle3: {
+      color: 'rgba(0, 0, 0, 0.87)',
       fontSize: 7,
       fontWeight: 600,
       lineHeight: '10px',
       letterSpacing: '0.1px',
     },
     caption: {
+      color: 'rgba(0, 0, 0, 0.87)',
       fontSize: 12,
       fontWeight: 400,
       lineHeight: '16px',
       letterSpacing: '0.4px',
     },
     overline: {
-      fontFamily: 'Roboto',
+      color: 'rgba(0, 0, 0, 0.87)',
       fontSize: 12,
       fontStyle: 'normal',
       fontWeight: 400,
@@ -234,21 +243,20 @@ const theme = createTheme({
       letterSpacing: '1px',
     },
     'button-medium': {
-      fontFamily: 'Roboto',
+      color: 'rgba(0, 0, 0, 0.87)',
       fontSize: '14px',
       fontWeight: 500,
       lineHeight: '24px',
       letterSpacing: '0.4px',
     },
     'button-small': {
-      fontFamily: 'Roboto',
+      color: 'rgba(0, 0, 0, 0.87)',
       fontSize: '13px',
       fontWeight: 500,
       lineHeight: '20px',
       letterSpacing: '0.3px',
     },
     'menu-item': {
-      fontFamily: 'Roboto',
       fontSize: 20,
       fontStyle: 'normal',
       fontWeight: 400,
@@ -260,7 +268,6 @@ const theme = createTheme({
     MuiAlertTitle: {
       styleOverrides: {
         root: {
-          fontFamily: 'Roboto',
           fontSize: 16,
           fontStyle: 'normal',
           fontWeight: 500,
@@ -304,7 +311,6 @@ const theme = createTheme({
       ],
       styleOverrides: {
         root: {
-          fontFamily: 'Roboto, sans-serif',
           transition: 'all 0.3s ease',
           textTransform: 'none',
           borderRadius: '999px',
@@ -316,7 +322,6 @@ const theme = createTheme({
           color: 'green',
         },
         sizeLarge: {
-          fontFamily: 'Roboto',
           fontSize: '15px',
           fontWeight: 500,
           lineHeight: '26px',
