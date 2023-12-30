@@ -41,7 +41,7 @@ export default function Home() {
         <Heading>
           <PageTitle variant="h1">
             EasyWay
-            <SubTitle>&nbsp;the easiest way to learn English</SubTitle>
+            <SubTitle>&nbsp;the easiest way to learn English!</SubTitle>
           </PageTitle>
         </Heading>
         <Container>
