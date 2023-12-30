@@ -1,3 +1,4 @@
+'use client'
 import { ChangeEvent, useCallback, useState } from 'react'
 import Heading from '../../__atoms__/Heading/Heading'
 import ModalWrapper from '../../__atoms__/ModalWrapper/ModalWrapper'
@@ -5,13 +6,10 @@ import Input from '../../__molecules__/Input/Input'
 import Form from '../../__atoms__/Form/Form'
 import Button from '../../__molecules__/Button/Button'
 import Link from '../../__atoms__/Link/Link'
-import { useRouter } from 'next/router'
 import BackButton from '../../__molecules__/BackButton/BackButton'
 import ROUTES from '@/helpers/routes'
 
 function RegistrationModal() {
-  const router = useRouter()
-
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -23,9 +21,7 @@ function RegistrationModal() {
     setPassword(e.target.value)
   }
 
-  const navigateToLoginModal = useCallback(() => {
-    router.push(ROUTES.SIGN_UP)
-  }, [router])
+  const navigateToLoginModal = useCallback(() => {}, [])
 
   return (
     <ModalWrapper>

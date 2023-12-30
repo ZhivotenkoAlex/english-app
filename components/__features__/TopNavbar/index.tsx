@@ -1,3 +1,4 @@
+'use client'
 import styled from 'styled-components'
 import Logo from '../../__molecules__/Logo/Logo'
 import Menu from '../Menu/Menu'

@@ -1,15 +1,16 @@
+'use client'
 import { useCallback } from 'react'
 import Button from '../Button/Button'
-import { useRouter } from 'next/router'
+// import { useRouter } from "next/router"
 import styled from 'styled-components'
 import ROUTES from '@/helpers/routes'
 
 function BackButton() {
-  const router = useRouter()
+  // const router = useRouter()
 
   const handleNavigateToDashboard = useCallback(() => {
-    router.push(ROUTES.HOME)
-  }, [router])
+    // router.push(ROUTES.HOME)
+  }, [])
 
   return (
     <BackButtonWrapper>

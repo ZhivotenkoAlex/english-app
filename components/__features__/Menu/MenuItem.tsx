@@ -1,24 +1,22 @@
 import styled from 'styled-components'
 import { colors } from '../../../utils/colors'
-import { useRouter } from 'next/router'
-import { IMenuItem as IMenuItemType } from '../../../types'
 import Link from 'next/link'
 import Typography from '@mui/material/Typography'
 
 interface IMenuItem {
-  item: IMenuItemType
+  item: any
 }
 function MenuItem({ item }: IMenuItem) {
-  const router = useRouter()
+  // const router = useRouter()
 
-  const handleItemClick = () => {
-    router.push(item.path)
-  }
+  // const handleItemClick = () => {
+  //   router.push(item.path)
+  // }
 
   return (
     <Wrapper>
       <Item href={item.path} color={colors.dark}>
-        <Typography variant="menu-item">{item.label}</Typography>
+        <Typography variant="h6">{item.label}</Typography>
       </Item>
     </Wrapper>
   )

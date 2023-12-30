@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { IPopupMenuItem } from '../../../types'
 import { colors } from '../../../utils/colors'
 import { useRouter } from 'next/router'
+import { IPopupMenuItem } from '@/types'
 
 interface IPopupItem {
   item: IPopupMenuItem

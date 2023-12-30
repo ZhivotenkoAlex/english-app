@@ -1,27 +1,23 @@
 import styled from 'styled-components'
 import Heading from '../../__atoms__/Heading/Heading'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
+// import { useRouter } from "next/router"
 import { useCallback } from 'react'
 import { Typography } from '@mui/material'
 import { colors } from '@/utils/colors'
 import ROUTES from '@/helpers/routes'
+import Link from 'next/link'
 
 function Logo() {
-  const router = useRouter()
-  const handleClick = useCallback(() => {
-    router.push(ROUTES.HOME)
-  }, [router])
-
   return (
-    <Wrapper onClick={handleClick}>
+    <Wrapper href={ROUTES.HOME}>
       <Image src="/images/logo.png" alt="logo" width={50} height={50} />
-      <PageTitle variant="subtitle5">EasyWay</PageTitle>
+      <PageTitle variant="h6">EasyWay</PageTitle>
     </Wrapper>
   )
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled(Link)`
   display: flex;
   align-items: center;
   gap: 1rem;

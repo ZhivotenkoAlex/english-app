@@ -1,30 +1,24 @@
-import Title from '@/components/__features__/Title'
+'use client'
 import PageContainer from '../../components/__atoms__/PageContainer/PageContainer'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { Typography } from '@mui/material'
 
 function Vocabulary() {
-  const [location, setLocation] = useState('')
+  // const [location, setLocation] = useState("")
 
-  useEffect(() => {
-    setLocation(window?.location?.origin)
-  }, [])
-  const ogData = {
-    image: `${location}/public/images/logo.png`,
-    title: 'Vocabulary | EasyWay',
-    description: 'Easy way to learn English',
-    type: 'website',
-    url: location,
-  }
+  // useEffect(() => {
+  //   setLocation(window?.location?.origin)
+  // }, [])
+  // const ogData = {
+  //   image: `${location}/public/images/logo.png`,
+  //   title: "Vocabulary | EasyWay",
+  //   description: "Easy way to learn English",
+  //   type: "website",
+  //   url: location,
+  // }
   return (
     <PageContainer>
-      <Title
-        title={ogData.title}
-        description={ogData.description}
-        canonical={ogData.url}
-        ogData={ogData}
-      />
       <Typography variant="h1">Vocabulary</Typography>
       <Image
         src="/images/forest-background.jpg"

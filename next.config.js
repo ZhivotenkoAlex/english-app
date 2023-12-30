@@ -6,7 +6,18 @@ module.exports = async (phase, { defaultConfig }) => {
   const nextConfig = {
     reactStrictMode: true,
     images: {
-      domains: ['shgstatic.com', 'img.shgstatic.com'],
+      remotePatterns: [
+        {
+          protocol: 'https',
+          hostname: 'shgstatic.com',
+          pathname: '**',
+        },
+        {
+          protocol: 'https',
+          hostname: 'img.shgstatic.com',
+          pathname: '**',
+        },
+      ],
       deviceSizes: [640, 768, 1024, 1280, 1600, 1920],
       imageSizes: [16, 32, 48, 64, 96, 192],
       loader: 'default',
@@ -21,9 +32,7 @@ module.exports = async (phase, { defaultConfig }) => {
       return config
     },
     compiler: {
-      styledComponents: {
-        displayName: false,
-      },
+      styledComponents: true,
     },
   }
   return nextConfig

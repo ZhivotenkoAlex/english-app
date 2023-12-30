@@ -1,3 +1,4 @@
+'use client'
 import { ChangeEvent, useCallback, useState } from 'react'
 import Heading from '../../__atoms__/Heading/Heading'
 import ModalWrapper from '../../__atoms__/ModalWrapper/ModalWrapper'
@@ -6,11 +7,16 @@ import Form from '../../__atoms__/Form/Form'
 import Button from '../../__molecules__/Button/Button'
 import Link from '../../__atoms__/Link/Link'
 import { useRouter } from 'next/router'
-import BackButton from '../../__molecules__/BackButton/BackButton'
 import ROUTES from '@/helpers/routes'
+import dynamic from 'next/dynamic'
+import BackButton from '@/components/__molecules__/BackButton/BackButton'
+
+// const BackButton = dynamic(() => import('@/components/__molecules__/BackButton/BackButton'), {
+//   ssr: false,
+// })
 
 function LoginModal() {
-  const router = useRouter()
+  // const router = useRouter()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -22,13 +28,13 @@ function LoginModal() {
     setPassword(e.target.value)
   }
 
-  const navigateToRegistrationModal = useCallback(() => {
-    router.push(ROUTES.HOME)
-  }, [router])
+  // const navigateToRegistrationModal = useCallback(() => {
+  //   router.push(ROUTES.HOME)
+  // }, [router])
 
-  const navigateToRestorePasswordModal = useCallback(() => {
-    router.push(ROUTES.RESTORE_PASSWORD)
-  }, [router])
+  // const navigateToRestorePasswordModal = useCallback(() => {
+  //   router.push(ROUTES.RESTORE_PASSWORD)
+  // }, [router])
 
   return (
     <ModalWrapper>
@@ -43,7 +49,7 @@ function LoginModal() {
           onChange={handleChangePassword}
         />
         <Button
-          onClick={navigateToRestorePasswordModal}
+          onClick={() => console.log('Click')}
           disabled={false}
           type="text"
           label="Восстановить пароль"
@@ -52,7 +58,7 @@ function LoginModal() {
         />
         <Button onClick={() => {}} disabled label="Войти" color={'green'} size="large" />
         <Link
-          onClick={navigateToRegistrationModal}
+          onClick={() => console.log('Click')}
           size={14}
           title={'Создать аккаунт'}
           color="blue"
