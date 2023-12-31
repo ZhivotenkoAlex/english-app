@@ -8,7 +8,7 @@ import Logo from '@/components/__molecules__/Logo/Logo'
 export const SideBar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false)
 
-  const handleOnClose = () => {
+  const handleOnClose = e => {
     setIsOpen(!isOpen)
   }
 
@@ -17,32 +17,53 @@ export const SideBar = ({ children }) => {
       <div>
         <MenuFillIcon size="30px" onClick={handleOnClose} />
       </div>
-      <SideMenu
-        $isOpen={isOpen}
-        className={`animate__animated ${isOpen ? 'animate__fadeIn' : 'animate__fadeOut'} `}
-      >
-        <CloseIconCover>
-          <CloseIcon size="35px" onClick={handleOnClose} />
-        </CloseIconCover>
+      <SideMenuWrapper $isOpen={isOpen} onClick={handleOnClose}>
+        <SideMenu
+          $isOpen={isOpen}
+          onClick={e => e.stopPropagation()}
+          className={`animate__animated ${isOpen ? 'animate__fadeIn' : 'animate__fadeOut'} `}
+        >
+          <CloseIconCover>
+            <CloseIcon size="35px" onClick={handleOnClose} />
+          </CloseIconCover>
 
-        <ItemContainer onClick={handleOnClose}>
-          <LogoWrapper>
-            <Logo />
-          </LogoWrapper>
-          {children}
-        </ItemContainer>
-      </SideMenu>
+          <ItemContainer onClick={handleOnClose}>
+            <LogoWrapper>
+              <Logo />
+            </LogoWrapper>
+            {children}
+          </ItemContainer>
+        </SideMenu>
+      </SideMenuWrapper>
     </Root>
   )
 }
 
 const Root = styled.div`
-  z-index: 1;
+  margin-left: auto;
+  margin-right: 1rem;
+  &div: first-child {
+    cursor: pointer;
+  }
+`
+
+const SideMenuWrapper = styled.div<{ $isOpen: boolean }>`
+  display: ${props => (props.$isOpen ? 'block' : 'none')};
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.2);
 `
 
 const SideMenu = styled.div<{ $isOpen: boolean }>`
-  display: ${props => (props.$isOpen === true ? 'block' : 'none')};
+  display: ${props => (props.$isOpen === true ? 'flex' : 'none')};
+  flex-direction: column;
+  align-items: center;
   position: fixed;
+  z-index: 5;
   width: 75%;
   height: 100%;
   top: 0;
@@ -67,10 +88,15 @@ const SideMenu = styled.div<{ $isOpen: boolean }>`
         0 1px 2px 0 rgba(0, 0, 0, 0.06);
     }
   }
+
+  @media only screen and (max-width: 530px) {
+    width: 100%;
+  }
 `
 
 const CloseIconCover = styled.div`
   display: flex;
+  width: 100%;
   justify-content: right;
   margin: 5px 5px 0 0;
 `
@@ -83,6 +109,8 @@ const ItemContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 70%;
+  justify-content: center;
 `
 
 const LogoWrapper = styled.div`
