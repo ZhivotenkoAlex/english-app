@@ -1,5 +1,4 @@
 'use client'
-import { Typography } from '@mui/material'
 import Image from 'next/image'
 import styled from 'styled-components'
 
@@ -17,8 +16,8 @@ export default function ServiceItem({ data }: PropTypes) {
         height={200}
       />
       <Description>
-        <Typography variant="h3">{data.title}</Typography>
-        <Typography variant="body1">{data.subtitle}</Typography>
+        <StyledTitle>{data.title}</StyledTitle>
+        <Subtitle>{data.subtitle}</Subtitle>
       </Description>
     </Root>
   )
@@ -44,4 +43,14 @@ const Description = styled.div`
   gap: 20px;
   margin-left: 16px;
   text-wrap: balance;
+`
+
+const StyledTitle = styled.h3``
+
+const Subtitle = styled.p`
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0.15px;
 `
