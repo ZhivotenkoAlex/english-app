@@ -4,12 +4,10 @@ import styled from 'styled-components'
 import CloseFillIcon from 'remixicon-react/CloseFillIcon'
 import MenuFillIcon from 'remixicon-react/MenuFillIcon'
 import Logo from '@/components/__molecules__/Logo/Logo'
-import { useMediaQuery } from '@mui/material'
 
 export const SideBar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false)
 
-  const isMobile = useMediaQuery('(max-width: 530px)')
   const handleOnClose = e => {
     setIsOpen(!isOpen)
   }
@@ -17,12 +15,11 @@ export const SideBar = ({ children }) => {
   return (
     <Root>
       <div>
-        <MenuFillIcon className="icon" size="30px" onClick={handleOnClose} />
+        <MenuFillIcon size="30px" onClick={handleOnClose} />
       </div>
       <SideMenuWrapper $isOpen={isOpen} onClick={handleOnClose}>
         <SideMenu
           $isOpen={isOpen}
-          $isMobile={isMobile}
           onClick={e => e.stopPropagation()}
           className={`animate__animated ${isOpen ? 'animate__fadeIn' : 'animate__fadeOut'} `}
         >
@@ -45,7 +42,7 @@ export const SideBar = ({ children }) => {
 const Root = styled.div`
   margin-left: auto;
   margin-right: 1rem;
-  .icon {
+  &div: first-child {
     cursor: pointer;
   }
 `
@@ -61,13 +58,13 @@ const SideMenuWrapper = styled.div<{ $isOpen: boolean }>`
   background: rgba(0, 0, 0, 0.2);
 `
 
-const SideMenu = styled.div<{ $isOpen: boolean; $isMobile: boolean }>`
+const SideMenu = styled.div<{ $isOpen: boolean }>`
   display: ${props => (props.$isOpen === true ? 'flex' : 'none')};
   flex-direction: column;
   align-items: center;
   position: fixed;
   z-index: 5;
-  width: ${({ $isMobile }) => ($isMobile ? '100%' : ' 75%')};
+  width: 75%;
   height: 100%;
   top: 0;
   left: 0;
@@ -90,6 +87,10 @@ const SideMenu = styled.div<{ $isOpen: boolean; $isMobile: boolean }>`
         0 1px 3px 0 rgba(0, 0, 0, 0.1),
         0 1px 2px 0 rgba(0, 0, 0, 0.06);
     }
+  }
+
+  @media only screen and (max-width: 530px) {
+    width: 100%;
   }
 `
 
