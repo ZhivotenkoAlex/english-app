@@ -24,7 +24,7 @@ module.exports = async (phase, { defaultConfig }) => {
       path: '/_next/image',
       formats: ['image/avif', 'image/webp'],
     },
-    trailingSlash: true,
+    trailingSlash: false,
     webpack: (config, { isServer }) => {
       if (!isServer) {
         config.mode = 'production'

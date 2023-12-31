@@ -1,8 +1,11 @@
 import styled from 'styled-components'
 import MenuItem from './MenuItem'
 import ROUTES from '@/helpers/routes'
+import { SideBar } from '../BurgerMenu'
+import { useMediaQuery } from '@mui/material'
 
 function Menu() {
+  const isBurgerShown = useMediaQuery('(min-width:1024px)')
   const MENU_ITEMS = [
     {
       id: 0,
@@ -32,12 +35,18 @@ function Menu() {
       path: ROUTES.DICTIONARY,
     },
   ]
-  return (
+  return isBurgerShown ? (
     <List>
       {MENU_ITEMS.map(item => (
         <MenuItem key={item.id} item={item} />
       ))}
     </List>
+  ) : (
+    <SideBar>
+      {MENU_ITEMS.map(item => (
+        <MenuItem key={item.id} item={item} />
+      ))}
+    </SideBar>
   )
 }
 
@@ -45,6 +54,10 @@ const List = styled('ul')`
   display: flex;
   list-style: none;
   gap: 1.5rem;
+  @media screen and (max-width: 1440px) {
+    margin-left: 0;
+    gap: 1.2rem;
+  }
 `
 
 export default Menu
