@@ -76,17 +76,15 @@ const SideMenu = styled.div<{ $isOpen: boolean }>`
     margin-bottom: 10px;
   }
 
-  @media only screen and (min-width: 600px) {
-    .ham {
-      position: fixed;
-      width: 20%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      box-shadow:
-        0 1px 3px 0 rgba(0, 0, 0, 0.1),
-        0 1px 2px 0 rgba(0, 0, 0, 0.06);
-    }
+  @media (min-width: 767px) {
+    position: fixed;
+    width: 30%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    box-shadow:
+      0 1px 3px 0 rgba(0, 0, 0, 0.1),
+      0 1px 2px 0 rgba(0, 0, 0, 0.06);
   }
 
   @media only screen and (max-width: 530px) {

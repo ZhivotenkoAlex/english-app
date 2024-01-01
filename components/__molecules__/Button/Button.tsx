@@ -6,7 +6,7 @@ type ButtonSize = 'small' | 'medium' | 'large'
 type ButtonType = 'contained' | 'text' | 'outlined'
 interface IButton {
   type?: ButtonType
-  onClick: () => void
+  onClick?: () => void
   label: string
   color: Color
   size: ButtonSize
@@ -50,6 +50,7 @@ const ButtonElement = styled('button')<{
   padding: 0 10px;
   color: ${colors.lightWhite};
   background: ${({ color }) => COLOR[color]};
+  transition: all 0.5s ease-in-out;
   ${({ size }) => {
     switch (size) {
       case 'small':
@@ -89,5 +90,10 @@ const ButtonElement = styled('button')<{
       return ''
     }
   }}
+  &:hover {
+    color: ${colors.dark};
+    scale: 1.05;
+    border: 1px ${colors.darkGreen} solid;
+  }
 `
 export default Button

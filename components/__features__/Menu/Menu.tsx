@@ -54,7 +54,7 @@ const List = styled('ul')`
   display: flex;
   list-style: none;
   gap: 1.5rem;
-  @media screen and (max-width: 1440px) {
+  @media (max-width: 1439px) {
     margin-left: 0;
     gap: 1.2rem;
   }

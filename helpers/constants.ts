@@ -1,3 +1,5 @@
+import ROUTES from './routes'
+
 export const Lessons = {
   lesson_one: {
     vocabulary: {
@@ -44,5 +46,36 @@ export const WelcomePagePreferences = [
     title: 'Різноманітні тренування',
     subtitle: 'Ми підготували цікаві і дієві тренування.',
     imageName: 'training',
+  },
+]
+
+export const DashboardItems = [
+  {
+    id: '1',
+    title: 'Уроки',
+    subtitle: 'Тематичні уроки',
+    imageName: 'lessons',
+    path: ROUTES.LESSONS,
+  },
+  {
+    id: '2',
+    title: 'Нові слова',
+    subtitle: 'Вивчити нові слова',
+    imageName: 'vocabulary',
+    path: ROUTES.VOCABULARY,
+  },
+  {
+    id: '3',
+    title: 'Граматика',
+    subtitle: 'Без знань граматики нікуди',
+    imageName: 'grammar',
+    path: ROUTES.GRAMMAR,
+  },
+  {
+    id: '4',
+    title: 'Словник',
+    subtitle: 'Список вивчених слів',
+    imageName: 'dictionary',
+    path: ROUTES.DICTIONARY,
   },
 ]
