@@ -1,22 +1,18 @@
 import styled from 'styled-components'
 import { colors } from '../../../utils/colors'
 import Link from 'next/link'
-import Typography from '@mui/material/Typography'
+import { usePathname } from 'next/navigation'
 
 interface IMenuItem {
   item: any
 }
 function MenuItem({ item }: IMenuItem) {
-  // const router = useRouter()
-
-  // const handleItemClick = () => {
-  //   router.push(item.path)
-  // }
-
+  const pathname = usePathname()
+  const pageName = pathname.split('/').find(item => item !== '')
   return (
     <Wrapper>
       <Item href={item.path} color={colors.dark}>
-        <Typography variant="h6">{item.label}</Typography>
+        <Label>{item.label}</Label>
       </Item>
     </Wrapper>
   )
@@ -36,6 +32,12 @@ const Item = styled(Link)`
     background: ${colors.lightGrey};
     color: ${colors.dark};
   }
+`
+
+const Label = styled.p`
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
 `
 
 const Wrapper = styled.div``
