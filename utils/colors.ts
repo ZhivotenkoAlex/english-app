@@ -5,10 +5,12 @@ export const colors = {
   grey: '#8593a1',
   darkGrey: '#37383c',
   lightGrey: '#f2f4f5',
+  lightGrey2: '#d3d3d3',
   dark: '#38393d',
   orange: '#d67802',
   green: '#28c38a',
   lightGreen: '#98e2c7',
+  darkGreen: '#1c8d63',
   red: '#ee6044',
 }
 

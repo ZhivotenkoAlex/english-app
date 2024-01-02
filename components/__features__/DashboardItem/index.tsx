@@ -1,36 +1,49 @@
+import ROUTES from '@/helpers/routes'
+import { colors } from '@/utils/colors'
 import Image from 'next/image'
+import Link from 'next/link'
 import styled from 'styled-components'
 
 type PropTypes = {
-  data: { title: string; subtitle: string; imageName: string }
+  data: { title: string; subtitle: string; imageName: string; path: ROUTES }
 }
 
 export default function ServiceItem({ data }: PropTypes) {
   return (
-    <Root>
-      <StyledImage
-        src={`/images/${data.imageName}.jpg`}
-        alt="word cloud"
-        width={200}
-        height={200}
-      />
-      <Description>
-        <StyledTitle>{data.title}</StyledTitle>
-        <Subtitle>{data.subtitle}</Subtitle>
-      </Description>
+    <Root href={data.path}>
+      <Container>
+        <StyledImage
+          src={`/images/${data.imageName}.jpg`}
+          alt="word cloud"
+          width={200}
+          height={200}
+        />
+        <Description>
+          <StyledTitle>{data.title}</StyledTitle>
+          <Subtitle>{data.subtitle}</Subtitle>
+        </Description>
+      </Container>
     </Root>
   )
 }
 
-const Root = styled.div`
-  display: flex;
+const Root = styled(Link)`
   padding: 16px;
   border: black 1px solid;
   border-radius: 16px;
-  align-items: center;
+  transition: scale 0.5s ease-in-out;
   @media screen and (max-width: 767px) {
     flex-direction: column;
   }
+  &:hover {
+    border-color: ${colors.green};
+    scale: 1.05;
+  }
+`
+
+const Container = styled.div`
+  display: flex;
+  align-items: center;
 `
 
 const StyledImage = styled(Image)`
