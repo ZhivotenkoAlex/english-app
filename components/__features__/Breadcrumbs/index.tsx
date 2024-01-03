@@ -1,3 +1,4 @@
+'use client'
 import React, { useMemo, useCallback } from 'react'
 import styled from 'styled-components'
 import { NextRouter } from 'next/router'
@@ -5,6 +6,7 @@ import { Breadcrumbs } from '@mui/material'
 import Link from 'next/link'
 import { Url } from 'next/dist/shared/lib/router/router'
 import { usePathname } from 'next/navigation'
+import ROUTES from '@/helpers/routes'
 
 type Crumb = {
   title?: string
@@ -22,6 +24,9 @@ type Props = {
 function BreadCrumbs({ maxItems = 2, customName, isCustomBreadCrumbs, customCrumbs }: Props) {
   const pathname = usePathname()
   const cleanParts = useMemo(() => pathname.split('/'), [pathname])
+
+  const pathsWithHidedBreadcrumbs = [ROUTES.HOME, ROUTES.SIGN_IN, ROUTES.SIGN_UP]
+  const isBreadcrumbsShown = !pathsWithHidedBreadcrumbs.includes(pathname as ROUTES)
 
   const routeCrumbs = useMemo(
     () =>
@@ -54,23 +59,27 @@ function BreadCrumbs({ maxItems = 2, customName, isCustomBreadCrumbs, customCrum
     [isLast],
   )
 
+  //returns breadcrumbs layout only if isBreadcrumbsShown is true
+
   return (
-    <Root>
-      <StyledBreadcrumbs maxItems={maxItems}>
-        {crumbs.map((crumbName, idx) => {
-          return (
-            <Crumb
-              key={idx}
-              $last={isLast(idx)}
-              href={crumbName.href as Url}
-              as={isDisabled(crumbName, idx)}
-            >
-              <LinkTitle>{linkTitle(idx, crumbName)}</LinkTitle>
-            </Crumb>
-          )
-        })}
-      </StyledBreadcrumbs>
-    </Root>
+    isBreadcrumbsShown && (
+      <Root>
+        <StyledBreadcrumbs maxItems={maxItems}>
+          {crumbs.map((crumbName, idx) => {
+            return (
+              <Crumb
+                key={idx}
+                $last={isLast(idx)}
+                href={crumbName.href as Url}
+                as={isDisabled(crumbName, idx)}
+              >
+                <LinkTitle>{linkTitle(idx, crumbName)}</LinkTitle>
+              </Crumb>
+            )
+          })}
+        </StyledBreadcrumbs>
+      </Root>
+    )
   )
 }
 

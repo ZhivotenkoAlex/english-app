@@ -90,7 +90,7 @@ const ItemsContainer = styled.div`
   grid-template-columns: 1fr 1fr;
   justify-content: center;
   gap: 20px;
-  @media screen and (max-width: 1023px) {
+  @media screen and (max-width: 767px) {
     grid-template-columns: 1fr;
   }
 `

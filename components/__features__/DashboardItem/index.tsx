@@ -44,12 +44,17 @@ const Root = styled(Link)`
 const Container = styled.div`
   display: flex;
   align-items: center;
+  @media screen and (max-width: 1023px) {
+    flex-direction: column;
+  }
 `
 
 const StyledImage = styled(Image)`
   border-radius: 16px;
   object-fit: contain;
   filter: grayscale(20%);
+  min-width: 30%;
+  max-width: 100%;
 `
 
 const Description = styled.div`
@@ -58,13 +63,15 @@ const Description = styled.div`
   justify-content: center;
   gap: 20px;
   margin-left: 16px;
-  text-wrap: balance;
+  text-wrap: nowrap;
   @media screen and (max-width: 767px) {
     align-items: center;
   }
 `
 
-const StyledTitle = styled.h3``
+const StyledTitle = styled.h3`
+  text-wrap: nowrap;
+`
 
 const Subtitle = styled.p`
   color: rgba(0, 0, 0, 0.6);

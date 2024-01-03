@@ -64,7 +64,7 @@ const SideMenu = styled.div<{ $isOpen: boolean }>`
   align-items: center;
   position: fixed;
   z-index: 5;
-  width: 75%;
+  width: 40%;
   height: 100%;
   top: 0;
   left: 0;
@@ -77,8 +77,6 @@ const SideMenu = styled.div<{ $isOpen: boolean }>`
   }
 
   @media (min-width: 767px) {
-    position: fixed;
-    width: 30%;
     height: 100%;
     top: 0;
     left: 0;
