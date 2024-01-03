@@ -28,7 +28,7 @@ const Root = styled.div`
   border: black 1px solid;
   border-radius: 16px;
   align-items: center;
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 1023px) {
     flex-direction: column;
   }
 `
@@ -37,6 +37,8 @@ const StyledImage = styled(Image)`
   border-radius: 16px;
   object-fit: contain;
   filter: grayscale(20%);
+  min-width: 40%;
+  max-width: 100%;
 `
 
 const Description = styled.div`
@@ -46,8 +48,9 @@ const Description = styled.div`
   gap: 20px;
   margin-left: 16px;
   text-wrap: balance;
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 1023px) {
     align-items: center;
+    text-align: center;
   }
 `
 

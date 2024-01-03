@@ -31,9 +31,6 @@ const Heading = styled.div`
   flex-direction: column;
   text-align: center;
   margin-bottom: 40px;
-  @media (max-width: 1023px) {
-    display: inline;
-  }
 `
 
 const PageTitle = styled.h1`
@@ -57,4 +54,7 @@ const ContentContainer = styled.div`
   max-width: 75%;
   margin: 0 auto 20px auto;
   gap: 20px;
+  @media screen and (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
 `
