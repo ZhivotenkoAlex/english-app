@@ -33,7 +33,9 @@ export default function WelcomePage() {
             <WelcomeTitle>Підвищіть свій рівень англійської</WelcomeTitle>
             <WelcomeSubtitle>і відкрийте світ заново</WelcomeSubtitle>
           </WelcomeTitleContainer>
-          <Button disabled={false} label="Почати вчити!" color={'green'} size="large" />
+          <ButtonLink href={ROUTES.SIGN_UP}>
+            <Button disabled={false} label="Почати вчити!" color={'green'} size="large" />
+          </ButtonLink>
           <StyledImage src={`/images/girl.jpg`} alt="word cloud" width={300} height={400} />
         </WelcomeContainer>
       </Root>
