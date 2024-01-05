@@ -1,32 +1,18 @@
 'use client'
-import { useCallback } from 'react'
 import Button from '../Button/Button'
-// import { useRouter } from "next/router"
 import styled from 'styled-components'
 import ROUTES from '@/helpers/routes'
+import Link from 'next/link'
 
 function BackButton() {
-  // const router = useRouter()
-
-  const handleNavigateToDashboard = useCallback(() => {
-    // router.push(ROUTES.HOME)
-  }, [])
-
   return (
-    <BackButtonWrapper>
-      <Button
-        disabled={false}
-        label="Back"
-        color="green"
-        type="outlined"
-        onClick={handleNavigateToDashboard}
-        size="small"
-      />
+    <BackButtonWrapper href={ROUTES.HOME}>
+      <Button disabled={false} label="Back" color="green" variant="outlined" size="small" />
     </BackButtonWrapper>
   )
 }
 
-const BackButtonWrapper = styled.div`
+const BackButtonWrapper = styled(Link)`
   button {
     width: auto;
   }

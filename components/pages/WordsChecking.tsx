@@ -1,14 +1,14 @@
 'use client'
 import React from 'react'
 import styled from 'styled-components'
-import WordLearningItem from '../__features__/WordLearningItem'
+import WordCheckingItem from '../__features__/WordCheckingItem'
 
-export default function SingleLessonPage({ lesson }: any) {
+export default function WordsChecking({ lesson }: any) {
   return (
     <Root>
       <Container>
-        <SubTitle>Для початку вивчимо кілька нових слів</SubTitle>
-        <WordLearningItem vocabulary={lesson.lessonContent.vocabulary} slug={lesson.slug} />
+        <SubTitle>А зараз перевіримо знання нових слів</SubTitle>
+        <WordCheckingItem vocabulary={lesson.lessonContent.vocabulary} slug={lesson.slug} />
       </Container>
     </Root>
   )

@@ -5,35 +5,37 @@ import styled from 'styled-components'
 import VolumeUpFillIcon from 'remixicon-react/VolumeUpFillIcon'
 import { getVoice } from '@/helpers/getVoice'
 import Button from '@/components/__molecules__/Button/Button'
-import { Collapse } from '@mui/material'
+import { Chip, Collapse } from '@mui/material'
 import Link from 'next/link'
 import ROUTES from '@/helpers/routes'
 
 export default function WordLearningItem({ vocabulary, slug }: any) {
   const [activeIndex, setActiveIndex] = useState(0)
-
   const [activeItem, setActiveItem] = useState(vocabulary[activeIndex])
-
   const [isTranslated, setIsTranslated] = useState(false)
   const [isDone, setIsDone] = useState(false)
 
   const handleTranslateClick = useCallback(() => {
     setIsTranslated(true)
-    setActiveIndex(activeIndex + 1)
+
     if (activeIndex + 1 === vocabulary.length) {
       setIsDone(true)
     }
     if (isTranslated) {
-      setActiveItem(vocabulary[activeIndex])
+      setActiveIndex(activeIndex + 1)
+      setActiveItem(vocabulary[activeIndex + 1])
       setIsTranslated(false)
     }
   }, [activeIndex, isTranslated, vocabulary])
+
+  const counterLabel = `${activeIndex + 1} / ${vocabulary.length}`
 
   return (
     <Root>
       <WordContainer>
         <Word>{activeItem.en}</Word>
         <VolumeAction onClick={() => getVoice(activeItem.en)} />
+        <Counter label={counterLabel} $isDone={isDone} />
       </WordContainer>
       <Transcription>{activeItem?.transcription}</Transcription>
       <Container>
@@ -107,11 +109,18 @@ const WordContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 10px;
+  position: relative;
+`
+
+const Counter = styled(Chip)<{ $isDone: boolean }>`
+  position: absolute;
+  top: -5px;
+  right: 0;
+  background: ${props => (props.$isDone ? colors.green : 'auto')};
 `
 
 const SynonymCover = styled.div`
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   gap: 10px;
 `
@@ -176,5 +185,3 @@ const StyledButton = styled(Button)`
   margin: 0 auto;
   width: fit-content;
 `
-
-const AdditionContainer = styled.div``

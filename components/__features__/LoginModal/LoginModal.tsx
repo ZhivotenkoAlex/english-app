@@ -51,7 +51,7 @@ function LoginModal() {
         <Button
           onClick={() => console.log('Click')}
           disabled={false}
-          type="text"
+          variant="text"
           label="Восстановить пароль"
           color={'grey'}
           size="large"

@@ -3,34 +3,38 @@ import { COLOR, colors } from '../../../utils/colors'
 
 type Color = 'blue' | 'green' | 'grey'
 type ButtonSize = 'small' | 'medium' | 'large'
-type ButtonType = 'contained' | 'text' | 'outlined'
+type ButtonVariant = 'contained' | 'text' | 'outlined'
+type ButtonType = 'submit' | 'reset' | 'button'
 interface IButton {
-  type?: ButtonType
-  onClick?: () => void
   label: string
-  color: Color
-  size: ButtonSize
-  disabled: boolean
+  variant?: ButtonVariant
+  onClick?: () => void
+  color?: Color
+  size?: ButtonSize
+  disabled?: boolean
   fullWidth?: boolean
+  type?: ButtonType
 }
 
 function Button({
-  type = 'contained',
+  variant = 'contained',
   label,
-  disabled,
   onClick,
+  disabled = false,
   color = 'green',
   size = 'medium',
   fullWidth = false,
+  type = 'button',
 }: IButton) {
   return (
     <ButtonElement
-      type={type}
+      $variant={variant}
       disabled={disabled}
       onClick={onClick}
       size={size}
       color={color}
       $fullWidth={fullWidth}
+      type={type}
     >
       {label}
     </ButtonElement>
@@ -40,7 +44,7 @@ function Button({
 const ButtonElement = styled('button')<{
   size: string
   color: string
-  type: string
+  $variant: string
   $fullWidth: boolean
 }>`
   border-radius: 5px;
@@ -78,14 +82,14 @@ const ButtonElement = styled('button')<{
     }};
   }
 
-  ${({ type, color }) => {
-    if (type === 'outlined') {
+  ${({ $variant, color }) => {
+    if ($variant === 'outlined') {
       return `
                 background:transparent;
                 color: ${COLOR[color]};
                 border: 2px solid ${COLOR[color]} 
             `
-    } else if (type === 'text') {
+    } else if ($variant === 'text') {
       return `
             background:transparent;
             color: ${COLOR[color]}
