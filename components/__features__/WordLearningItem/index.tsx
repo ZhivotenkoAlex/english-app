@@ -9,7 +9,7 @@ import { Chip, Collapse } from '@mui/material'
 import Link from 'next/link'
 import ROUTES from '@/helpers/routes'
 
-export default function WordLearningItem({ vocabulary, slug }: any) {
+export default function WordLearningItem({ vocabulary, clickHandler }: any) {
   const [activeIndex, setActiveIndex] = useState(0)
   const [activeItem, setActiveItem] = useState(vocabulary[activeIndex])
   const [isTranslated, setIsTranslated] = useState(false)
@@ -29,6 +29,8 @@ export default function WordLearningItem({ vocabulary, slug }: any) {
   }, [activeIndex, isTranslated, vocabulary])
 
   const counterLabel = `${activeIndex + 1} / ${vocabulary.length}`
+
+  const handleNextExercise = () => clickHandler(1)
 
   return (
     <Root>
@@ -78,14 +80,13 @@ export default function WordLearningItem({ vocabulary, slug }: any) {
             disabled={false}
           ></StyledButton>
         ) : (
-          <Link href={`${ROUTES.LESSONS}/${slug}/words`}>
-            <StyledButton
-              label={'NEXT EXERCICE'}
-              color="green"
-              size="medium"
-              disabled={false}
-            ></StyledButton>
-          </Link>
+          <StyledButton
+            label={'NEXT EXERCISE'}
+            color="green"
+            size="medium"
+            disabled={false}
+            onClick={handleNextExercise}
+          ></StyledButton>
         )}
       </ButtonContainer>
     </Root>

@@ -3,7 +3,7 @@ import './globals.css'
 import Providers from './providers'
 import GlobalStyles from '@/styles/GlobalStyles'
 import TopNavbar from '@/components/__features__/TopNavbar'
-import BreadCrumbs from '@/components/__features__/Breadcrumbs'
+// import BreadCrumbs from '@/components/__features__/Breadcrumbs'
 import { Metadata } from 'next'
 
 const roboto = Roboto({
@@ -27,7 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <GlobalStyles />
           <TopNavbar />
           <main>
-            <BreadCrumbs />
+            {/* <BreadCrumbs /> */}
             {children}
           </main>
         </Providers>

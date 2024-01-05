@@ -14,7 +14,7 @@ interface InitialValue {
   word: string
 }
 
-export default function WordCheckingItem({ vocabulary, slug }: any) {
+export default function WordCheckingItem({ vocabulary, clickHandler }: any) {
   const [activeIndex, setActiveIndex] = useState(0)
   const [activeItem, setActiveItem] = useState(vocabulary[activeIndex])
   const [isChecked, setIsChecked] = useState(false)
@@ -36,6 +36,8 @@ export default function WordCheckingItem({ vocabulary, slug }: any) {
     },
     [activeIndex, activeItem.en, isChecked, isDone, vocabulary],
   )
+
+  const handleNextExercise = () => clickHandler(2)
 
   const counterLabel = `${activeIndex + 1} / ${vocabulary.length}`
 
@@ -85,9 +87,7 @@ export default function WordCheckingItem({ vocabulary, slug }: any) {
             }
             {isDone ? (
               <>
-                <Link href={`${ROUTES.LESSONS}/${slug}/sentence`}>
-                  <StyledButton label={'NEXT EXERCICE'}></StyledButton>
-                </Link>
+                <StyledButton label={'NEXT EXERCISE'} onClick={handleNextExercise}></StyledButton>
               </>
             ) : (
               <ButtonContainer>
