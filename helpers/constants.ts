@@ -117,7 +117,7 @@ export const Lessons = [
           ua: 'страховий агент',
           transcription: '[ɪnˈʃɔːrənts ˈeɪdʒənt]',
           definition: 'a person employed to sell insurance policies',
-          synonyms: ['underwriter', 'general agent', 'insurance broker'],
+          synonyms: ['underwriter'],
           example:
             'A well-designed succession plan will likely involve other professionals such as an attorney, appraiser and insurance agent .',
         },
@@ -275,7 +275,7 @@ export const Lessons = [
           ua: 'страховий агент',
           transcription: '[ɪnˈʃɔːrənts ˈeɪdʒənt]',
           definition: 'a person employed to sell insurance policies',
-          synonyms: ['underwriter', 'general agent', 'insurance broker'],
+          synonyms: ['underwriter'],
           example:
             'A well-designed succession plan will likely involve other professionals such as an attorney, appraiser and insurance agent .',
         },
@@ -433,7 +433,7 @@ export const Lessons = [
           ua: 'страховий агент',
           transcription: '[ɪnˈʃɔːrənts ˈeɪdʒənt]',
           definition: 'a person employed to sell insurance policies',
-          synonyms: ['underwriter', 'general agent', 'insurance broker'],
+          synonyms: ['underwriter'],
           example:
             'A well-designed succession plan will likely involve other professionals such as an attorney, appraiser and insurance agent .',
         },
@@ -541,3 +541,9 @@ export const DashboardItems = [
     path: ROUTES.DICTIONARY,
   },
 ]
+
+export const lessonsSubtitles = {
+  0: `Для початку вивчимо кілька нових слів`,
+  1: `А зараз перевіримо знання нових слів`,
+  2: 'І на останок попрактикуймося',
+}

@@ -5,6 +5,7 @@ import Image from 'next/image'
 import WordLearningItem from '../__features__/WordLearningItem'
 import CustomizedStepper from '../__features__/Stepper'
 import WordCheckingItem from '../__features__/WordCheckingItem'
+import { lessonsSubtitles } from '@/helpers/constants'
 
 export default function SingleLessonPage({ lesson }: any) {
   const [currentStep, setCurrentStep] = useState(0)
@@ -25,15 +26,9 @@ export default function SingleLessonPage({ lesson }: any) {
       <Container>
         <CustomizedStepper currentStep={currentStep} clickHandler={clickHandler} />
         <Heading>
-          {/* <StyledImage
-            src={`/images/lessons/${lesson?.imageName}.jpg`}
-            alt="word cloud"
-            width={200}
-            height={200}
-          /> */}
           <PageTitle>{lesson?.topic}</PageTitle>
         </Heading>
-        <SubTitle>Для початку вивчимо кілька нових слів</SubTitle>
+        <SubTitle>{lessonsSubtitles[currentStep]}</SubTitle>
         {stepComponents[currentStep]}
       </Container>
     </Root>
@@ -49,29 +44,30 @@ const Root = styled.div`
 const Container = styled.div`
   display: grid;
   justify-content: center;
+  background-image: radial-gradient(90% 70% at 50% 50%, rgba(255, 255, 255, 0) 0%, #ffffff 100%),
+    url('/images/homeBackground.webp');
+  padding-bottom: 40px;
 `
 
 const SubTitle = styled.h3`
   display: block;
-  margin-bottom: 40px;
   text-align: center;
+  margin: 0 auto 40px auto;
 `
 
 const Heading = styled.div`
-  margin: 0 auto;
+  margin: 40px auto 20px auto;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  margin-bottom: 40px;
 `
 
 const PageTitle = styled.h1`
   padding: 6px 16px;
   letter-spacing: 0.2px;
   margin: 0 auto;
-  width: 75%;
   text-wrap: nowrap;
   @media screen and (max-width: 767px) {
     width: auto;

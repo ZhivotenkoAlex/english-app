@@ -94,7 +94,7 @@ const Root = styled(Breadcrumbs)`
   @media (max-width: 1439px) {
     padding: 24px 24px 0px 24px;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     padding: 16px 8px 0px 16px;
   }
 `

@@ -14,6 +14,8 @@ interface IButton {
   disabled?: boolean
   fullWidth?: boolean
   type?: ButtonType
+  fontColor?: string
+  width?: string
 }
 
 function Button({
@@ -25,6 +27,8 @@ function Button({
   size = 'medium',
   fullWidth = false,
   type = 'button',
+  fontColor = colors.lightWhite,
+  width = 'auto',
 }: IButton) {
   return (
     <ButtonElement
@@ -35,6 +39,8 @@ function Button({
       color={color}
       $fullWidth={fullWidth}
       type={type}
+      $fontColor={fontColor}
+      $width={width}
     >
       {label}
     </ButtonElement>
@@ -46,24 +52,22 @@ const ButtonElement = styled('button')<{
   color: string
   $variant: string
   $fullWidth: boolean
+  $fontColor: string
+  $width: string
 }>`
   border-radius: 5px;
-  width: ${({ $fullWidth }) => ($fullWidth ? '100%' : 'auto')};
+  width: ${({ $fullWidth, $width }) => ($fullWidth ? '100%' : $width)};
   border: none;
   cursor: pointer;
   padding: 6px 16px;
-  color: ${colors.lightWhite};
+  color: ${({ $fontColor }) => COLOR[$fontColor]};
   background: ${({ color }) => COLOR[color]};
-  box-shadow:
-    0px 3px 1px -2px rgba(0, 0, 0, 0.2),
-    0px 2px 2px 0px rgba(0, 0, 0, 0.14),
-    0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   transition: all 0.5s ease-in-out;
   ${({ size }) => {
     switch (size) {
       case 'small':
         return `height:20px;
-                    font-size: 12px;
+                font-size: 12px;
                 `
       case 'medium': {
         return `height:30px;
@@ -86,13 +90,13 @@ const ButtonElement = styled('button')<{
     if ($variant === 'outlined') {
       return `
                 background:transparent;
-                color: ${COLOR[color]};
+                color: ${({ $fontColor }) => COLOR[$fontColor]};;
                 border: 2px solid ${COLOR[color]} 
             `
     } else if ($variant === 'text') {
       return `
             background:transparent;
-            color: ${COLOR[color]}
+            color: ${({ $fontColor }) => COLOR[$fontColor]};
         `
     } else {
       return ''
@@ -102,7 +106,7 @@ const ButtonElement = styled('button')<{
     box-sizing: border-box;
     color: ${colors.dark};
     scale: 1.05;
-    border: 1px ${colors.darkGreen} solid;
+    border: ${({ $fontColor }) => `1px ${COLOR[$fontColor]} solid`};
   }
 `
 export default Button

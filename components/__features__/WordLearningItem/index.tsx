@@ -6,8 +6,6 @@ import VolumeUpFillIcon from 'remixicon-react/VolumeUpFillIcon'
 import { getVoice } from '@/helpers/getVoice'
 import Button from '@/components/__molecules__/Button/Button'
 import { Chip, Collapse } from '@mui/material'
-import Link from 'next/link'
-import ROUTES from '@/helpers/routes'
 
 export default function WordLearningItem({ vocabulary, clickHandler }: any) {
   const [activeIndex, setActiveIndex] = useState(0)
@@ -96,13 +94,19 @@ export default function WordLearningItem({ vocabulary, clickHandler }: any) {
 const Root = styled.div`
   display: grid;
   gap: 15px;
-  width: 500px;
+  min-width: 500px;
   margin: 0 auto;
   padding: 16px;
   border: ${colors.lightGrey2} 1px solid;
   border-radius: 15px;
   text-align: center;
   background: #f6ffff;
+  min-height: 500px;
+  position: relative;
+  @media screen and (max-width: 767px) {
+    min-height: 550px;
+    min-width: 100%;
+  }
 `
 
 const WordContainer = styled.div`
@@ -174,12 +178,22 @@ const VolumeAction = styled(VolumeUpFillIcon)`
 const SynonymsContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  @media screen and (max-width: 767px) {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
 `
 
 const ButtonContainer = styled.div`
   display: grid;
   justify-content: center;
   gap: 20px;
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
 `
 
 const StyledButton = styled(Button)`

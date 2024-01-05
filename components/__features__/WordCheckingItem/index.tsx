@@ -7,8 +7,6 @@ import VolumeUpFillIcon from 'remixicon-react/VolumeUpFillIcon'
 import { getVoice } from '@/helpers/getVoice'
 import Button from '@/components/__molecules__/Button/Button'
 import { Form, Field } from 'react-final-form'
-import Link from 'next/link'
-import ROUTES from '@/helpers/routes'
 
 interface InitialValue {
   word: string
@@ -71,6 +69,7 @@ export default function WordCheckingItem({ vocabulary, clickHandler }: any) {
                       <StyledButton
                         label={'Get hint'}
                         color="grey"
+                        variant="text"
                         onClick={() => form.change('word', activeItem.en)}
                       />
                     </InputContainer>
@@ -104,13 +103,17 @@ export default function WordCheckingItem({ vocabulary, clickHandler }: any) {
 const Root = styled.div`
   display: grid;
   gap: 15px;
-  width: 500px;
+  min-width: 500px;
   margin: 0 auto;
   padding: 16px;
   border: ${colors.lightGrey2} 1px solid;
   border-radius: 15px;
   text-align: center;
   background: #f6ffff;
+  max-width: 500px;
+  @media screen and (max-width: 767px) {
+    min-width: 100%;
+  }
 `
 
 const WordContainer = styled.div`
