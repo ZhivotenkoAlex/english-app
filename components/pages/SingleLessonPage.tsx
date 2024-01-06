@@ -6,6 +6,7 @@ import WordLearningItem from '../__features__/WordLearningItem'
 import CustomizedStepper from '../__features__/Stepper'
 import WordCheckingItem from '../__features__/WordCheckingItem'
 import { lessonsSubtitles } from '@/helpers/constants'
+import PracticeItem from '../__features__/PracticeItem'
 
 export default function SingleLessonPage({ lesson }: any) {
   const [currentStep, setCurrentStep] = useState(0)
@@ -18,13 +19,14 @@ export default function SingleLessonPage({ lesson }: any) {
     1: (
       <WordCheckingItem vocabulary={lesson.lessonContent.vocabulary} clickHandler={clickHandler} />
     ),
-    2: <div>Sentence</div>,
+    2: <PracticeItem vocabulary={lesson.lessonContent.practice} clickHandler={clickHandler} />,
+    3: <div>Вітаю! Ти вивчив 15 нових слів</div>,
   }
 
   return (
     <Root>
+      <CustomizedStepper currentStep={currentStep} clickHandler={clickHandler} />
       <Container>
-        <CustomizedStepper currentStep={currentStep} clickHandler={clickHandler} />
         <Heading>
           <PageTitle>{lesson?.topic}</PageTitle>
         </Heading>
