@@ -82,8 +82,12 @@ const ButtonElement = styled('button')<{
 
   &:disabled {
     cursor: not-allowed;
-    background: ${({ color }) => {
-      return color === 'green' ? colors.lightGreen : colors.grey
+    background: ${({ color, $variant }) => {
+      if ($variant === 'text') {
+        return 'transparent'
+      } else {
+        return color === 'green' ? colors.lightGreen : colors.grey
+      }
     }};
   }
 

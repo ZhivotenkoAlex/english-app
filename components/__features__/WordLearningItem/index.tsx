@@ -95,6 +95,7 @@ const Root = styled.div`
   display: grid;
   gap: 15px;
   min-width: 500px;
+  max-width: 550px;
   margin: 0 auto;
   padding: 16px;
   border: ${colors.lightGrey2} 1px solid;

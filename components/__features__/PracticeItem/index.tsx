@@ -1,92 +1,114 @@
 'use client'
 import { colors } from '@/utils/colors'
 import React, { useCallback, useState } from 'react'
-import { Chip, TextField } from '@mui/material'
+import { Chip } from '@mui/material'
 import styled from 'styled-components'
 import VolumeUpFillIcon from 'remixicon-react/VolumeUpFillIcon'
 import { getVoice } from '@/helpers/getVoice'
 import Button from '@/components/__molecules__/Button/Button'
 import { Form, Field } from 'react-final-form'
+import InputItemType from './InputItemType'
+import SelectOneItemType from './SelectOneItemType'
+import CorrectItemType from './CorrectItemType'
+import ConstructItemType from './ConstructItemType'
 import QuestionLineIcon from 'remixicon-react/QuestionLineIcon'
 import StepperIcon from '@/components/__atoms__/StepperIcon'
 
 interface InitialValue {
-  word: string
+  answer: string
 }
 
-export default function WordCheckingItem({ vocabulary, clickHandler }: any) {
+const getExercises = (type, activeItem, input, isChecked) => {
+  const exercises = {
+    input: <InputItemType activeItem={activeItem} input={input} isChecked={isChecked} />,
+    select_one: <SelectOneItemType activeItem={activeItem} input={input} isChecked={isChecked} />,
+    correct: <CorrectItemType activeItem={activeItem} input={input} isChecked={isChecked} />,
+    construct: <ConstructItemType activeItem={activeItem} input={input} isChecked={isChecked} />,
+  }
+  return exercises[type]
+}
+
+export default function PracticeItem({ practice, clickHandler }: any) {
   const [activeIndex, setActiveIndex] = useState(0)
-  const [activeItem, setActiveItem] = useState(vocabulary[activeIndex])
+  const [activeItem, setActiveItem] = useState(practice[activeIndex])
   const [isChecked, setIsChecked] = useState(false)
   const [isDone, setIsDone] = useState(false)
 
+  const initialValues = activeItem.type === 'correct' ? { answer: activeItem.missed } : {}
+
   const onSubmit = useCallback(
     (data: InitialValue, form: any) => {
-      const isCorrect = data.word === activeItem.en
+      const correctVariant = activeItem.correctVariant.split('/')
+
+      const answer =
+        activeItem.type === 'correct' || activeItem.type === 'construct'
+          ? data.answer
+          : data.answer.toLowerCase()
+
+      const isCorrect =
+        activeItem.type === 'construct' ? answer === activeItem.en : correctVariant.includes(answer)
+
       setIsChecked(isCorrect)
-      if (activeIndex + 1 === vocabulary.length) {
+
+      if (activeIndex + 1 === practice.length) {
         setIsDone(true)
       }
+
       if (isChecked && isCorrect && !isDone) {
         setActiveIndex(activeIndex + 1)
-        setActiveItem(vocabulary[activeIndex + 1])
+        setActiveItem(practice[activeIndex + 1])
         setIsChecked(false)
-        form.change('word', '')
+        form.change('answer', '')
       }
     },
-    [activeIndex, activeItem.en, isChecked, isDone, vocabulary],
+    [
+      activeIndex,
+      activeItem.correctVariant,
+      activeItem.en,
+      activeItem.type,
+      isChecked,
+      isDone,
+      practice,
+    ],
   )
 
-  const handleNextExercise = () => clickHandler(2)
+  const handleNextExercise = () => clickHandler(3)
 
-  const counterLabel = `${activeIndex + 1} / ${vocabulary.length}`
+  const counterLabel = `${activeIndex + 1} / ${practice.length}`
 
   return (
     <Root>
       <WordContainer>
-        <Word>{activeItem?.ua}</Word>
         <Counter label={counterLabel} $isDone={isDone} />
       </WordContainer>
       <Form
         onSubmit={onSubmit}
+        initialValues={initialValues}
         render={({ handleSubmit, form }) => (
           <form onSubmit={handleSubmit}>
-            {isDone ? null : (
-              <Field
-                name="word"
-                render={({ input, meta }) => {
-                  return (
-                    <InputContainer>
-                      <div>
-                        <StyledTextField
-                          {...input}
-                          placeholder="Введіть переклад"
-                          autoComplete="off"
-                          autoCorrect="false"
-                          autoFocus={true}
-                          disabled={isDone}
-                        />
-                        {meta.touched && meta.error && <span>{meta.error}</span>}
-                      </div>
-                    </InputContainer>
-                  )
-                }}
-              />
-            )}
-
             {isChecked ? (
               <TranslationContainer $isChecked={isChecked}>
                 <Word>{isChecked ? activeItem.en : ' '}</Word>
-                {isChecked ? <VolumeAction onClick={() => getVoice(activeItem?.en)} /> : null}
+                {isChecked ? (
+                  <VolumeAction onClick={() => getVoice(activeItem?.en, 'en', 0.7)} />
+                ) : null}
               </TranslationContainer>
             ) : (
-              <IconContainer onClick={() => form.change('word', activeItem.en)}>
-                <StepperIcon Icon={QuestionLineIcon} />
+              <Field
+                name="answer"
+                render={({ input }) => {
+                  return getExercises(activeItem.type, activeItem, input, isChecked)
+                }}
+              />
+            )}
+            {!isDone && (
+              <IconContainer onClick={() => form.change('answer', activeItem.hint)}>
+                <StepperIcon Icon={QuestionLineIcon} isComplete={!isChecked} />
               </IconContainer>
             )}
             {isDone ? (
               <>
-                <StyledButton label={'NEXT EXERCISE'} onClick={handleNextExercise}></StyledButton>
+                <StyledButton label={'FINISH'} onClick={handleNextExercise}></StyledButton>
               </>
             ) : (
               <ButtonContainer>
@@ -103,14 +125,14 @@ export default function WordCheckingItem({ vocabulary, clickHandler }: any) {
 const Root = styled.div`
   display: grid;
   gap: 15px;
-  min-width: 500px;
+  min-width: 70%;
   margin: 0 auto;
   padding: 16px;
   border: ${colors.lightGrey2} 1px solid;
   border-radius: 15px;
   text-align: center;
   background: #f6ffff;
-  max-width: 500px;
+  min-height: 380px;
   @media screen and (max-width: 767px) {
     min-width: 100%;
   }
@@ -133,10 +155,17 @@ const TranslationContainer = styled.div<{ $isChecked: boolean }>`
   background: ${props => (props.$isChecked === true ? colors.lightGreen : colors.lightBlue)};
   width: fit-content;
   border-radius: 16px;
+  @media screen and (max-width: 723px) {
+    flex-direction: column;
+  }
 `
 
-const Word = styled.h4`
-  text-transform: uppercase;
+const Word = styled.span`
+  font-size: 20px;
+  text-wrap: nowrap;
+  @media screen and (max-width: 1023px) {
+    text-wrap: pretty;
+  }
 `
 
 const VolumeAction = styled(VolumeUpFillIcon)`
@@ -165,22 +194,14 @@ const Counter = styled(Chip)<{ $isDone: boolean }>`
   background: ${props => (props.$isDone ? colors.green : 'auto')};
 `
 
-const StyledTextField = styled(TextField)`
-  input {
-    text-align: center;
-    font-size: 20px;
-  }
-`
-
-const InputContainer = styled.div`
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-`
-
 const IconContainer = styled.div`
   display: flex;
+  width: 50px;
   justify-content: center;
-  margin: 20px 0;
+  margin: 20px auto;
+  cursor: pointer;
+  transition: scale 0.5s ease-in-out;
+  &:hover {
+    scale: 1.05;
+  }
 `

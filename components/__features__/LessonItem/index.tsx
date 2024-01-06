@@ -1,4 +1,3 @@
-'use client'
 import StatusIcon from '@/components/__atoms__/StatusIcon'
 import { LESSON_STATUS } from '@/helpers/constants'
 import ROUTES from '@/helpers/routes'
@@ -76,12 +75,4 @@ const Description = styled.div`
 
 const StyledTitle = styled.h3`
   text-wrap: nowrap;
-`
-
-const Subtitle = styled.p`
-  color: rgba(0, 0, 0, 0.6);
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 22px;
-  letter-spacing: 0.15px;
 `
