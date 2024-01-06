@@ -9,6 +9,3 @@
 ## Workflow
 
 1. Project uses Material UI library. Don't be shy to use ready components from this library
-2. For text you should use Typography component.
-3. When you have to use specific font settings and this settings will reuse in several parts of app, you should add this font settings to the theme.ts component
-   in the lib folder
