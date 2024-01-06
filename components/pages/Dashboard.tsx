@@ -43,11 +43,6 @@ const PageTitle = styled.h1`
   }
 `
 
-const SubTitle = styled.span`
-  display: block;
-  text-transform: capitalize;
-`
-
 const ContentContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;

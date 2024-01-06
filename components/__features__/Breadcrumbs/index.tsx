@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { NextRouter } from 'next/router'
 import { Breadcrumbs } from '@mui/material'
 import Link from 'next/link'
-import { Url } from 'next/dist/shared/lib/router/router'
 import { usePathname } from 'next/navigation'
 import ROUTES from '@/helpers/routes'
 
@@ -21,7 +20,7 @@ type Props = {
   customCrumbs?: Crumb[]
 }
 
-function BreadCrumbs({ maxItems = 2, customName, isCustomBreadCrumbs, customCrumbs }: Props) {
+function BreadCrumbs({ maxItems = 3, customName, isCustomBreadCrumbs, customCrumbs }: Props) {
   const pathname = usePathname()
   const cleanParts = useMemo(() => pathname.split('/'), [pathname])
 
@@ -31,7 +30,7 @@ function BreadCrumbs({ maxItems = 2, customName, isCustomBreadCrumbs, customCrum
   const routeCrumbs = useMemo(
     () =>
       cleanParts.map(part => {
-        const title = part === '' ? 'Home' : part.replace(/-/g, ' ')
+        const title = part === '' ? 'Home' : part.replace(/[-,_]/g, ' ')
         const href = part === '' ? '/' : part
         return {
           title,
@@ -54,6 +53,11 @@ function BreadCrumbs({ maxItems = 2, customName, isCustomBreadCrumbs, customCrum
     [customName, isLast],
   )
 
+  const linkHref = useCallback(
+    (crumbName: Crumb) => (crumbName.title === 'Home' ? `${crumbName.href}` : `/${crumbName.href}`),
+    [],
+  )
+
   const isDisabled = useCallback(
     (crumbName: Crumb, idx: number) => (isLast(idx) || crumbName.href === '' ? 'div' : 'a'),
     [isLast],
@@ -70,7 +74,7 @@ function BreadCrumbs({ maxItems = 2, customName, isCustomBreadCrumbs, customCrum
               <Crumb
                 key={idx}
                 $last={isLast(idx)}
-                href={crumbName.href as Url}
+                href={linkHref(crumbName)}
                 as={isDisabled(crumbName, idx)}
               >
                 <LinkTitle>{linkTitle(idx, crumbName)}</LinkTitle>
@@ -90,7 +94,7 @@ const Root = styled(Breadcrumbs)`
   @media (max-width: 1439px) {
     padding: 24px 24px 0px 24px;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     padding: 16px 8px 0px 16px;
   }
 `
