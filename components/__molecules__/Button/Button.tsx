@@ -63,6 +63,7 @@ const ButtonElement = styled('button')<{
   color: ${({ $fontColor }) => COLOR[$fontColor]};
   background: ${({ color }) => COLOR[color]};
   transition: all 0.5s ease-in-out;
+  font-weight: 600;
   ${({ size }) => {
     switch (size) {
       case 'small':
