@@ -3,7 +3,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { TextField } from '@mui/material'
 
-export default function CorrectItemType({ activeItem, input, isChecked }) {
+export default function CorrectItemType({ activeItem, input, isChecked, isValidated }) {
+  const error = isValidated === false ? 'Wrong answer!' : null
   return (
     <>
       <TranslationContainer $isChecked={isChecked}>
@@ -17,9 +18,9 @@ export default function CorrectItemType({ activeItem, input, isChecked }) {
             fullWidth
             multiline
             variant="standard"
+            error={!!error}
           />
         </span>
-        {/* {meta.touched && meta.error && <span>{meta.error}</span>} */}
       </TranslationContainer>
     </>
   )
@@ -32,10 +33,11 @@ const TranslationContainer = styled.div<{ $isChecked: boolean }>`
   border-radius: 16px;
 `
 
-const StyledTextField = styled(TextField)`
+const StyledTextField = styled(TextField)<{ error: boolean }>`
   max-width: 70%;
   textarea {
     text-align: center;
     font-size: 20px;
+    color: ${props => (props.error ? colors.warning : 'auto')};
   }
 `

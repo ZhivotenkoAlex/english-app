@@ -3,8 +3,9 @@ import React from 'react'
 import styled from 'styled-components'
 import { TextField } from '@mui/material'
 
-export default function InputItemType({ activeItem, input, isChecked }) {
+export default function InputItemType({ activeItem, input, isChecked, isValidated }) {
   const contentArray = activeItem?.missed.split('$')
+  const error = isValidated === false ? 'Wrong answer!' : null
   return (
     <>
       <TranslationContainer $isChecked={isChecked}>
@@ -14,6 +15,7 @@ export default function InputItemType({ activeItem, input, isChecked }) {
               <span key={index}>
                 <StyledTextField
                   {...input}
+                  error={!!error}
                   placeholder={activeItem.placeholder}
                   autoComplete="off"
                   autoCorrect="false"
@@ -27,7 +29,6 @@ export default function InputItemType({ activeItem, input, isChecked }) {
               </span>
             ),
           )}
-          {/* {meta.touched && meta.error && <span>{meta.error}</span>} */}
         </InputContainer>
       </TranslationContainer>
     </>
@@ -52,12 +53,13 @@ const InputContainer = styled.div`
   gap: 10px;
 `
 
-const StyledTextField = styled(TextField)`
+const StyledTextField = styled(TextField)<{ error: boolean }>`
   max-width: 100px;
   width: fit-content;
   input {
     text-align: center;
     font-size: 20px;
+    color: ${props => (props.error ? colors.warning : 'initial')};
   }
 `
 

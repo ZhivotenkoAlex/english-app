@@ -8,7 +8,7 @@ import { getVoice } from '@/helpers/getVoice'
 import Button from '@/components/__molecules__/Button/Button'
 import { Form, Field } from 'react-final-form'
 import QuestionLineIcon from 'remixicon-react/QuestionLineIcon'
-import StepperIcon from '@/components/__atoms__/StepperIcon'
+import HintIcon from '@/components/__atoms__/HintIcon'
 
 interface InitialValue {
   word: string
@@ -81,7 +81,7 @@ export default function WordCheckingItem({ vocabulary, clickHandler }: any) {
               </TranslationContainer>
             ) : (
               <IconContainer onClick={() => form.change('word', activeItem.en)}>
-                <StepperIcon Icon={QuestionLineIcon} />
+                <HintIcon Icon={QuestionLineIcon} />
               </IconContainer>
             )}
             {isDone ? (
@@ -133,6 +133,7 @@ const TranslationContainer = styled.div<{ $isChecked: boolean }>`
   background: ${props => (props.$isChecked === true ? colors.lightGreen : colors.lightBlue)};
   width: fit-content;
   border-radius: 16px;
+  max-height: 50px;
 `
 
 const Word = styled.h4`

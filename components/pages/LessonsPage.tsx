@@ -43,17 +43,12 @@ const PageTitle = styled.h1`
   }
 `
 
-const SubTitle = styled.span`
-  display: block;
-  text-transform: capitalize;
-`
-
 const ContentContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   max-width: 75%;
   margin: 0 auto 20px auto;
-  gap: 20px;
+  gap: 25px;
   @media screen and (max-width: 767px) {
     grid-template-columns: 1fr;
   }
