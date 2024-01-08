@@ -2,8 +2,17 @@ import { colors } from '@/utils/colors'
 import React from 'react'
 import styled from 'styled-components'
 import { TextField } from '@mui/material'
+import { LessonPractice } from '@/types'
+import { FieldInputProps } from 'react-final-form'
 
-export default function InputItemType({ activeItem, input, isChecked, isValidated }) {
+type PropTypes = {
+  activeItem: LessonPractice
+  input: FieldInputProps<string, HTMLElement>
+  isChecked: boolean
+  isValidated: boolean | null
+}
+
+export default function InputItemType({ activeItem, input, isChecked, isValidated }: PropTypes) {
   const contentArray = activeItem?.missed.split('$')
   const error = isValidated === false ? 'Wrong answer!' : null
   return (

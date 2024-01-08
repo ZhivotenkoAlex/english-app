@@ -1,8 +1,10 @@
 import Image from 'next/image'
 import styled from 'styled-components'
 
+type ServiceItemType = { title: string; subtitle: string; imageName: string }
+
 type PropTypes = {
-  data: { title: string; subtitle: string; imageName: string }
+  data: ServiceItemType
 }
 
 export default function ServiceItem({ data }: PropTypes) {

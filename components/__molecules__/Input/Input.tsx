@@ -12,7 +12,7 @@ function Input({ value, placeholder, name, type = 'text', ...rest }: IInput) {
   return <InputElement placeholder={placeholder} id={name} {...rest} />
 }
 
-const InputElement = styled('input')`
+const InputElement = styled.input`
   border: 1px solid ${colors.grey};
   border-radius: 8px;
   height: 40px;

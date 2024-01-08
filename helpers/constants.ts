@@ -1,15 +1,10 @@
 import { v4 as uuid } from 'uuid'
 import ROUTES from './routes'
-
-export enum LESSON_STATUS {
-  DONE = 'done',
-  IN_PROGRESS = 'in_progress',
-  NOT_STARTED = 'not_started',
-}
+import { LESSON_STATUS, PracticeTypes } from '@/types'
 
 export const Lessons = [
   {
-    id: 1,
+    id: uuid(),
     number: 1,
     slug: `The_best_job`,
     topic: `The best job`,
@@ -165,7 +160,7 @@ export const Lessons = [
       practice: [
         {
           id: uuid(),
-          type: 'select_one',
+          type: PracticeTypes.SELECT_ONE,
           missed: `My husband is the main accountant in this firm. He $$ you with your bank account.`,
           en: `My husband is the main accountant in this firm. He can help you with your bank account.`,
           ua: `Мій чоловік головний бухгалтер в цій фірмі. Він може допомогти з вашим банківським рахунком.`,
@@ -177,7 +172,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'select_one',
+          type: PracticeTypes.SELECT_ONE,
           missed: `The chairman $$ with this company right now.`,
           en: `The chairman can negotiate with this company right now.`,
           ua: `Голова може вести переговори з цією компанією прямо зараз`,
@@ -188,7 +183,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'select_one',
+          type: PracticeTypes.SELECT_ONE,
           missed: `She $$ this incompetent lad last week, why didn't she do that?`,
           en: `She could fire this incompetent lad last week, why didn't she do that?`,
           ua: `Вона могла звільнити цього некомпетентного хлопця минулого тижня, чому вона цього не зробила?`,
@@ -200,7 +195,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'construct',
+          type: PracticeTypes.CONSTRUCT,
           en: `Holly can try to change the judge's mind.`,
           ua: `Холлі може спробувати змінити думку судді.`,
           variants: [],
@@ -223,7 +218,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'correct',
+          type: PracticeTypes.CORRECT,
           missed: `Peter can to work as an insurance agent and have flexible hours.`,
           en: `Peter can work as an insurance agent and have flexible hours.`,
           ua: `Пітер може працювати страховим агентом і мати гнучкий графік.`,
@@ -234,7 +229,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'input',
+          type: PracticeTypes.INPUT,
           missed: `We $$ have a break right now, we have too much stuff to do.`,
           en: `We can't have a break right now, we have too much stuff to do.`,
           ua: `Зараз ми не можемо відпочити, у нас надто багато справ.`,
@@ -246,7 +241,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'input',
+          type: PracticeTypes.INPUT,
           missed: `$$ you complete this task as quickly as possible?`,
           en: `Could you complete this task as quickly as possible?`,
           ua: `Чи могли б ви виконати це завдання якомога швидше?`,
@@ -257,7 +252,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'select_one',
+          type: PracticeTypes.SELECT_ONE,
           missed: `They $$ you about your ambitions during your job interview.`,
           en: `They can ask you about your ambitions during your job interview.`,
           ua: `Розкажуть вам про ваші цілі під час співбесіди.`,
@@ -268,7 +263,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'correct',
+          type: PracticeTypes.CORRECT,
           missed: `This famous judge cans deal with the most difficult tasks.`,
           en: `This famous judge can deal with the most difficult tasks.`,
           ua: `Цей знаменитий суддя може впоратися з найскладнішими завданнями.`,
@@ -279,7 +274,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'input',
+          type: PracticeTypes.INPUT,
           missed: `I $$ share my sacred knowledge with you, you’re too young for that.`,
           en: `I can't share my sacred knowledge with you, you’re too young for that.`,
           ua: `Я не можу поділитися з тобою своїми священними знаннями, ти ще занадто молодий для цього.`,
@@ -291,7 +286,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'input',
+          type: PracticeTypes.INPUT,
           missed: `$$ you help me to apply for this job?`,
           en: `Could you help me to apply for this job?`,
           ua: `Чи можете ви допомогти мені подати заявку на цю роботу?`,
@@ -303,7 +298,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'construct',
+          type: PracticeTypes.CONSTRUCT,
           en: `I can't be an accountant, it's too boring.`,
           ua: `Я не можу бути бухгалтером, це занадто нудно.`,
           variants: [],
@@ -332,7 +327,7 @@ export const Lessons = [
           id: uuid(),
           en: `I could deal with more problems when I was younger.`,
           ua: `Я міг впоратися з більшими проблемами, коли був молодше.`,
-          type: 'construct',
+          type: PracticeTypes.CONSTRUCT,
           variants: [],
           multiselect: [
             {
@@ -357,7 +352,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'input',
+          type: PracticeTypes.INPUT,
           missed: `I $$ apply for this job now. I have a kid waiting for me at home and no time at all.`,
           en: `I can't apply for this job now. I have a kid waiting for me at home and no time at all.`,
           ua: `Зараз я не можу претендувати на цю роботу. Мене вдома чекає дитина, а часу немає.`,
@@ -373,7 +368,7 @@ export const Lessons = [
     imageName: 'job',
   },
   {
-    id: 2,
+    id: uuid(),
     number: 2,
     slug: 'Working',
     topic: 'Working',
@@ -529,7 +524,7 @@ export const Lessons = [
       practice: [
         {
           id: uuid(),
-          type: 'select_one',
+          type: PracticeTypes.SELECT_ONE,
           missed: `My husband is the main accountant in this firm. He $$ you with your bank account.`,
           en: `My husband is the main accountant in this firm. He can help you with your bank account.`,
           ua: `Мій чоловік головний бухгалтер в цій фірмі. Він може допомогти з вашим банківським рахунком.`,
@@ -541,7 +536,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'select_one',
+          type: PracticeTypes.SELECT_ONE,
           missed: `The chairman $$ with this company right now.`,
           en: `The chairman can negotiate with this company right now.`,
           ua: `Голова може вести переговори з цією компанією прямо зараз`,
@@ -552,7 +547,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'select_one',
+          type: PracticeTypes.SELECT_ONE,
           missed: `She $$ this incompetent lad last week, why didn't she do that?`,
           en: `She could fire this incompetent lad last week, why didn't she do that?`,
           ua: `Вона могла звільнити цього некомпетентного хлопця минулого тижня, чому вона цього не зробила?`,
@@ -564,7 +559,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'construct',
+          type: PracticeTypes.CONSTRUCT,
           en: `Holly can try to change the judge's mind.`,
           ua: `Холлі може спробувати змінити думку судді.`,
           variants: [],
@@ -587,7 +582,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'correct',
+          type: PracticeTypes.CORRECT,
           missed: `Peter can to work as an insurance agent and have flexible hours.`,
           en: `Peter can work as an insurance agent and have flexible hours.`,
           ua: `Пітер може працювати страховим агентом і мати гнучкий графік.`,
@@ -598,7 +593,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'input',
+          type: PracticeTypes.INPUT,
           missed: `We $$ have a break right now, we have too much stuff to do.`,
           en: `We can't have a break right now, we have too much stuff to do.`,
           ua: `Зараз ми не можемо відпочити, у нас надто багато справ.`,
@@ -610,7 +605,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'input',
+          type: PracticeTypes.INPUT,
           missed: `$$ you complete this task as quickly as possible?`,
           en: `Could you complete this task as quickly as possible?`,
           ua: `Чи могли б ви виконати це завдання якомога швидше?`,
@@ -621,7 +616,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'select_one',
+          type: PracticeTypes.SELECT_ONE,
           missed: `They $$ you about your ambitions during your job interview.`,
           en: `They can ask you about your ambitions during your job interview.`,
           ua: `Розкажуть вам про ваші цілі під час співбесіди.`,
@@ -632,7 +627,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'correct',
+          type: PracticeTypes.CORRECT,
           missed: `This famous judge cans deal with the most difficult tasks.`,
           en: `This famous judge can deal with the most difficult tasks.`,
           ua: `Цей знаменитий суддя може впоратися з найскладнішими завданнями.`,
@@ -643,7 +638,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'input',
+          type: PracticeTypes.INPUT,
           missed: `I $$ share my sacred knowledge with you, you’re too young for that.`,
           en: `I can't share my sacred knowledge with you, you’re too young for that.`,
           ua: `Я не можу поділитися з тобою своїми священними знаннями, ти ще занадто молодий для цього.`,
@@ -655,7 +650,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'input',
+          type: PracticeTypes.INPUT,
           missed: `$$ you help me to apply for this job?`,
           en: `Could you help me to apply for this job?`,
           ua: `Чи можете ви допомогти мені подати заявку на цю роботу?`,
@@ -667,7 +662,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'construct',
+          type: PracticeTypes.CONSTRUCT,
           en: `I can't be an accountant, it's too boring.`,
           ua: `Я не можу бути бухгалтером, це занадто нудно.`,
           variants: [],
@@ -696,7 +691,7 @@ export const Lessons = [
           id: uuid(),
           en: `I could deal with more problems when I was younger.`,
           ua: `Я міг впоратися з більшими проблемами, коли був молодше.`,
-          type: 'construct',
+          type: PracticeTypes.CONSTRUCT,
           variants: [],
           multiselect: [
             {
@@ -721,7 +716,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'input',
+          type: PracticeTypes.INPUT,
           missed: `I $$ apply for this job now. I have a kid waiting for me at home and no time at all.`,
           en: `I can't apply for this job now. I have a kid waiting for me at home and no time at all.`,
           ua: `Зараз я не можу претендувати на цю роботу. Мене вдома чекає дитина, а часу немає.`,
@@ -737,10 +732,12 @@ export const Lessons = [
     imageName: 'Working',
   },
   {
-    id: 3,
+    id: uuid(),
     number: 3,
     slug: 'Work',
     topic: 'Work',
+    status: LESSON_STATUS.DONE,
+    imageName: 'Working',
     lessonContent: {
       vocabulary: [
         {
@@ -893,7 +890,7 @@ export const Lessons = [
       practice: [
         {
           id: uuid(),
-          type: 'select_one',
+          type: PracticeTypes.SELECT_ONE,
           missed: `My husband is the main accountant in this firm. He $$ you with your bank account.`,
           en: `My husband is the main accountant in this firm. He can help you with your bank account.`,
           ua: `Мій чоловік головний бухгалтер в цій фірмі. Він може допомогти з вашим банківським рахунком.`,
@@ -905,7 +902,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'select_one',
+          type: PracticeTypes.SELECT_ONE,
           missed: `The chairman $$ with this company right now.`,
           en: `The chairman can negotiate with this company right now.`,
           ua: `Голова може вести переговори з цією компанією прямо зараз`,
@@ -916,7 +913,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'select_one',
+          type: PracticeTypes.SELECT_ONE,
           missed: `She $$ this incompetent lad last week, why didn't she do that?`,
           en: `She could fire this incompetent lad last week, why didn't she do that?`,
           ua: `Вона могла звільнити цього некомпетентного хлопця минулого тижня, чому вона цього не зробила?`,
@@ -928,7 +925,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'construct',
+          type: PracticeTypes.CONSTRUCT,
           en: `Holly can try to change the judge's mind.`,
           ua: `Холлі може спробувати змінити думку судді.`,
           variants: [],
@@ -951,7 +948,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'correct',
+          type: PracticeTypes.CORRECT,
           missed: `Peter can to work as an insurance agent and have flexible hours.`,
           en: `Peter can work as an insurance agent and have flexible hours.`,
           ua: `Пітер може працювати страховим агентом і мати гнучкий графік.`,
@@ -962,7 +959,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'input',
+          type: PracticeTypes.INPUT,
           missed: `We $$ have a break right now, we have too much stuff to do.`,
           en: `We can't have a break right now, we have too much stuff to do.`,
           ua: `Зараз ми не можемо відпочити, у нас надто багато справ.`,
@@ -974,7 +971,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'input',
+          type: PracticeTypes.INPUT,
           missed: `$$ you complete this task as quickly as possible?`,
           en: `Could you complete this task as quickly as possible?`,
           ua: `Чи могли б ви виконати це завдання якомога швидше?`,
@@ -985,7 +982,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'select_one',
+          type: PracticeTypes.SELECT_ONE,
           missed: `They $$ you about your ambitions during your job interview.`,
           en: `They can ask you about your ambitions during your job interview.`,
           ua: `Розкажуть вам про ваші цілі під час співбесіди.`,
@@ -996,7 +993,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'correct',
+          type: PracticeTypes.CORRECT,
           missed: `This famous judge cans deal with the most difficult tasks.`,
           en: `This famous judge can deal with the most difficult tasks.`,
           ua: `Цей знаменитий суддя може впоратися з найскладнішими завданнями.`,
@@ -1007,7 +1004,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'input',
+          type: PracticeTypes.INPUT,
           missed: `I $$ share my sacred knowledge with you, you’re too young for that.`,
           en: `I can't share my sacred knowledge with you, you’re too young for that.`,
           ua: `Я не можу поділитися з тобою своїми священними знаннями, ти ще занадто молодий для цього.`,
@@ -1019,7 +1016,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'input',
+          type: PracticeTypes.INPUT,
           missed: `$$ you help me to apply for this job?`,
           en: `Could you help me to apply for this job?`,
           ua: `Чи можете ви допомогти мені подати заявку на цю роботу?`,
@@ -1031,7 +1028,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'construct',
+          type: PracticeTypes.CONSTRUCT,
           en: `I can't be an accountant, it's too boring.`,
           ua: `Я не можу бути бухгалтером, це занадто нудно.`,
           variants: [],
@@ -1060,7 +1057,7 @@ export const Lessons = [
           id: uuid(),
           en: `I could deal with more problems when I was younger.`,
           ua: `Я міг впоратися з більшими проблемами, коли був молодше.`,
-          type: 'construct',
+          type: PracticeTypes.CONSTRUCT,
           variants: [],
           multiselect: [
             {
@@ -1085,7 +1082,7 @@ export const Lessons = [
         },
         {
           id: uuid(),
-          type: 'input',
+          type: PracticeTypes.INPUT,
           missed: `I $$ apply for this job now. I have a kid waiting for me at home and no time at all.`,
           en: `I can't apply for this job now. I have a kid waiting for me at home and no time at all.`,
           ua: `Зараз я не можу претендувати на цю роботу. Мене вдома чекає дитина, а часу немає.`,
@@ -1097,8 +1094,6 @@ export const Lessons = [
         },
       ],
     },
-    status: LESSON_STATUS.DONE,
-    imageName: 'Working',
   },
 ]
 

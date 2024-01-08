@@ -7,10 +7,15 @@ import WordCheckingItem from '../__features__/WordCheckingItem'
 import { lessonsSubtitles } from '@/helpers/constants'
 import PracticeItem from '../__features__/PracticeItem'
 import LessonGreeting from '../__features__/LessonGreeting'
+import { LessonType } from '@/types'
 
-export default function SingleLessonPage({ lesson }: any) {
-  const [currentStep, setCurrentStep] = useState(0)
-  const clickHandler = step => setCurrentStep(step)
+type PropType = {
+  lesson: LessonType
+}
+
+export default function SingleLessonPage({ lesson }: PropType) {
+  const [currentStep, setCurrentStep] = useState<number>(0)
+  const clickHandler = (step: number) => setCurrentStep(step)
 
   const stepComponents = {
     0: (

@@ -1,4 +1,4 @@
-import { LESSON_STATUS } from '@/helpers/constants'
+import { LESSON_STATUS } from '@/types'
 import { colors } from '@mui/material'
 
 import React from 'react'

@@ -6,84 +6,46 @@ import styled from 'styled-components'
 import VolumeUpFillIcon from 'remixicon-react/VolumeUpFillIcon'
 import { getVoice } from '@/helpers/getVoice'
 import Button from '@/components/__molecules__/Button/Button'
-import { Form, Field, FieldInputProps } from 'react-final-form'
-import InputItemType from './InputItemType'
-import SelectOneItemType from './SelectOneItemType'
-import CorrectItemType from './CorrectItemType'
-import ConstructItemType from './ConstructItemType'
+import { Form, Field } from 'react-final-form'
 import QuestionLineIcon from 'remixicon-react/QuestionLineIcon'
 import HintIcon from '@/components/__atoms__/HintIcon'
 import { PracticeTasks } from '@/helpers/constants'
 import PencilLineIcon from 'remixicon-react/PencilRulerLineIcon'
+import { getExercises } from '@/helpers/getExercises'
+import { FormApi } from 'final-form'
+import { LessonPractice, PracticeTypes } from '@/types'
 
-interface InitialValue {
+type InitialValue = {
   answer: string
 }
 
-const getExercises = (
-  type: string,
-  activeItem,
-  input: FieldInputProps<string, HTMLElement>,
-  isChecked: boolean,
-  isValidated: boolean | null,
-) => {
-  const exercises = {
-    input: (
-      <InputItemType
-        activeItem={activeItem}
-        input={input}
-        isChecked={isChecked}
-        isValidated={isValidated}
-      />
-    ),
-    select_one: (
-      <SelectOneItemType
-        activeItem={activeItem}
-        input={input}
-        isChecked={isChecked}
-        isValidated={isValidated}
-      />
-    ),
-    correct: (
-      <CorrectItemType
-        activeItem={activeItem}
-        input={input}
-        isChecked={isChecked}
-        isValidated={isValidated}
-      />
-    ),
-    construct: (
-      <ConstructItemType
-        activeItem={activeItem}
-        input={input}
-        isChecked={isChecked}
-        isValidated={isValidated}
-      />
-    ),
-  }
-  return exercises[type]
+type PropTypes = {
+  practice: LessonPractice[]
+  clickHandler: (num: number) => void
 }
+export default function PracticeItem({ practice, clickHandler }: PropTypes) {
+  const [activeIndex, setActiveIndex] = useState<number>(0)
+  const [activeItem, setActiveItem] = useState<LessonPractice>(practice[activeIndex])
+  const [isChecked, setIsChecked] = useState<boolean>(false)
+  const [isDone, setIsDone] = useState<boolean>(false)
+  const [isValidated, setIsValidated] = useState<boolean | null>(null)
 
-export default function PracticeItem({ practice, clickHandler }: any) {
-  const [activeIndex, setActiveIndex] = useState(0)
-  const [activeItem, setActiveItem] = useState(practice[activeIndex])
-  const [isChecked, setIsChecked] = useState(false)
-  const [isDone, setIsDone] = useState(false)
-  const [isValidated, setIsValidated] = useState(null)
-
-  const initialValues = activeItem.type === 'correct' ? { answer: activeItem.missed } : {}
+  const initialValues =
+    activeItem.type === PracticeTypes.CORRECT ? { answer: activeItem.missed } : {}
 
   const onSubmit = useCallback(
-    (data: InitialValue, form: any) => {
+    (data: InitialValue, form: FormApi) => {
       const correctVariant = activeItem.correctVariant.split('/')
 
       const answer =
-        activeItem.type === 'correct' || activeItem.type === 'construct'
+        activeItem.type === PracticeTypes.CORRECT || activeItem.type === PracticeTypes.CONSTRUCT
           ? data.answer
           : data.answer?.toLowerCase()
 
       const isCorrect =
-        activeItem.type === 'construct' ? answer === activeItem.en : correctVariant.includes(answer)
+        activeItem.type === PracticeTypes.CONSTRUCT
+          ? answer === activeItem.en
+          : correctVariant.includes(answer)
       setIsValidated(isCorrect)
       setIsChecked(isCorrect)
 

@@ -5,8 +5,13 @@ import Image from 'next/image'
 import Button from '@/components/__molecules__/Button/Button'
 import Link from 'next/link'
 import ROUTES from '@/helpers/routes'
+import { LessonType } from '@/types'
 
-export default function LessonGreeting({ lesson }: any) {
+type PropType = {
+  lesson: LessonType
+}
+
+export default function LessonGreeting({ lesson }: PropType) {
   const { imageName, topic } = lesson
   return (
     <Root>

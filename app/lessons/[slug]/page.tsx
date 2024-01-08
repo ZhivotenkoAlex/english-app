@@ -1,5 +1,6 @@
 import SingleLessonPage from '@/components/pages/SingleLessonPage'
 import { Lessons } from '@/helpers/constants'
+import { LessonType } from '@/types'
 import { Metadata, ResolvingMetadata } from 'next'
 import React from 'react'
 
@@ -16,7 +17,7 @@ export async function generateMetadata(
   const slug = params.slug
 
   // fetch data
-  const lesson = Lessons.find(item => item.slug == slug)
+  const lesson = Lessons.find(item => item.slug == slug) as LessonType
 
   return {
     title: `Lesson | ${lesson?.slug.replace(/_/g, ' ')}`,
@@ -24,6 +25,6 @@ export async function generateMetadata(
 }
 
 export default function page({ params }: { params: { slug: string } }) {
-  const lesson = Lessons.find(item => item.slug == params.slug)
+  const lesson = Lessons.find(item => item.slug == params.slug) as LessonType
   return <SingleLessonPage lesson={lesson} />
 }

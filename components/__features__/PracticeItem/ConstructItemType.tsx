@@ -4,21 +4,34 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Chip } from '@mui/material'
 import { TextField } from '@mui/material'
-import { useForm } from 'react-final-form'
+import { FieldInputProps, useForm } from 'react-final-form'
+import { LessonPractice } from '@/types'
 
-interface ChipData {
+type ChipData = {
   key: number
   label: string
 }
 
-export default function ConstructItemType({ activeItem, input, isChecked, isValidated }) {
+type PropTypes = {
+  activeItem: LessonPractice
+  input: FieldInputProps<string, HTMLElement>
+  isChecked: boolean
+  isValidated: boolean | null
+}
+
+export default function ConstructItemType({
+  activeItem,
+  input,
+  isChecked,
+  isValidated,
+}: PropTypes) {
   const form = useForm()
   const contentArray = activeItem?.en
     .split(' ')
-    .map((item: any, index: number) => ({ label: item, key: index + 1 }))
+    .map((item: string, index: number) => ({ label: item, key: index + 1 }))
 
   const [chipData, setChipData] = useState<readonly ChipData[]>(contentArray)
-  const [text, setText] = useState('')
+  const [text, setText] = useState<string>('')
 
   const handleClick = (chipToDelete: ChipData) => () => {
     const content = (text + ' ' + chipToDelete.label).trim()

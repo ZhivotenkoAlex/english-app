@@ -6,12 +6,18 @@ import VolumeUpFillIcon from 'remixicon-react/VolumeUpFillIcon'
 import { getVoice } from '@/helpers/getVoice'
 import Button from '@/components/__molecules__/Button/Button'
 import { Chip, Collapse } from '@mui/material'
+import { LessonVocabulary } from '@/types'
 
-export default function WordLearningItem({ vocabulary, clickHandler }: any) {
-  const [activeIndex, setActiveIndex] = useState(0)
-  const [activeItem, setActiveItem] = useState(vocabulary[activeIndex])
-  const [isTranslated, setIsTranslated] = useState(false)
-  const [isDone, setIsDone] = useState(false)
+type PropTypes = {
+  vocabulary: LessonVocabulary[]
+  clickHandler: (num: number) => void
+}
+
+export default function WordLearningItem({ vocabulary, clickHandler }: PropTypes) {
+  const [activeIndex, setActiveIndex] = useState<number>(0)
+  const [activeItem, setActiveItem] = useState<LessonVocabulary>(vocabulary[activeIndex])
+  const [isTranslated, setIsTranslated] = useState<boolean>(false)
+  const [isDone, setIsDone] = useState<boolean>(false)
 
   const handleTranslateClick = useCallback(() => {
     setIsTranslated(true)

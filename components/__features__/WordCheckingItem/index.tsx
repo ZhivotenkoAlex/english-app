@@ -9,19 +9,26 @@ import Button from '@/components/__molecules__/Button/Button'
 import { Form, Field } from 'react-final-form'
 import QuestionLineIcon from 'remixicon-react/QuestionLineIcon'
 import HintIcon from '@/components/__atoms__/HintIcon'
+import { FormApi } from 'final-form'
+import { LessonVocabulary } from '@/types'
 
-interface InitialValue {
+type InitialValue = {
   word: string
 }
 
-export default function WordCheckingItem({ vocabulary, clickHandler }: any) {
-  const [activeIndex, setActiveIndex] = useState(0)
-  const [activeItem, setActiveItem] = useState(vocabulary[activeIndex])
-  const [isChecked, setIsChecked] = useState(false)
-  const [isDone, setIsDone] = useState(false)
+type PropTypes = {
+  vocabulary: LessonVocabulary[]
+  clickHandler: (num: number) => void
+}
+
+export default function WordCheckingItem({ vocabulary, clickHandler }: PropTypes) {
+  const [activeIndex, setActiveIndex] = useState<number>(0)
+  const [activeItem, setActiveItem] = useState<LessonVocabulary>(vocabulary[activeIndex])
+  const [isChecked, setIsChecked] = useState<boolean>(false)
+  const [isDone, setIsDone] = useState<boolean>(false)
 
   const onSubmit = useCallback(
-    (data: InitialValue, form: any) => {
+    (data: InitialValue, form: FormApi) => {
       const isCorrect = data.word === activeItem.en
       setIsChecked(isCorrect)
       if (activeIndex + 1 === vocabulary.length) {

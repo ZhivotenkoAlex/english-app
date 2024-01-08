@@ -3,10 +3,13 @@ import { colors } from '../../../utils/colors'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-interface IMenuItem {
-  item: any
+interface PropTypes {
+  item: {
+    label: string
+    path: string
+  }
 }
-function MenuItem({ item }: IMenuItem) {
+function MenuItem({ item }: PropTypes) {
   const pathname = usePathname()
   const pageName = pathname.split('/').find(item => item !== '')
   const isItemActive = pageName?.toLowerCase() === item.label?.toLowerCase()
