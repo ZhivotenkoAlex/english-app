@@ -2,13 +2,11 @@ import { colors } from '@/utils/colors'
 import React from 'react'
 import styled from 'styled-components'
 import { FormControlLabel, RadioGroup, TextField, Radio } from '@mui/material'
-import { Field } from 'react-final-form'
 
-export default function SelectOneItemType({ activeItem, input, isChecked }) {
+export default function SelectOneItemType({ activeItem, input, isChecked, isValidated }) {
   const contentArray = activeItem?.missed.split('$')
-  const isCorrect = input.value === activeItem.correctVariant
 
-  const radioColor = isCorrect ? 'success' : 'warning'
+  const error = isValidated === false ? 'Wrong answer!' : null
   return (
     <>
       <Root>
@@ -19,10 +17,15 @@ export default function SelectOneItemType({ activeItem, input, isChecked }) {
                 <span key={index}>
                   <StyledTextField
                     {...input}
+                    error={!!error}
                     autoComplete="off"
                     autoCorrect="false"
                     autoFocus={true}
                     variant="standard"
+                    fullWidth
+                    InputProps={{
+                      readOnly: true,
+                    }}
                   />
                 </span>
               ) : (
@@ -40,7 +43,7 @@ export default function SelectOneItemType({ activeItem, input, isChecked }) {
                 itemType="radio"
                 onChange={input.onChange}
                 value={item}
-                control={<Radio color={radioColor} />}
+                control={<Radio color="success" />}
                 label={item}
               />
             </CheckboxContainer>
@@ -99,12 +102,12 @@ const InputContainer = styled.div`
   gap: 10px;
 `
 
-const StyledTextField = styled(TextField)`
-  max-width: 120px;
-  width: fit-content;
+const StyledTextField = styled(TextField)<{ error: boolean }>`
+  max-width: 150px;
   input {
     text-align: center;
     font-size: 20px;
+    color: ${props => (props.error ? colors.warning : 'initial')};
   }
 `
 

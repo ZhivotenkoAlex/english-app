@@ -13,6 +13,7 @@ export const colors = {
   lightGreen: '#98e2c7',
   darkGreen: '#1c8d63',
   red: '#ee6044',
+  warning: '#d32f2f',
 }
 
 enum COLORS_ENUM {

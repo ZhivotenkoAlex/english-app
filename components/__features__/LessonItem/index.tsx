@@ -42,6 +42,9 @@ const Root = styled(Link)`
   &:hover {
     border-color: ${colors.green};
     scale: 1.05;
+    @media screen and (min-width: 1439px) {
+      scale: 1.03;
+    }
   }
 `
 

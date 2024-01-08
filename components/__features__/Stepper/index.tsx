@@ -81,6 +81,7 @@ const StepperIcon = styled.div<{
 }>(({ theme, $ownerState }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? theme.palette.grey[700] : '#ccc',
   zIndex: 1,
+  borderBlock: 'content-box',
   color: '#fff',
   width: 50,
   height: 50,
@@ -88,12 +89,19 @@ const StepperIcon = styled.div<{
   borderRadius: '50%',
   justifyContent: 'center',
   alignItems: 'center',
+  border: 'none',
+  transition: 'all 1s ease-in-out',
+  cursor: 'pointer',
   ...($ownerState.active && {
     backgroundImage: `linear-gradient( 136deg, rgb(33 242 216) 0%, rgb(64 233 112) 50%, rgb(35 138 98) 100%)`,
   }),
   ...($ownerState.completed && {
     backgroundImage: `linear-gradient( 136deg, rgb(33 242 216) 0%, rgb(64 233 112) 50%, rgb(35 138 98) 100%)`,
   }),
+  '&:hover': {
+    color: 'hsl(157, 60%, 34%)',
+    border: `1px hsl(157, 60%, 34%) solid`,
+  },
 }))
 
 const Label = styled(StepLabel)`

@@ -5,15 +5,13 @@ import styled from 'styled-components'
 import { Chip } from '@mui/material'
 import { TextField } from '@mui/material'
 import { useForm } from 'react-final-form'
-import QuestionLineIcon from 'remixicon-react/QuestionLineIcon'
-import StepperIcon from '@/components/__atoms__/StepperIcon'
 
 interface ChipData {
   key: number
   label: string
 }
 
-export default function ConstructItemType({ activeItem, input, isChecked }) {
+export default function ConstructItemType({ activeItem, input, isChecked, isValidated }) {
   const form = useForm()
   const contentArray = activeItem?.en
     .split(' ')
@@ -24,11 +22,12 @@ export default function ConstructItemType({ activeItem, input, isChecked }) {
 
   const handleClick = (chipToDelete: ChipData) => () => {
     const content = (text + ' ' + chipToDelete.label).trim()
-
     setText(content)
     form.change('answer', content)
     setChipData(chips => chips.filter(chip => chip.key !== chipToDelete.key))
   }
+
+  const error = isValidated === false ? 'Wrong answer!' : null
 
   return (
     <>
@@ -44,11 +43,11 @@ export default function ConstructItemType({ activeItem, input, isChecked }) {
             InputProps={{
               readOnly: true,
             }}
+            error={!!error}
             multiline
             variant="standard"
           />
         </span>
-        {/* {meta.touched && meta.error && <span>{meta.error}</span>} */}
       </TranslationContainer>
       {chipData.length ? (
         <Container>
@@ -56,11 +55,7 @@ export default function ConstructItemType({ activeItem, input, isChecked }) {
             <StyledChip onClick={handleClick(item)} clickable key={item.key} label={item.label} />
           ))}
         </Container>
-      ) : (
-        <IconContainer>
-          <StepperIcon Icon={QuestionLineIcon} />
-        </IconContainer>
-      )}
+      ) : null}
     </>
   )
 }
@@ -70,12 +65,6 @@ const StyledChip = styled(Chip)`
     font-size: 20px;
     background-color: ${colors.lightGreen};
   }
-`
-
-const IconContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
 `
 
 const TranslationContainer = styled.div<{ $isChecked: boolean }>`
@@ -97,9 +86,13 @@ const Container = styled.div`
   border-radius: 16px;
 `
 
-const StyledTextField = styled(TextField)`
+const StyledTextField = styled(TextField)<{ error: boolean }>`
   textarea {
     text-align: center;
     font-size: 20px;
+    color: ${props => (props.error ? colors.warning : 'inherit')};
+  }
+  p {
+    text-align: center;
   }
 `
