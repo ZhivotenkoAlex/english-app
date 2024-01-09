@@ -49,7 +49,7 @@ function LoginModal() {
           onChange={handleChangePassword}
         />
         <Button
-          onClick={() => console.log('Click')}
+          onClick={() => {}}
           disabled={false}
           variant="text"
           label="Восстановить пароль"
@@ -57,12 +57,7 @@ function LoginModal() {
           size="large"
         />
         <Button onClick={() => {}} disabled label="Войти" color={'green'} size="large" />
-        <Link
-          onClick={() => console.log('Click')}
-          size={14}
-          title={'Создать аккаунт'}
-          color="blue"
-        />
+        <Link onClick={() => {}} size={14} title={'Создать аккаунт'} color="blue" />
       </Form>
     </ModalWrapper>
   )

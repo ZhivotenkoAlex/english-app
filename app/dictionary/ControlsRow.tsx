@@ -7,26 +7,9 @@ import TimeLineIcon from 'remixicon-react/TimeLineIcon'
 import CheckboxBlankCircleLineIcon from 'remixicon-react/CheckboxBlankCircleLineIcon'
 import CheckboxCircleLineIcon from 'remixicon-react/CheckboxCircleLineIcon'
 import WordsList from './WordsList'
+import { DICTIONARY_SELECT_OPTIONS } from '@/helpers/mock-data'
 
-const OPTIONS = [
-  {
-    id: 1,
-    value: 'all',
-    label: 'All',
-  },
-  {
-    id: 2,
-    value: 'word',
-    label: 'Word',
-  },
-  {
-    id: 3,
-    value: 'phrase',
-    label: 'Phrase',
-  },
-]
-
-const BUTTONS = [
+export const BUTTONS = [
   {
     id: 1,
     label: 'All',
@@ -55,7 +38,6 @@ function ControlsRow() {
   }
 
   const handleOptionChange = e => {
-    console.log(e.target)
     setSelectedOption(e.target.value)
   }
 
@@ -72,7 +54,7 @@ function ControlsRow() {
 
       <Section>
         <TextField select value={selectedOption} size="small" onChange={handleOptionChange}>
-          {OPTIONS.map(option => (
+          {DICTIONARY_SELECT_OPTIONS.map(option => (
             <MenuItem key={option.id} value={option.value}>
               {option.label}
             </MenuItem>

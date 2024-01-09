@@ -1,33 +1,12 @@
 'use client'
-import React from 'react'
+import React, { useMemo } from 'react'
 import Statistics from './Statistics'
 import ControlsRow from './ControlsRow'
 import WordsList from './WordsList'
+import { WORDS } from '@/helpers/mock-data'
 
 function DictionaryClient() {
-  const words = [
-    {
-      id: 1,
-      title: 'apple',
-      translation: 'яблуко',
-      picture: 'https://usapple.org/wp-content/uploads/2019/10/apple-pink-lady.png',
-      state: 'in progress',
-    },
-    {
-      id: 1,
-      title: 'Hello world',
-      translation: 'Привіт світ',
-      picture: 'https://usapple.org/wp-content/uploads/2019/10/apple-pink-lady.png',
-      state: 'unlearned',
-    },
-    {
-      id: 1,
-      title: 'apple',
-      translation: 'яблуко',
-      picture: 'https://usapple.org/wp-content/uploads/2019/10/apple-pink-lady.png',
-      state: 'learned',
-    },
-  ]
+  const words = useMemo(() => WORDS, [])
   return (
     <div>
       <Statistics />
