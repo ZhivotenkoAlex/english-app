@@ -1,3 +1,5 @@
+import { RemixiconReactIconComponentType } from 'remixicon-react'
+
 export enum PracticeTypes {
   SELECT_ONE = 'select_one',
   CONSTRUCT = 'construct',
@@ -66,4 +68,10 @@ export type LessonType = {
   status: LESSON_STATUS
   imageName: string
   lessonContent: LessonContent
+}
+
+export type CardItem = {
+  title: string
+  subtitle: string
+  icon: RemixiconReactIconComponentType
 }

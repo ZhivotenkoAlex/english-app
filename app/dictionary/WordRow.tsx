@@ -18,12 +18,12 @@ const STATE_ICON = {
 function WordRow({ word }) {
   const isStandardView = false
   const handlePlayAudio = () => {
-    getVoice(word.title)
+    getVoice(word.title, 'en', 0.8)
   }
   return (
     <Wrapper>
       <Checkbox value={true} style={{ flex: 1 }} />
-      <VolumeDownLineIcon style={{ flex: 1 }} onClick={handlePlayAudio} />
+      <VolumeDownLineIcon style={{ flex: 1, cursor: 'pointer' }} onClick={handlePlayAudio} />
       <TextBlock $isStandardView={isStandardView}>
         <WordTitle>{word.title}</WordTitle>
         {!isStandardView && ' - '}

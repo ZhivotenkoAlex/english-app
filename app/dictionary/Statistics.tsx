@@ -1,35 +1,13 @@
-import CardWrapper from '@/components/__atoms__/CardWrapper/CardWrapper'
 import React from 'react'
 import styled from 'styled-components'
-import FileWord2LineIcon from 'remixicon-react/FileWord2LineIcon'
-import TitleSubtitleComponent from '@/components/__molecules__/TitleSubtitleComponent/TitleSubtitleComponent'
-import TimeLineIcon from 'remixicon-react/TimeLineIcon'
-import CheckboxBlankCircleLineIcon from 'remixicon-react/CheckboxBlankCircleLineIcon'
-import CheckboxCircleLineIcon from 'remixicon-react/CheckboxCircleLineIcon'
+import Card from '@/components/__molecules__/Card/Card'
+import { DICTIONARY_STATISTICS } from '@/helpers/mock-data'
 
 function Statistics() {
   return (
     <StatisticsRow>
-      <CardWrapper>
-        <CardContent>
-          <FileWord2LineIcon />
-          <TitleSubtitleComponent title={'1500 words'} subtitle="My dictionary" />
-        </CardContent>
-      </CardWrapper>
-      <CardWrapper>
-        <CardContent>
-          <CheckboxBlankCircleLineIcon />
-          <TitleSubtitleComponent title={'12 words'} subtitle="New words" />
-        </CardContent>
-        <CardContent>
-          <TimeLineIcon />
-          <TitleSubtitleComponent title={'3600 words'} subtitle="Learning" />
-        </CardContent>
-        <CardContent>
-          <CheckboxCircleLineIcon />
-          <TitleSubtitleComponent title={'3600 words'} subtitle="Learning" />
-        </CardContent>
-      </CardWrapper>
+      <Card items={[DICTIONARY_STATISTICS[0]]} />
+      <Card items={DICTIONARY_STATISTICS.slice(1)} />
     </StatisticsRow>
   )
 }
@@ -43,9 +21,4 @@ const StatisticsRow = styled.div`
   }
 `
 
-const CardContent = styled.div`
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-`
 export default Statistics

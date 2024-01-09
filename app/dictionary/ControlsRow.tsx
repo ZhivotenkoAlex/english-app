@@ -6,7 +6,6 @@ import MenuLineIcon from 'remixicon-react/MenuLineIcon'
 import TimeLineIcon from 'remixicon-react/TimeLineIcon'
 import CheckboxBlankCircleLineIcon from 'remixicon-react/CheckboxBlankCircleLineIcon'
 import CheckboxCircleLineIcon from 'remixicon-react/CheckboxCircleLineIcon'
-import WordsList from './WordsList'
 import { DICTIONARY_SELECT_OPTIONS } from '@/helpers/mock-data'
 
 export const BUTTONS = [
@@ -48,6 +47,11 @@ function ControlsRow() {
   const handleChangeFilter = newFilter => {
     setSelectedFilter(newFilter)
   }
+
+  const getVariant = (label: string) => {
+    return selectedFilter === label ? 'contained' : 'outlined'
+  }
+
   return (
     <Wrapper>
       <Input
@@ -76,7 +80,7 @@ function ControlsRow() {
           {BUTTONS.map(button => (
             <Button
               key={button.id}
-              variant={selectedFilter === button.label ? 'contained' : 'outlined'}
+              variant={getVariant(button.label as string)}
               onClick={() => handleChangeFilter(button.label)}
             >
               {button.label}

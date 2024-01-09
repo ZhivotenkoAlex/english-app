@@ -1,3 +1,11 @@
+//  ------ DICTIONARY PAGE DATA------
+
+import { CardItem } from '@/types'
+import CheckboxBlankCircleLineIcon from 'remixicon-react/CheckboxBlankCircleLineIcon'
+import CheckboxCircleLineIcon from 'remixicon-react/CheckboxCircleLineIcon'
+import FileWord2LineIcon from 'remixicon-react/FileWord2LineIcon'
+import TimeLineIcon from 'remixicon-react/TimeLineIcon'
+
 export const WORDS = [
   {
     id: 1,
@@ -37,5 +45,28 @@ export const DICTIONARY_SELECT_OPTIONS = [
     id: 3,
     value: 'phrase',
     label: 'Phrase',
+  },
+]
+
+export const DICTIONARY_STATISTICS: CardItem[] = [
+  {
+    title: '1500 words',
+    subtitle: 'My dictionary',
+    icon: FileWord2LineIcon,
+  },
+  {
+    title: '12 words',
+    subtitle: 'New words',
+    icon: CheckboxBlankCircleLineIcon,
+  },
+  {
+    title: '3600 words',
+    subtitle: 'Learning',
+    icon: TimeLineIcon,
+  },
+  {
+    title: '3600 words',
+    subtitle: 'Learned',
+    icon: CheckboxCircleLineIcon,
   },
 ]
