@@ -50,7 +50,13 @@ function ControlsRow() {
   }
   return (
     <Wrapper>
-      <Input type="text" placeholder="Search" value={search} onChange={handleChangeSearch} />
+      <Input
+        fullWidth
+        type="text"
+        placeholder="Search"
+        value={search}
+        onChange={handleChangeSearch}
+      />
 
       <Section>
         <TextField select value={selectedOption} size="small" onChange={handleOptionChange}>
@@ -60,15 +66,11 @@ function ControlsRow() {
             </MenuItem>
           ))}
         </TextField>
-        <MenuLineIcon
+        <StyledMenuLineIcon
           size={40}
           onClick={handleChangeView}
           color="blue"
-          style={{
-            border: isStandardView ? 'none' : ' 1px solid blue',
-            borderRadius: '5px',
-            cursor: 'pointer',
-          }}
+          $isStandardView={isStandardView}
         />
         <ButtonGroup variant="outlined">
           {BUTTONS.map(button => (
@@ -90,11 +92,16 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 1rem 0;
-
+  gap: 1rem;
   @media screen and (max-width: 640px) {
     flex-direction: column;
-    gap: 1rem;
   }
+`
+
+const StyledMenuLineIcon = styled(MenuLineIcon)<{ $isStandardView: boolean }>`
+border: ${({ $isStandardView }) => ($isStandardView ? 'none' : ' 1px solid blue')} ,
+borderRadius: '5px',
+cursor: 'pointer',
 `
 
 const Section = styled.div`
