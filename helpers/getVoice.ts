@@ -1,7 +1,7 @@
-export const getVoice = (value: string) => {
+export const getVoice = (value: string, lang = 'en', rate = 0.1) => {
   const output = new SpeechSynthesisUtterance(value)
-  output.lang = 'uk'
-  output.pitch = 0.5
-  output.rate = 1.05
+  output.lang = lang
+  output.pitch = 1
+  output.rate = rate
   window.speechSynthesis.speak(output)
 }

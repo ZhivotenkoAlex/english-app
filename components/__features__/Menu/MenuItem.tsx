@@ -3,33 +3,37 @@ import { colors } from '../../../utils/colors'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-interface IMenuItem {
-  item: any
+interface PropTypes {
+  item: {
+    label: string
+    path: string
+  }
 }
-function MenuItem({ item }: IMenuItem) {
+function MenuItem({ item }: PropTypes) {
   const pathname = usePathname()
   const pageName = pathname.split('/').find(item => item !== '')
+  const isItemActive = pageName?.toLowerCase() === item.label?.toLowerCase()
   return (
     <Wrapper>
-      <Item href={item.path} color={colors.dark}>
+      <Item href={item.path} color={colors.dark} $isActive={isItemActive}>
         <Label>{item.label}</Label>
       </Item>
     </Wrapper>
   )
 }
 
-const Item = styled(Link)`
+const Item = styled(Link)<{ $isActive: boolean }>`
   display: flex;
   padding: 0 12px;
   border-radius: 16px;
   align-items: center;
   justify-content: center;
   background: transparent;
-  color: ${colors.lightWhite};
+  color: ${props => (props.$isActive === true ? colors.dark : colors.lightWhite)};
   text-transform: uppercase;
-  cursor: pointer;
+  cursor: ${props => (props.$isActive === true ? 'default' : 'pointer')};
   &:hover {
-    background: ${colors.lightGrey};
+    background: ${props => (props.$isActive === true ? 'transparent' : colors.lightGrey)};
     color: ${colors.dark};
   }
 `

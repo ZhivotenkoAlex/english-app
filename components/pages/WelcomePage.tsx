@@ -2,20 +2,12 @@
 import styled from 'styled-components'
 import Button from '@/components/__molecules__/Button/Button'
 import ROUTES from '@/helpers/routes'
-import { getVoice } from '@/helpers/getVoice'
 import ServiceItem from '@/components/__features__/ServiceItem'
 import { WelcomePagePreferences } from '@/helpers/constants'
 import Image from 'next/image'
 import Link from 'next/link'
-import BreadCrumbs from '../__features__/Breadcrumbs'
-import { useRouter } from 'next/router'
-import { usePathname } from 'next/navigation'
 
 export default function WelcomePage() {
-  const voiceOnClick = () => {
-    getVoice('Починаємо навчання!')
-  }
-
   return (
     <>
       <Root>
@@ -26,13 +18,7 @@ export default function WelcomePage() {
           </PageTitle>
         </Heading>
         <ButtonLink href={ROUTES.SIGN_UP}>
-          <Button
-            onClick={voiceOnClick}
-            disabled={false}
-            label="Почати вчити!"
-            color={'green'}
-            size="large"
-          />
+          <Button disabled={false} label="Почати вчити!" color={'green'} size="large" />
         </ButtonLink>
         <PreferencesContainer>
           <DescriptionTitle>З нами ви навчитесь:</DescriptionTitle>
@@ -47,13 +33,9 @@ export default function WelcomePage() {
             <WelcomeTitle>Підвищіть свій рівень англійської</WelcomeTitle>
             <WelcomeSubtitle>і відкрийте світ заново</WelcomeSubtitle>
           </WelcomeTitleContainer>
-          <Button
-            onClick={voiceOnClick}
-            disabled={false}
-            label="Почати вчити!"
-            color={'green'}
-            size="large"
-          />
+          <ButtonLink href={ROUTES.SIGN_UP}>
+            <Button disabled={false} label="Почати вчити!" color={'green'} size="large" />
+          </ButtonLink>
           <StyledImage src={`/images/girl.jpg`} alt="word cloud" width={300} height={400} />
         </WelcomeContainer>
       </Root>
@@ -82,6 +64,11 @@ const PageTitle = styled.h1`
   padding: 6px 16px;
   letter-spacing: 0.2px;
   text-transform: capitalize;
+  margin: 0 auto;
+  width: 75%;
+  @media screen and (max-width: 767px) {
+    width: auto;
+  }
 `
 
 const SubTitle = styled.span`
@@ -105,6 +92,9 @@ const ItemsContainer = styled.div`
   grid-template-columns: 1fr 1fr;
   justify-content: center;
   gap: 20px;
+  @media screen and (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
 `
 
 const DescriptionTitle = styled.h2`

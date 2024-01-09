@@ -5,11 +5,15 @@ export const colors = {
   grey: '#8593a1',
   darkGrey: '#37383c',
   lightGrey: '#f2f4f5',
+  lightGrey2: '#d3d3d3',
   dark: '#38393d',
   orange: '#d67802',
   green: '#28c38a',
+  successGreen: '#4caf50',
   lightGreen: '#98e2c7',
+  darkGreen: '#1c8d63',
   red: '#ee6044',
+  warning: '#d32f2f',
 }
 
 enum COLORS_ENUM {

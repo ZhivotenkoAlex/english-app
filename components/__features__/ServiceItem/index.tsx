@@ -1,9 +1,10 @@
-'use client'
 import Image from 'next/image'
 import styled from 'styled-components'
 
+type ServiceItemType = { title: string; subtitle: string; imageName: string }
+
 type PropTypes = {
-  data: { title: string; subtitle: string; imageName: string }
+  data: ServiceItemType
 }
 
 export default function ServiceItem({ data }: PropTypes) {
@@ -28,12 +29,18 @@ const Root = styled.div`
   padding: 16px;
   border: black 1px solid;
   border-radius: 16px;
+  align-items: center;
+  @media screen and (max-width: 1023px) {
+    flex-direction: column;
+  }
 `
 
 const StyledImage = styled(Image)`
   border-radius: 16px;
   object-fit: contain;
   filter: grayscale(20%);
+  min-width: 40%;
+  max-width: 100%;
 `
 
 const Description = styled.div`
@@ -43,6 +50,10 @@ const Description = styled.div`
   gap: 20px;
   margin-left: 16px;
   text-wrap: balance;
+  @media screen and (max-width: 1023px) {
+    align-items: center;
+    text-align: center;
+  }
 `
 
 const StyledTitle = styled.h3``
