@@ -1,3 +1,4 @@
+import { StaticImageData } from 'next/image'
 import { RemixiconReactIconComponentType } from 'remixicon-react'
 
 export enum PracticeTypes {
@@ -74,4 +75,12 @@ export type CardItem = {
   title: string
   subtitle: string
   icon: RemixiconReactIconComponentType
+}
+
+export interface ITraining {
+  title: string
+  titleColor: string
+  subtitle: string
+  gridArea: string
+  background: StaticImageData
 }
