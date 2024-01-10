@@ -1,8 +1,7 @@
-'use client'
 import PageContainer from '../../components/__atoms__/PageContainer/PageContainer'
-import { useEffect, useState } from 'react'
-import Image from 'next/image'
-import { Typography } from '@mui/material'
+import ClientOnlyProvider from '@/components/__features__/ClientOnlyProvider/ClientOnlyProvider'
+import VocabularyClient from './VocabularyClient'
+import EmptyState from '@/components/__features__/EmptyState/EmptyState'
 
 function Vocabulary() {
   // const [location, setLocation] = useState("")
@@ -17,16 +16,24 @@ function Vocabulary() {
   //   type: "website",
   //   url: location,
   // }
+
+  //const currentUser = await getCurrentUser();
+
+  const currentUser = true
+
+  if (!currentUser) {
+    return (
+      <ClientOnlyProvider>
+        <EmptyState title="Unauthorized" />
+      </ClientOnlyProvider>
+    )
+  }
   return (
-    <PageContainer>
-      <Typography variant="h1">Vocabulary</Typography>
-      <Image
-        src="/images/forest-background.jpg"
-        alt="Picture of the author"
-        width={500}
-        height={500}
-      />
-    </PageContainer>
+    <ClientOnlyProvider>
+      <PageContainer>
+        <VocabularyClient />
+      </PageContainer>
+    </ClientOnlyProvider>
   )
 }
 
