@@ -1,7 +1,8 @@
 // import { useEffect, useState } from 'react'
 import PageContainer from '../../components/__atoms__/PageContainer/PageContainer'
 import { Typography } from '@mui/material'
-
+import ClientOnlyProvider from '../../components/__features__/ClientOnlyProvider/ClientOnlyProvider'
+import GrammarClient from './GrammarClient'
 function Grammar() {
   // const [location, setLocation] = useState('')
 
@@ -17,11 +18,11 @@ function Grammar() {
   // }
 
   return (
-    <>
+    <ClientOnlyProvider>
       <PageContainer>
-        <Typography variant="h1">Grammar</Typography>
+        <GrammarClient />
       </PageContainer>
-    </>
+    </ClientOnlyProvider>
   )
 }
 

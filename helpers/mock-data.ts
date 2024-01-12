@@ -1,6 +1,6 @@
 //  ------ DICTIONARY PAGE DATA------
 
-import { CardItem } from '@/types'
+import { CardItem, IGrammarLevel } from '@/types'
 import CheckboxBlankCircleLineIcon from 'remixicon-react/CheckboxBlankCircleLineIcon'
 import CheckboxCircleLineIcon from 'remixicon-react/CheckboxCircleLineIcon'
 import FileWord2LineIcon from 'remixicon-react/FileWord2LineIcon'
