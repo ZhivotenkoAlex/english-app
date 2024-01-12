@@ -84,3 +84,11 @@ export interface ITraining {
   gridArea: string
   background: StaticImageData
 }
+
+export interface IGrammarLevel {
+  level: string
+  exercises: IGrammarExercise[]
+}
+export type IGrammarExercise = Omit<CardItem, 'icon'> & {
+  icon: StaticImageData
+}
