@@ -83,6 +83,7 @@ export interface ITraining {
   subtitle: string
   gridArea: string
   background: StaticImageData
+  path: string
 }
 
 export interface IGrammarLevel {
@@ -91,4 +92,12 @@ export interface IGrammarLevel {
 }
 export type IGrammarExercise = Omit<CardItem, 'icon'> & {
   icon: StaticImageData
+}
+
+export interface IWord {
+  id: number
+  title: string
+  translation: string
+  picture: string
+  state: string
 }

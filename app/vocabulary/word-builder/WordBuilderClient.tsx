@@ -1,0 +1,24 @@
+'use client'
+import ExerciseNameBlock from '@/components/__molecules__/ExerciseNameBlock/ExerciseNameBlock'
+import React from 'react'
+import styled from 'styled-components'
+import Exercise from './Exercise'
+import ExerciseCloseBlock from '@/components/__molecules__/ExerciseCloseBlock/ExerciseCloseBlock'
+
+function WordBuilderClient() {
+  return (
+    <Wrapper>
+      <ExerciseNameBlock title={'Word Builder'} subtitle={'Vocabulary Training'} />
+      <div style={{ flex: 8 }}>
+        <Exercise />
+      </div>
+      <ExerciseCloseBlock />
+    </Wrapper>
+  )
+}
+
+const Wrapper = styled('div')`
+  display: flex;
+`
+
+export default WordBuilderClient
