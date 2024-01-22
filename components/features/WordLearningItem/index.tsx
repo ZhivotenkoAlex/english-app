@@ -4,7 +4,7 @@ import React, { useCallback, useState } from 'react'
 import styled from 'styled-components'
 import VolumeUpFillIcon from 'remixicon-react/VolumeUpFillIcon'
 import { getVoice } from '@/helpers/getVoice'
-import Button from '@/components/__molecules__/Button/Button'
+import Button from '@/components/molecules/Button/Button'
 import { Chip, Collapse } from '@mui/material'
 import { LessonVocabulary } from '@/types'
 

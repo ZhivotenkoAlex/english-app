@@ -1,4 +1,4 @@
-import LetterCell from '@/components/__molecules__/LetterCell/LetterCell'
+import LetterCell from '@/components/molecules/LetterCell/LetterCell'
 import { themeColors } from '@/lib/theme'
 import { IWord } from '@/types'
 import React from 'react'

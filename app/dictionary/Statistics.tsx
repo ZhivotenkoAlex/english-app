@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Card from '@/components/__molecules__/Card/Card'
+import Card from '@/components/molecules/Card/Card'
 import { DICTIONARY_STATISTICS } from '@/helpers/mock-data'
 
 function Statistics() {

@@ -3,7 +3,7 @@ import 'animate.css/animate.min.css'
 import styled from 'styled-components'
 import CloseFillIcon from 'remixicon-react/CloseFillIcon'
 import MenuFillIcon from 'remixicon-react/MenuFillIcon'
-import Logo from '@/components/__molecules__/Logo/Logo'
+import Logo from '@/components/molecules/Logo/Logo'
 
 export const SideBar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false)

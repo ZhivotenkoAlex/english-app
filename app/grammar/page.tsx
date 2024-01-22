@@ -1,7 +1,7 @@
 // import { useEffect, useState } from 'react'
-import PageContainer from '../../components/__atoms__/PageContainer/PageContainer'
+import PageContainer from '../../components/atoms/PageContainer/PageContainer'
 import { Typography } from '@mui/material'
-import ClientOnlyProvider from '../../components/__features__/ClientOnlyProvider/ClientOnlyProvider'
+import ClientOnlyProvider from '../../components/features/ClientOnlyProvider/ClientOnlyProvider'
 import GrammarClient from './GrammarClient'
 function Grammar() {
   // const [location, setLocation] = useState('')

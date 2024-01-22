@@ -1,12 +1,12 @@
 'use client'
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import WordLearningItem from '../__features__/WordLearningItem'
-import CustomizedStepper from '../__features__/Stepper'
-import WordCheckingItem from '../__features__/WordCheckingItem'
+import WordLearningItem from '../features/WordLearningItem'
+import CustomizedStepper from '../features/Stepper'
+import WordCheckingItem from '../features/WordCheckingItem'
 import { lessonsSubtitles } from '@/helpers/constants'
-import PracticeItem from '../__features__/PracticeItem'
-import LessonGreeting from '../__features__/LessonGreeting'
+import PracticeItem from '../features/PracticeItem'
+import LessonGreeting from '../features/LessonGreeting'
 import { LessonType } from '@/types'
 
 type PropType = {

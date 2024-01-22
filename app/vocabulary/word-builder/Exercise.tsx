@@ -1,8 +1,8 @@
-import ExerciseStatistics from '@/components/__features__/ExerciseStatistics/ExerciseStatistics'
+import ExerciseStatistics from '@/components/features/ExerciseStatistics/ExerciseStatistics'
 import React from 'react'
 import styled from 'styled-components'
 import ExerciseContent from './ExerciseContent'
-import ExerciseControlsButtons from '@/components/__features__/ExerciseControlsButtons/ExerciseControlsButtons'
+import ExerciseControlsButtons from '@/components/features/ExerciseControlsButtons/ExerciseControlsButtons'
 
 function Exercise() {
   const word = {

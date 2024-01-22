@@ -1,6 +1,6 @@
 'use client'
-import Heading from '@/components/__atoms__/Heading/Heading'
-import Button from '@/components/__molecules__/Button/Button'
+import Heading from '@/components/atoms/Heading/Heading'
+import Button from '@/components/molecules/Button/Button'
 import styled from 'styled-components'
 interface EmptyStateProps {
   title?: string

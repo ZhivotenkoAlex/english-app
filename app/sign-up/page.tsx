@@ -1,7 +1,7 @@
 'use client'
 import { Suspense } from 'react'
-import FullScreenWrapper from '../../components/__atoms__/FullScreenWrapper/FullScreenWrapper'
-import RegistrationModal from '../../components/__features__/RegistrationModal/RegistrationModal'
+import FullScreenWrapper from '../../components/atoms/FullScreenWrapper/FullScreenWrapper'
+import RegistrationModal from '../../components/features/RegistrationModal/RegistrationModal'
 
 function RegistrationPage() {
   return (

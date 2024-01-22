@@ -1,4 +1,4 @@
-import PageContainer from '@/components/__atoms__/PageContainer/PageContainer'
+import PageContainer from '@/components/atoms/PageContainer/PageContainer'
 import React from 'react'
 import WordBuilderClient from './WordBuilderClient'
 

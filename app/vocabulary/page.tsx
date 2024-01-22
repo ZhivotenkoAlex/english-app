@@ -1,7 +1,7 @@
-import PageContainer from '../../components/__atoms__/PageContainer/PageContainer'
-import ClientOnlyProvider from '@/components/__features__/ClientOnlyProvider/ClientOnlyProvider'
+import PageContainer from '../../components/atoms/PageContainer/PageContainer'
+import ClientOnlyProvider from '@/components/features/ClientOnlyProvider/ClientOnlyProvider'
 import VocabularyClient from './VocabularyClient'
-import EmptyState from '@/components/__features__/EmptyState/EmptyState'
+import EmptyState from '@/components/features/EmptyState/EmptyState'
 
 function Vocabulary() {
   // const [location, setLocation] = useState("")

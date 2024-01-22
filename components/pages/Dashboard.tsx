@@ -2,7 +2,7 @@
 import { DashboardItems } from '@/helpers/constants'
 import React from 'react'
 import styled from 'styled-components'
-import DashboardItem from '../__features__/DashboardItem'
+import DashboardItem from '../features/DashboardItem'
 
 export default function Dashboard() {
   return (

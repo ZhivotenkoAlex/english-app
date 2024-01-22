@@ -1,4 +1,4 @@
-import Input from '@/components/__molecules__/Input/Input'
+import Input from '@/components/molecules/Input/Input'
 import { Button, ButtonGroup, MenuItem, TextField } from '@mui/material'
 import React, { ChangeEvent, useState } from 'react'
 import styled from 'styled-components'

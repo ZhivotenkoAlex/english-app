@@ -1,6 +1,6 @@
 'use client'
-import FullScreenWrapper from '../../components/__atoms__/FullScreenWrapper/FullScreenWrapper'
-import LoginModal from '../../components/__features__/LoginModal/LoginModal'
+import FullScreenWrapper from '../../components/atoms/FullScreenWrapper/FullScreenWrapper'
+import LoginModal from '../../components/features/LoginModal/LoginModal'
 
 function LoginPage() {
   return (

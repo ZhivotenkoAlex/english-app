@@ -1,4 +1,4 @@
-import EmptyState from '@/components/__features__/EmptyState/EmptyState'
+import EmptyState from '@/components/features/EmptyState/EmptyState'
 import WordRow from './WordRow'
 import styled from 'styled-components'
 

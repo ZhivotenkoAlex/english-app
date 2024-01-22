@@ -2,7 +2,7 @@ import { Roboto } from 'next/font/google'
 import './globals.css'
 import Providers from './providers'
 import GlobalStyles from '@/styles/GlobalStyles'
-import TopNavbar from '@/components/__features__/TopNavbar'
+import TopNavbar from '@/components/features/TopNavbar'
 // import BreadCrumbs from '@/components/__features__/Breadcrumbs'
 import { Metadata } from 'next'
 

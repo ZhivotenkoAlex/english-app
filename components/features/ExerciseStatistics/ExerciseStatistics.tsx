@@ -1,4 +1,4 @@
-import FractionDisplay from '@/components/__molecules__/FractionDisplay/FractionDisplay'
+import FractionDisplay from '@/components/molecules/FractionDisplay/FractionDisplay'
 import { Checkbox } from '@mui/material'
 import React from 'react'
 import styled from 'styled-components'

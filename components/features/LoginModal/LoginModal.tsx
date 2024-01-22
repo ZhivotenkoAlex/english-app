@@ -1,15 +1,15 @@
 'use client'
 import { ChangeEvent, useCallback, useState } from 'react'
-import Heading from '../../__atoms__/Heading/Heading'
-import ModalWrapper from '../../__atoms__/ModalWrapper/ModalWrapper'
-import Input from '../../__molecules__/Input/Input'
-import Form from '../../__atoms__/Form/Form'
-import Button from '../../__molecules__/Button/Button'
-import Link from '../../__atoms__/Link/Link'
+import Heading from '../../atoms/Heading/Heading'
+import ModalWrapper from '../../atoms/ModalWrapper/ModalWrapper'
+import Input from '../../molecules/Input/Input'
+import Form from '../../atoms/Form/Form'
+import Button from '../../molecules/Button/Button'
+import Link from '../../atoms/Link/Link'
 import { useRouter } from 'next/router'
 import ROUTES from '@/helpers/routes'
 import dynamic from 'next/dynamic'
-import BackButton from '@/components/__molecules__/BackButton/BackButton'
+import BackButton from '@/components/molecules/BackButton/BackButton'
 
 // const BackButton = dynamic(() => import('@/components/__molecules__/BackButton/BackButton'), {
 //   ssr: false,

@@ -1,4 +1,4 @@
-import Button from '@/components/__molecules__/Button/Button'
+import Button from '@/components/molecules/Button/Button'
 import { getVoice } from '@/helpers/getVoice'
 import { colors } from '@/utils/colors'
 import { Checkbox } from '@mui/material'

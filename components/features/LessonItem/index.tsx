@@ -1,4 +1,4 @@
-import StatusIcon from '@/components/__atoms__/StatusIcon'
+import StatusIcon from '@/components/atoms/StatusIcon'
 import ROUTES from '@/helpers/routes'
 import { LESSON_STATUS } from '@/types'
 import { colors } from '@/utils/colors'

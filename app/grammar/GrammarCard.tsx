@@ -1,5 +1,5 @@
-import CardWrapper from '@/components/__atoms__/CardWrapper/CardWrapper'
-import TitleSubtitleComponent from '@/components/__molecules__/TitleSubtitleComponent/TitleSubtitleComponent'
+import CardWrapper from '@/components/atoms/CardWrapper/CardWrapper'
+import TitleSubtitleComponent from '@/components/molecules/TitleSubtitleComponent/TitleSubtitleComponent'
 import { IGrammarExercise } from '@/types'
 import Image from 'next/image'
 import React from 'react'

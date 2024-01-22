@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import styled from 'styled-components'
-import LessonItem from '../__features__/LessonItem'
+import LessonItem from '../features/LessonItem'
 import { Lessons } from '@/helpers/constants'
 
 export default function LessonsPage() {

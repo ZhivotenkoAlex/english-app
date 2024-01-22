@@ -1,9 +1,9 @@
 'use client'
-import ExerciseNameBlock from '@/components/__molecules__/ExerciseNameBlock/ExerciseNameBlock'
+import ExerciseNameBlock from '@/components/molecules/ExerciseNameBlock/ExerciseNameBlock'
 import React from 'react'
 import styled from 'styled-components'
 import Exercise from './Exercise'
-import ExerciseCloseBlock from '@/components/__molecules__/ExerciseCloseBlock/ExerciseCloseBlock'
+import ExerciseCloseBlock from '@/components/molecules/ExerciseCloseBlock/ExerciseCloseBlock'
 
 function WordBuilderClient() {
   return (

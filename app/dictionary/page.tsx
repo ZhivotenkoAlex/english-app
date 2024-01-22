@@ -1,6 +1,6 @@
-import PageContainer from '../../components/__atoms__/PageContainer/PageContainer'
-import ClientOnlyProvider from '@/components/__features__/ClientOnlyProvider/ClientOnlyProvider'
-import EmptyState from '@/components/__features__/EmptyState/EmptyState'
+import PageContainer from '../../components/atoms/PageContainer/PageContainer'
+import ClientOnlyProvider from '@/components/features/ClientOnlyProvider/ClientOnlyProvider'
+import EmptyState from '@/components/features/EmptyState/EmptyState'
 import DictionaryClient from './DictionaryClient'
 
 function Dictionary() {

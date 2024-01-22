@@ -1,6 +1,6 @@
 'use client'
 import styled from 'styled-components'
-import Logo from '../../__molecules__/Logo/Logo'
+import Logo from '../../molecules/Logo/Logo'
 import Menu from '../Menu/Menu'
 import Avatar from '../Avatar/Avatar'
 import { colors } from '@/utils/colors'

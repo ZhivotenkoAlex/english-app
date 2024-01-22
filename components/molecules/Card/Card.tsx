@@ -1,4 +1,4 @@
-import CardWrapper from '@/components/__atoms__/CardWrapper/CardWrapper'
+import CardWrapper from '@/components/atoms/CardWrapper/CardWrapper'
 import React from 'react'
 import TitleSubtitleComponent from '../TitleSubtitleComponent/TitleSubtitleComponent'
 import { CardItem } from '@/types'
