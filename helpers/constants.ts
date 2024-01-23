@@ -1,6 +1,6 @@
 import { v4 as uuid } from 'uuid'
 import ROUTES from './routes'
-import { LESSON_STATUS, PracticeTypes } from '@/types'
+import { EXERCISE_STATUS, PracticeTypes } from '@/types'
 
 export const Lessons = [
   {
@@ -364,7 +364,7 @@ export const Lessons = [
         },
       ],
     },
-    status: LESSON_STATUS.NOT_STARTED,
+    status: EXERCISE_STATUS.NOT_STARTED,
     imageName: 'job',
   },
   {
@@ -728,7 +728,7 @@ export const Lessons = [
         },
       ],
     },
-    status: LESSON_STATUS.IN_PROGRESS,
+    status: EXERCISE_STATUS.IN_PROGRESS,
     imageName: 'Working',
   },
   {
@@ -736,7 +736,7 @@ export const Lessons = [
     number: 3,
     slug: 'Work',
     topic: 'Work',
-    status: LESSON_STATUS.DONE,
+    status: EXERCISE_STATUS.DONE,
     imageName: 'Working',
     lessonContent: {
       vocabulary: [
@@ -1168,5 +1168,3 @@ export const PracticeTasks = {
   construct: 'Put together',
   translate: 'Translate the phrase',
 }
-
-// Forest data

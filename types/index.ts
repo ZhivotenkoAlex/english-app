@@ -9,7 +9,7 @@ export enum PracticeTypes {
   TRANSLATE = 'translate',
 }
 
-export enum LESSON_STATUS {
+export enum EXERCISE_STATUS {
   DONE = 'done',
   IN_PROGRESS = 'in_progress',
   NOT_STARTED = 'not_started',
@@ -66,7 +66,7 @@ export type LessonType = {
   number: number
   slug: string
   topic: string
-  status: LESSON_STATUS
+  status: EXERCISE_STATUS
   imageName: string
   lessonContent: LessonContent
 }
@@ -100,4 +100,30 @@ export interface IWord {
   translation: string
   picture: string
   state: string
+}
+
+export interface IArticle {
+  id: string
+  status: EXERCISE_STATUS
+  image: string
+  slug: string
+  data: any
+}
+
+export interface IArticleData {
+  title: string
+  parsedSentences: IParsedContent[]
+  parsedTitle: Omit<IParsedContent, 't'>[]
+}
+
+export interface IParsedContent {
+  id: string | number
+  items?: IParsedItem[]
+  text?: string
+  t?: string
+}
+
+export interface IParsedItem {
+  id: string
+  w: string
 }

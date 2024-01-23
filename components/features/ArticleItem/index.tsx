@@ -1,28 +1,23 @@
 import StatusIcon from '@/components/atoms/StatusIcon'
 import ROUTES from '@/helpers/routes'
-import { EXERCISE_STATUS } from '@/types'
+import { EXERCISE_STATUS, IArticleData } from '@/types'
 import { colors } from '@/utils/colors'
 import Image from 'next/image'
 import Link from 'next/link'
 import styled from 'styled-components'
 
 type PropTypes = {
-  data: { slug: string; status: EXERCISE_STATUS; imageName: string; topic: string }
+  content: { slug: string; status: EXERCISE_STATUS; image: string; data: IArticleData }
 }
 
-export default function LessonItem({ data }: PropTypes) {
-  const { slug, status, imageName, topic } = data
+export default function ArticleItem({ content }: PropTypes) {
+  const { slug, status, image, data } = content
   return (
-    <Root href={`${ROUTES.LESSONS}/${slug}`}>
+    <Root href={`${ROUTES.VOCABULARY}/articles/${slug}`}>
       <Container>
-        <StyledImage
-          src={`/images/lessons/${imageName}.jpg`}
-          alt="word cloud"
-          width={200}
-          height={140}
-        />
+        <StyledImage src={`/images/${image}.jpg`} alt="word cloud" width={200} height={140} />
         <Description>
-          <StyledTitle>{topic}</StyledTitle>
+          <StyledTitle>{data.title}</StyledTitle>
           <StatusIcon status={status} />
         </Description>
       </Container>
@@ -58,7 +53,7 @@ const Container = styled.div`
 
 const StyledImage = styled(Image)`
   border-radius: 16px;
-  object-fit: fit;
+  object-fit: contain;
   filter: grayscale(20%);
   min-width: 30%;
   max-width: 100%;
@@ -77,5 +72,5 @@ const Description = styled.div`
 `
 
 const StyledTitle = styled.h3`
-  text-wrap: nowrap;
+  text-wrap: balance;
 `

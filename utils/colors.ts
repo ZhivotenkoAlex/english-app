@@ -16,7 +16,7 @@ export const colors = {
   warning: '#d32f2f',
 }
 
-enum COLORS_ENUM {
+export enum COLORS_ENUM {
   BLUE = 'blue',
   GREY = 'grey',
   DARK_GREY = 'dark_grey',
