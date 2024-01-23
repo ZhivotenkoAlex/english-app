@@ -9,7 +9,7 @@ export enum PracticeTypes {
   TRANSLATE = 'translate',
 }
 
-export enum LESSON_STATUS {
+export enum EXERCISE_STATUS {
   DONE = 'done',
   IN_PROGRESS = 'in_progress',
   NOT_STARTED = 'not_started',
@@ -66,7 +66,7 @@ export type LessonType = {
   number: number
   slug: string
   topic: string
-  status: LESSON_STATUS
+  status: EXERCISE_STATUS
   imageName: string
   lessonContent: LessonContent
 }

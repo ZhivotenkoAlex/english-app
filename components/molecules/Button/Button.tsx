@@ -60,7 +60,7 @@ const ButtonElement = styled('button')<{
   border: none;
   cursor: pointer;
   padding: 6px 16px;
-  color: ${({ $fontColor }) => COLOR[$fontColor]};
+  color: ${({ $fontColor }) => $fontColor};
   background: ${({ color }) => COLOR[color]};
   transition: all 0.5s ease-in-out;
   font-weight: 600;

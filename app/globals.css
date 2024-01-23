@@ -6,8 +6,9 @@
 
 html,
 body {
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   color: rgba(0, 0, 0, 0.87);
+  padding-right: 0 !important;
 }
 
 a {

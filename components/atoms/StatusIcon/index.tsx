@@ -1,4 +1,4 @@
-import { LESSON_STATUS } from '@/types'
+import { EXERCISE_STATUS } from '@/types'
 import { colors } from '@mui/material'
 
 import React from 'react'
@@ -12,14 +12,14 @@ const IconColors = {
 }
 
 type PropType = {
-  status: LESSON_STATUS
+  status: EXERCISE_STATUS
 }
 
 export default function StatusIcon({ status }: PropType) {
   return <CheckboxIcon size="35px" status={status} />
 }
 
-const CheckboxIcon = styled(CheckboxCircleFill)<{ status: LESSON_STATUS }>`
+const CheckboxIcon = styled(CheckboxCircleFill)<{ status: EXERCISE_STATUS }>`
   cursor: pointer;
   fill: ${props => IconColors[props.status]};
 `
