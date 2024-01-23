@@ -2,21 +2,14 @@ import PageContainer from '../../components/atoms/PageContainer/PageContainer'
 import ClientOnlyProvider from '@/components/features/ClientOnlyProvider/ClientOnlyProvider'
 import VocabularyClient from './VocabularyClient'
 import EmptyState from '@/components/features/EmptyState/EmptyState'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Vocabulary',
+  description: 'Easy way to learn English',
+}
 
 function Vocabulary() {
-  // const [location, setLocation] = useState("")
-
-  // useEffect(() => {
-  //   setLocation(window?.location?.origin)
-  // }, [])
-  // const ogData = {
-  //   image: `${location}/public/images/logo.png`,
-  //   title: "Vocabulary | EasyWay",
-  //   description: "Easy way to learn English",
-  //   type: "website",
-  //   url: location,
-  // }
-
   //const currentUser = await getCurrentUser();
 
   const currentUser = true

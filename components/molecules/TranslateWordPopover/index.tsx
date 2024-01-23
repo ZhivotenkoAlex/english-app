@@ -51,9 +51,6 @@ export default function TranslateWordPopover({ isOpen, word, anchorEl, handleClo
 }
 
 const StyledPopover = styled(Popover)`
-  /* &&.MuiModal-root {
-    position: absolute;
-  } */
   margin-top: 5px;
 `
 

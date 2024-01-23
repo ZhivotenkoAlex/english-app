@@ -1,11 +1,13 @@
 import SingleArticlePage from '@/components/pages/SingleArticlePage'
 import { capitalizedWord } from '@/helpers/capitalized'
-import { Lessons } from '@/helpers/constants'
 import { content } from '@/helpers/ArticlesData'
-
-import { LessonType } from '@/types'
 import { Metadata, ResolvingMetadata } from 'next'
 import React from 'react'
+
+// export const metadata: Metadata = {
+//   title: 'Vocabulary',
+//   description: 'Easy way to learn English',
+// }
 
 type Props = {
   params: { slug: string }
@@ -23,7 +25,7 @@ export async function generateMetadata(
   const articleName = slug.replace(/_/g, ' ')
   const capitalizedName = capitalizedWord(articleName)
   return {
-    title: `Lesson | Articles | ${capitalizedName}`,
+    title: ` Articles | ${capitalizedName}`,
   }
 }
 
