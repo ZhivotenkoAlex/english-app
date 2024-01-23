@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { content } from '@/helpers/ArticlesData'
 import ArticleItem from '../features/ArticleItem'
+import { content } from '@/helpers/ArticlesData'
 
 export default function ArticlesPage() {
   return (

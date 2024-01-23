@@ -1,13 +1,13 @@
 import StatusIcon from '@/components/atoms/StatusIcon'
 import ROUTES from '@/helpers/routes'
-import { EXERCISE_STATUS } from '@/types'
+import { EXERCISE_STATUS, IArticleData } from '@/types'
 import { colors } from '@/utils/colors'
 import Image from 'next/image'
 import Link from 'next/link'
 import styled from 'styled-components'
 
 type PropTypes = {
-  content: { slug: string; status: EXERCISE_STATUS; image: string; data: any }
+  content: { slug: string; status: EXERCISE_STATUS; image: string; data: IArticleData }
 }
 
 export default function ArticleItem({ content }: PropTypes) {

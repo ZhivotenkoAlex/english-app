@@ -28,6 +28,6 @@ export async function generateMetadata(
 }
 
 export default function page({ params }: { params: { slug: string } }) {
-  const articleContent = content.find(item => item.slug == params.slug) as any
+  const articleContent = content.find(item => item.slug == params.slug)
   return <SingleArticlePage content={articleContent} />
 }

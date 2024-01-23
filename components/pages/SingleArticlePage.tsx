@@ -7,8 +7,13 @@ import Button from '../molecules/Button/Button'
 import Link from 'next/link'
 import ROUTES from '@/helpers/routes'
 import Image from 'next/image'
+import { IArticle } from '@/types'
 
-export default function SingleArticlePage({ content }: any) {
+type PropTypes = {
+  content?: IArticle
+}
+
+export default function SingleArticlePage({ content }: PropTypes) {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null)
   const [activeWord, setActiveWord] = useState<string>('')
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
@@ -33,28 +38,28 @@ export default function SingleArticlePage({ content }: any) {
     <Root>
       <ImageContainer>
         <StyledImage
-          src={`/images/${content.image}.jpg`}
+          src={`/images/${content?.image}.jpg`}
           alt="word cloud"
           width={400}
           height={280}
         />
       </ImageContainer>
       <TitleContainer>
-        {content.data.parsedTitle[0].items.map((el, index) => {
+        {content?.data.parsedTitle[0].items.map((el: { w: string; id: string }) => {
           return (
-            <Word key={index} onClick={handleWordClick}>
+            <Word key={el.id} onClick={handleWordClick}>
               {el.w}
             </Word>
           )
         })}
       </TitleContainer>
-      {content.data.parsedSentences.map((el, index) => {
+      {content?.data.parsedSentences.map((el, index) => {
         if (el.t) {
           return <EmptyString key={index}></EmptyString>
         }
         return el?.items?.map(word => {
           return (
-            <Word key={word.p} onClick={handleWordClick}>
+            <Word key={word.id} onClick={handleWordClick}>
               {word.w}
             </Word>
           )

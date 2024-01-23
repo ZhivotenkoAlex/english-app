@@ -101,3 +101,29 @@ export interface IWord {
   picture: string
   state: string
 }
+
+export interface IArticle {
+  id: string
+  status: EXERCISE_STATUS
+  image: string
+  slug: string
+  data: any
+}
+
+export interface IArticleData {
+  title: string
+  parsedSentences: IParsedContent[]
+  parsedTitle: Omit<IParsedContent, 't'>[]
+}
+
+export interface IParsedContent {
+  id: string | number
+  items?: IParsedItem[]
+  text?: string
+  t?: string
+}
+
+export interface IParsedItem {
+  id: string
+  w: string
+}
