@@ -1,7 +1,6 @@
-import { renderElement } from '@/helpers/renderElement'
 import { ITraining } from '@/types'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -9,19 +8,14 @@ interface ITrainingCard {
   training: ITraining
 }
 function TrainingCard({ training }: ITrainingCard) {
-  const router = useRouter()
-
-  const handleSelectExercise = () => {
-    router.push(`/vocabulary/${training.path}`)
-  }
   return (
-    <Wrapper $gridArea={training.gridArea} onClick={handleSelectExercise}>
+    <StyledLink $gridArea={training.gridArea} href={`/vocabulary/${training.path}`}>
       <StyledImage src={training.background} alt={training.title} />
       <TextBlock>
         <Title $titleColor={training.titleColor}>{training.title}</Title>
         <Subtitle>{training.subtitle}</Subtitle>
       </TextBlock>
-    </Wrapper>
+    </StyledLink>
   )
 }
 
@@ -44,7 +38,7 @@ const Title = styled.p<{ $titleColor: string }>`
 const Subtitle = styled.p`
   color: rgba(0, 0, 0, 0.3);
 `
-const Wrapper = styled.div<{ $gridArea: string }>`
+const StyledLink = styled(Link)<{ $gridArea: string }>`
   cursor: pointer;
   position: relative;
   border-radius: 10px;
