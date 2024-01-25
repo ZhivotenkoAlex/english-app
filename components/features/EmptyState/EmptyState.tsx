@@ -8,7 +8,7 @@ interface EmptyStateProps {
 const EmptyState = ({ title = 'No results' }: EmptyStateProps) => {
   return (
     <CentralBox>
-      <Heading title={title} color="dark" />
+      <Heading title={title} color="DARK" />
     </CentralBox>
   )
 }

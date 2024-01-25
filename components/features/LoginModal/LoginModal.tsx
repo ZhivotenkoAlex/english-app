@@ -39,7 +39,7 @@ function LoginModal() {
   return (
     <ModalWrapper>
       <BackButton />
-      <Heading color={'dark'} title="Войти" size={16} />
+      <Heading color={'DARK'} title="Войти" size={16} />
       <Form>
         <Input type="email" value={email} placeholder="Email" onChange={handleChangeEmail} />
         <Input

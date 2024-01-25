@@ -25,7 +25,7 @@ function RestorePasswordModal() {
     <FullScreenWrapper>
       <ModalWrapper>
         <Heading
-          color={'dark'}
+          color={'DARK'}
           title="На указанный e-mail будет отправлено письмо со ссылкой для сброса пароля"
           size={14}
         />

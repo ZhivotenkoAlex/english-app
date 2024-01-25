@@ -26,7 +26,7 @@ function RegistrationModal() {
   return (
     <ModalWrapper>
       <BackButton />
-      <Heading color={'dark'} title="Бесплатная регистрация" size={16} />
+      <Heading color={'DARK'} title="Бесплатная регистрация" size={16} />
       <Form>
         <Input type="email" value={email} placeholder="Email" onChange={handleChangeEmail} />
         <Input
