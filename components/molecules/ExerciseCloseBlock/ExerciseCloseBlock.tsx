@@ -2,11 +2,18 @@ import React from 'react'
 import styled from 'styled-components'
 import CloseCircleLineIcon from 'remixicon-react/CloseCircleLineIcon'
 import { themeColors } from '@/lib/theme'
+import Link from 'next/link'
 
-function ExerciseCloseBlock() {
+interface IExerciseCloseBlock {
+  link: string
+}
+
+function ExerciseCloseBlock({ link }: IExerciseCloseBlock) {
   return (
     <Wrapper>
-      <CloseCircleLineIcon size={40} color={themeColors.gray} />
+      <Link href={link}>
+        <CloseCircleLineIcon size={40} color={themeColors.gray} />
+      </Link>
     </Wrapper>
   )
 }

@@ -36,7 +36,7 @@ function RestorePasswordModal() {
             onClick={() => {}}
             disabled
             label="Создать аккаунт"
-            color={'green'}
+            color={'GREEN'}
             size="large"
           />
           <Link onClick={navigateToLoginModal} size={14} title={'Назад'} color="blue" />

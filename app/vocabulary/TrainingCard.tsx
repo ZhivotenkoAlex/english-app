@@ -1,3 +1,4 @@
+import ROUTES from '@/helpers/routes'
 import { ITraining } from '@/types'
 import Image from 'next/image'
 import Link from 'next/link'

@@ -1,7 +1,6 @@
 import styled from 'styled-components'
-import { COLOR, colors } from '../../../utils/colors'
+import { COLOR, COLORS_ENUM, colors } from '../../../utils/colors'
 
-type Color = 'blue' | 'green' | 'grey'
 type ButtonSize = 'small' | 'medium' | 'large'
 type ButtonVariant = 'contained' | 'text' | 'outlined'
 type ButtonType = 'submit' | 'reset' | 'button'
@@ -9,12 +8,12 @@ interface IButton {
   label: string
   variant?: ButtonVariant
   onClick?: () => void
-  color?: Color
+  color?: keyof typeof COLORS_ENUM
   size?: ButtonSize
   disabled?: boolean
   fullWidth?: boolean
   type?: ButtonType
-  fontColor?: string
+  fontColor?: keyof typeof COLORS_ENUM
   width?: string
 }
 
@@ -23,11 +22,11 @@ function Button({
   label,
   onClick,
   disabled = false,
-  color = 'green',
+  color = COLORS_ENUM.GREEN,
   size = 'medium',
   fullWidth = false,
   type = 'button',
-  fontColor = colors.lightWhite,
+  fontColor = COLORS_ENUM.LIGHT_WHITE,
   width = 'auto',
 }: IButton) {
   return (
@@ -60,7 +59,7 @@ const ButtonElement = styled('button')<{
   border: none;
   cursor: pointer;
   padding: 6px 16px;
-  color: ${({ $fontColor }) => $fontColor};
+  color: ${({ $fontColor }) => COLOR[$fontColor]};
   background: ${({ color }) => COLOR[color]};
   transition: all 0.5s ease-in-out;
   font-weight: 600;

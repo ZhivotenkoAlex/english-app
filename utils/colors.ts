@@ -17,15 +17,15 @@ export const colors = {
 }
 
 export enum COLORS_ENUM {
-  BLUE = 'blue',
-  GREY = 'grey',
-  DARK_GREY = 'dark_grey',
-  LIGHT_GREY = 'light_grey',
-  DARK = 'dark',
-  GREEN = 'green',
-  ORANGE = 'orange',
-  RED = 'red',
-  LIGHT_WHITE = 'light_white',
+  BLUE = 'BLUE',
+  GREY = 'GREY',
+  DARK_GREY = 'DARK_GREY',
+  LIGHT_GREY = 'LIGHT_GREY',
+  DARK = 'DARK',
+  GREEN = 'GREEN',
+  ORANGE = 'ORANGE',
+  RED = 'RED',
+  LIGHT_WHITE = 'LIGHT_WHITE',
 }
 
 export const COLOR: { [key: string]: string } = {
