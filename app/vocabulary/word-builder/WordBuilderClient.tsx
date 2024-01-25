@@ -12,7 +12,7 @@ function WordBuilderClient() {
       <div style={{ flex: 8 }}>
         <Exercise />
       </div>
-      <ExerciseCloseBlock />
+      <ExerciseCloseBlock link={'/vocabulary'} />
     </Wrapper>
   )
 }

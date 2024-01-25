@@ -7,6 +7,7 @@ interface IContainedLetterCell {
   background: string
   type: CellType
   clickable?: boolean
+  onClick?: (char: string) => void
 }
 
 function LetterCell({ char, background, type, clickable = false }: IContainedLetterCell) {

@@ -7,12 +7,18 @@ interface ExerciseStatistics {
   isPronunciation: boolean
   amountOfWords: number
   exercisedAmount: number
+  handleTogglePronunciation: () => void
 }
-function ExerciseStatistics({ isPronunciation, amountOfWords, exercisedAmount }) {
+function ExerciseStatistics({
+  isPronunciation,
+  amountOfWords,
+  exercisedAmount,
+  handleTogglePronunciation,
+}) {
   return (
     <Row>
       <label>
-        <Checkbox checked={isPronunciation} />
+        <Checkbox checked={isPronunciation} onChange={handleTogglePronunciation} />
         Pronunciate
       </label>
       <FractionDisplay currentNum={exercisedAmount} overall={amountOfWords} />

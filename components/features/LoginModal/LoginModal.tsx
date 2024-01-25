@@ -11,7 +11,7 @@ import ROUTES from '@/helpers/routes'
 import dynamic from 'next/dynamic'
 import BackButton from '@/components/molecules/BackButton/BackButton'
 
-// const BackButton = dynamic(() => import('@/components/__molecules__/BackButton/BackButton'), {
+// const BackButton = dynamic(() => import('@/components/molecules/BackButton/BackButton'), {
 //   ssr: false,
 // })
 
@@ -53,10 +53,10 @@ function LoginModal() {
           disabled={false}
           variant="text"
           label="Восстановить пароль"
-          color={'grey'}
+          color={'GREY'}
           size="large"
         />
-        <Button onClick={() => {}} disabled label="Войти" color={'green'} size="large" />
+        <Button onClick={() => {}} disabled label="Войти" color={'GREEN'} size="large" />
         <Link onClick={() => {}} size={14} title={'Создать аккаунт'} color="blue" />
       </Form>
     </ModalWrapper>

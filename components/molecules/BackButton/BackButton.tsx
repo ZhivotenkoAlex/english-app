@@ -7,7 +7,7 @@ import Link from 'next/link'
 function BackButton() {
   return (
     <BackButtonWrapper href={ROUTES.HOME}>
-      <Button disabled={false} label="Back" color="green" variant="outlined" size="small" />
+      <Button disabled={false} label="Back" color="GREEN" variant="outlined" size="small" />
     </BackButtonWrapper>
   )
 }

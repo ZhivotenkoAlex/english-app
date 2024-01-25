@@ -35,7 +35,7 @@ function RegistrationModal() {
           placeholder="Password"
           onChange={handleChangePassword}
         />
-        <Button onClick={() => {}} disabled label="Создать аккаунт" color={'green'} size="large" />
+        <Button onClick={() => {}} disabled label="Создать аккаунт" color={'GREEN'} size="large" />
         <Link
           onClick={navigateToLoginModal}
           size={14}

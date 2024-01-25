@@ -1,22 +1,88 @@
 import ExerciseStatistics from '@/components/features/ExerciseStatistics/ExerciseStatistics'
-import React from 'react'
+import React, { useMemo, useState } from 'react'
 import styled from 'styled-components'
 import ExerciseContent from './ExerciseContent'
+import { IWord } from '@/types'
+import ResultModal from '@/components/features/ResultModal/ResultModal'
 import ExerciseControlsButtons from '@/components/features/ExerciseControlsButtons/ExerciseControlsButtons'
 
 function Exercise() {
-  const word = {
-    id: 1,
-    title: 'apple',
-    translation: 'яблуко',
-    picture: 'https://usapple.org/wp-content/uploads/2019/10/apple-pink-lady.png',
-    state: 'in progress',
+  const [isPronunciation, setIsPronunciation] = useState(true)
+  const [isInProgress, setIsInProgress] = useState(true)
+  const [isResultModalShown, setIsResultModalShown] = useState(false)
+  const words: IWord[] = useMemo(
+    () => [
+      {
+        id: 1,
+        title: 'apple',
+        translation: 'яблуко',
+        picture: 'https://usapple.org/wp-content/uploads/2019/10/apple-pink-lady.png',
+        state: 'in progress',
+      },
+      {
+        id: 2,
+        title: 'hello',
+        translation: 'привіт',
+        picture: 'https://usapple.org/wp-content/uploads/2019/10/apple-pink-lady.png',
+        state: 'in progress',
+      },
+    ],
+    [],
+  )
+
+  const [currentWordIndex, setCurrentWordIndex] = useState<number>(0)
+
+  const handleTogglePronunciation = () => {
+    setIsPronunciation(!isPronunciation)
+  }
+
+  const handleNextWord = () => {
+    if (currentWordIndex === words.length - 1) {
+      setIsResultModalShown(true)
+      return
+    }
+    setCurrentWordIndex(currentWordIndex + 1)
+    setIsInProgress(true)
+  }
+
+  const handleSkipWord = () => {
+    setIsInProgress(false)
+  }
+
+  const handleRepeat = () => {
+    setIsResultModalShown(false)
+    setCurrentWordIndex(0)
+    setIsInProgress(true)
+    // dispatch(getNewWords);
+  }
+
+  if (!words) {
+    return <>Loading...</>
   }
   return (
     <Wrapper>
-      <ExerciseStatistics isPronunciation amountOfWords={10} exercisedAmount={2} />
-      <ExerciseContent word={word} />
-      <ExerciseControlsButtons />
+      {isResultModalShown ? (
+        <ResultModal handleRepeat={handleRepeat} />
+      ) : (
+        <>
+          <ExerciseStatistics
+            isPronunciation={isPronunciation}
+            amountOfWords={words.length}
+            exercisedAmount={currentWordIndex + 1}
+            handleTogglePronunciation={handleTogglePronunciation}
+          />
+          <ExerciseContent
+            word={words[currentWordIndex]}
+            isPronunciation={isPronunciation}
+            exerciseInProgress={isInProgress}
+          />
+          <ExerciseControlsButtons
+            handleSkipWord={handleSkipWord}
+            handleNextWord={handleNextWord}
+            exerciseInProgress={isInProgress}
+          />
+        </>
+      )}
     </Wrapper>
   )
 }
