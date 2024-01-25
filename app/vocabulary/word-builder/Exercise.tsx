@@ -10,6 +10,7 @@ function Exercise() {
   const [isPronunciation, setIsPronunciation] = useState(true)
   const [isInProgress, setIsInProgress] = useState(true)
   const [isResultModalShown, setIsResultModalShown] = useState(false)
+  const [wrongWords, setWrongWords] = useState<IWord[]>([])
   const words: IWord[] = useMemo(
     () => [
       {
@@ -32,6 +33,10 @@ function Exercise() {
 
   const [currentWordIndex, setCurrentWordIndex] = useState<number>(0)
 
+  const learnedWords = useMemo(
+    () => words.filter(el => !wrongWords.includes(el)),
+    [wrongWords, words],
+  )
   const handleTogglePronunciation = () => {
     setIsPronunciation(!isPronunciation)
   }
@@ -45,7 +50,13 @@ function Exercise() {
     setIsInProgress(true)
   }
 
+  const addWrongWord = (word: IWord) => {
+    const newArr = [...new Set([...wrongWords, word])]
+    setWrongWords(newArr)
+  }
   const handleSkipWord = () => {
+    const newArr = [...new Set([...wrongWords, words[currentWordIndex]])]
+    setWrongWords(newArr)
     setIsInProgress(false)
   }
 
@@ -62,7 +73,11 @@ function Exercise() {
   return (
     <Wrapper>
       {isResultModalShown ? (
-        <ResultModal handleRepeat={handleRepeat} />
+        <ResultModal
+          handleRepeat={handleRepeat}
+          wrongWords={wrongWords}
+          learnedWords={learnedWords}
+        />
       ) : (
         <>
           <ExerciseStatistics
@@ -72,9 +87,11 @@ function Exercise() {
             handleTogglePronunciation={handleTogglePronunciation}
           />
           <ExerciseContent
+            addWrongWord={addWrongWord}
             word={words[currentWordIndex]}
             isPronunciation={isPronunciation}
             exerciseInProgress={isInProgress}
+            setIsExerciseInProgress={setIsInProgress}
           />
           <ExerciseControlsButtons
             handleSkipWord={handleSkipWord}

@@ -1,24 +1,33 @@
 import CardWrapper from '@/components/atoms/CardWrapper/CardWrapper'
 import Button from '@/components/molecules/Button/Button'
 import TitleSubtitleComponent from '@/components/molecules/TitleSubtitleComponent/TitleSubtitleComponent'
-import { RESULT_STATUSES } from '@/helpers/resultStatuses'
+import { RESULT_STATUSES, getExerciseResultStatus } from '@/helpers/resultStatuses'
+import { IWord } from '@/types'
 import Link from 'next/link'
-import React from 'react'
+import React, { useMemo } from 'react'
 import styled from 'styled-components'
+import ResultWordsList from '../ResultWordsList/ResultWordsList'
 
 interface IResultModal {
   handleRepeat: () => void
+  learnedWords: IWord[]
+  wrongWords: IWord[]
 }
-function ResultModal({ handleRepeat }: IResultModal) {
+function ResultModal({ handleRepeat, learnedWords, wrongWords }: IResultModal) {
+  const subtitle = useMemo(
+    () => `${learnedWords.length} вивчено, ${wrongWords.length} потрібно вивчити`,
+    [learnedWords, wrongWords],
+  )
+
+  const status = useMemo(() => {
+    return getExerciseResultStatus(learnedWords, wrongWords)
+  }, [learnedWords, wrongWords])
   return (
     <Wrapper>
       <CardWrapper>
         <Content>
-          <TitleSubtitleComponent
-            reverse
-            title={RESULT_STATUSES[0].title}
-            subtitle="2 вивчено, 5 потрібно вивчити"
-          />
+          <TitleSubtitleComponent reverse title={status.title} subtitle={subtitle} />
+          <ResultWordsList wrongWords={wrongWords} learnedWords={learnedWords} />
           <Button label="Повторити" color="BLUE" onClick={handleRepeat} />
           <LinkWrapper>
             <Link href={'/vocabulary'}>

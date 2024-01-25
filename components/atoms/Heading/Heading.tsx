@@ -1,6 +1,6 @@
-import { COLOR } from '../../../utils/colors'
+import { COLOR, COLORS_ENUM } from '../../../utils/colors'
 
-type HeadingColor = 'green' | 'red' | 'grey' | 'dark' | 'orange' | 'blue'
+type HeadingColor = keyof typeof COLORS_ENUM
 
 interface IHeading {
   size?: number
