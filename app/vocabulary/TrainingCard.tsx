@@ -1,5 +1,3 @@
-import { renderElement } from '@/helpers/renderElement'
-import ROUTES from '@/helpers/routes'
 import { ITraining } from '@/types'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -11,13 +9,13 @@ interface ITrainingCard {
 }
 function TrainingCard({ training }: ITrainingCard) {
   return (
-    <Wrapper href={`${ROUTES.VOCABULARY}/${training.path}`} $gridArea={training.gridArea}>
+    <StyledLink $gridArea={training.gridArea} href={`${ROUTES.VOCABULARY}/${training.path}`}>
       <StyledImage src={training.background} alt={training.title} />
       <TextBlock>
         <Title $titleColor={training.titleColor}>{training.title}</Title>
         <Subtitle>{training.subtitle}</Subtitle>
       </TextBlock>
-    </Wrapper>
+    </StyledLink>
   )
 }
 
@@ -40,7 +38,7 @@ const Title = styled.p<{ $titleColor: string }>`
 const Subtitle = styled.p`
   color: rgba(0, 0, 0, 0.3);
 `
-const Wrapper = styled(Link)<{ $gridArea: string }>`
+const StyledLink = styled(Link)<{ $gridArea: string }>`
   cursor: pointer;
   position: relative;
   border-radius: 10px;
