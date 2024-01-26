@@ -12,9 +12,17 @@ interface IExerciseContent {
   word: IWord
   isPronunciation: boolean
   exerciseInProgress: boolean
+  addWrongWord: (word: IWord) => void
+  setIsExerciseInProgress: (val: boolean) => void
 }
 
-function ExerciseContent({ word, isPronunciation, exerciseInProgress }: IExerciseContent) {
+function ExerciseContent({
+  word,
+  isPronunciation,
+  exerciseInProgress,
+  addWrongWord,
+  setIsExerciseInProgress,
+}: IExerciseContent) {
   const [initialChars, setInitialChars] = useState<
     { id: number; char: string; background: string }[]
   >([])
@@ -27,6 +35,7 @@ function ExerciseContent({ word, isPronunciation, exerciseInProgress }: IExercis
   const handleCharClick = (char: string, index: number) => {
     //if selected char is incorrect
     if (word.title[containedCells.length] !== char) {
+      addWrongWord(word)
       setInitialChars(prevChars => {
         const updatedChars = [...prevChars]
         updatedChars[index] = { ...updatedChars[index], background: 'red' }
@@ -53,8 +62,15 @@ function ExerciseContent({ word, isPronunciation, exerciseInProgress }: IExercis
   }, [exerciseInProgress, isPronunciation, word.title])
 
   useEffect(() => {
+    if (containedCells.length === word.title.length) {
+      setIsExerciseInProgress(false)
+    }
+  }, [containedCells])
+
+  useEffect(() => {
     if (word?.title) {
       let shuffledArr = shuffleArray(word.title.split(''))
+      setContainedCells([])
       setInitialChars(
         shuffledArr.map((char, i) => ({ id: i, char, background: themeColors.primary })),
       )
@@ -86,14 +102,15 @@ function ExerciseContent({ word, isPronunciation, exerciseInProgress }: IExercis
       {exerciseInProgress ? (
         <CellsRow>
           {initialChars.map((elem, index) => (
-            <LetterCell
-              clickable
-              key={index}
-              char={elem.char}
-              background={elem.background}
-              type={'contained'}
-              onClick={() => handleCharClick(elem.char, index)}
-            />
+            <div key={index} onClick={() => handleCharClick(elem.char, index)}>
+              <LetterCell
+                clickable
+                key={index}
+                char={elem.char}
+                background={elem.background}
+                type={'contained'}
+              />
+            </div>
           ))}
         </CellsRow>
       ) : (

@@ -1,6 +1,6 @@
 'use client'
 import Heading from '@/components/atoms/Heading/Heading'
-import Button from '@/components/molecules/Button/Button'
+import { COLORS_ENUM } from '@/utils/colors'
 import styled from 'styled-components'
 interface EmptyStateProps {
   title?: string
@@ -8,7 +8,7 @@ interface EmptyStateProps {
 const EmptyState = ({ title = 'No results' }: EmptyStateProps) => {
   return (
     <CentralBox>
-      <Heading title={title} color="dark" />
+      <Heading title={title} color={COLORS_ENUM.DARK} />
     </CentralBox>
   )
 }

@@ -1,10 +1,8 @@
-import { COLOR } from '../../../utils/colors'
-
-type HeadingColor = 'green' | 'red' | 'grey' | 'dark' | 'orange' | 'blue'
+import { COLOR, COLORS_ENUM } from '../../../utils/colors'
 
 interface IHeading {
   size?: number
-  color: HeadingColor
+  color: COLORS_ENUM
   title: string
   fontWeight?: number
 }

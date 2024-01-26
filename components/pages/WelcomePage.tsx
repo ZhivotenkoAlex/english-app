@@ -6,6 +6,7 @@ import ServiceItem from '@/components/features/ServiceItem'
 import { WelcomePagePreferences } from '@/helpers/constants'
 import Image from 'next/image'
 import Link from 'next/link'
+import { COLORS_ENUM } from '@/utils/colors'
 
 export default function WelcomePage() {
   return (
@@ -18,7 +19,7 @@ export default function WelcomePage() {
           </PageTitle>
         </Heading>
         <ButtonLink href={ROUTES.SIGN_UP}>
-          <Button disabled={false} label="Почати вчити!" color={'GREEN'} size="large" />
+          <Button disabled={false} label="Почати вчити!" color={COLORS_ENUM.GREEN} size="large" />
         </ButtonLink>
         <PreferencesContainer>
           <DescriptionTitle>З нами ви навчитесь:</DescriptionTitle>
@@ -34,7 +35,7 @@ export default function WelcomePage() {
             <WelcomeSubtitle>і відкрийте світ заново</WelcomeSubtitle>
           </WelcomeTitleContainer>
           <ButtonLink href={ROUTES.SIGN_UP}>
-            <Button disabled={false} label="Почати вчити!" color={'GREEN'} size="large" />
+            <Button disabled={false} label="Почати вчити!" color={COLORS_ENUM.GREEN} size="large" />
           </ButtonLink>
           <StyledImage src={`/images/girl.jpg`} alt="word cloud" width={300} height={400} />
         </WelcomeContainer>

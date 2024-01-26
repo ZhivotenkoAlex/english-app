@@ -1,5 +1,5 @@
 'use client'
-import { colors } from '@/utils/colors'
+import { COLORS_ENUM, colors } from '@/utils/colors'
 import React, { useCallback, useState } from 'react'
 import styled from 'styled-components'
 import VolumeUpFillIcon from 'remixicon-react/VolumeUpFillIcon'
@@ -78,7 +78,7 @@ export default function WordLearningItem({ vocabulary, clickHandler }: PropTypes
         {!isDone ? (
           <StyledButton
             label={isTranslated ? 'NEXT' : 'TRANSLATE'}
-            color="green"
+            color={COLORS_ENUM.GREEN}
             onClick={handleTranslateClick}
             size="medium"
             disabled={false}
@@ -86,7 +86,7 @@ export default function WordLearningItem({ vocabulary, clickHandler }: PropTypes
         ) : (
           <StyledButton
             label={'NEXT EXERCISE'}
-            color="green"
+            color={COLORS_ENUM.GREEN}
             size="medium"
             disabled={false}
             onClick={handleNextExercise}

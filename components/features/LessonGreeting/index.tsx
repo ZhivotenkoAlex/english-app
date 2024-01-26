@@ -1,4 +1,4 @@
-import { colors } from '@/utils/colors'
+import { COLORS_ENUM, colors } from '@/utils/colors'
 import React from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
@@ -32,10 +32,10 @@ export default function LessonGreeting({ lesson }: PropType) {
       <Text>Тепер бажано відпочити та зі свіжими силами до наступного уроку!</Text>
       <ButtonContainer>
         <Link href={ROUTES.DASHBOARD}>
-          <StyledButton label={'Home page'} color="green" variant="contained" />
+          <StyledButton label={'Home page'} color={COLORS_ENUM.GREEN} variant="contained" />
         </Link>
         <Link href={ROUTES.LESSONS}>
-          <StyledButton label={'Lessons'} color="green" variant="contained" />
+          <StyledButton label={'Lessons'} color={COLORS_ENUM.GREEN} variant="contained" />
         </Link>
       </ButtonContainer>
     </Root>
