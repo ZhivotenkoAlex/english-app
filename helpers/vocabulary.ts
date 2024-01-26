@@ -69,12 +69,12 @@ export const VOCABULARY_TRAININGS = [
     path: '/crossword',
   },
   {
-    title: 'Articles',
+    title: 'Forest',
     titleColor: 'black',
-    subtitle: '2 articles',
+    subtitle: '10 words',
     gridArea: '4/4/5/5',
     background: img8,
-    path: '/articles',
+    path: '/forest',
   },
   {
     title: 'Sentence builder',

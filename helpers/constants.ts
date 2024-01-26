@@ -1170,7 +1170,7 @@ export const lessonsSubtitles = {
 
 export const PracticeTasks = {
   input: 'Write the correct form',
-  select_one: 'Choose the correct alternative',
+  select_one: 'Choose the correct',
   correct: 'Correct the mistake',
   construct: 'Put together',
   translate: 'Translate the phrase',

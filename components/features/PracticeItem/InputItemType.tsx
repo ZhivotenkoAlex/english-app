@@ -60,6 +60,7 @@ const InputContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 10px;
+  flex-wrap: wrap;
 `
 
 const StyledTextField = styled(TextField)<{ error: boolean }>`
@@ -74,5 +75,4 @@ const StyledTextField = styled(TextField)<{ error: boolean }>`
 
 const Word = styled.span`
   font-size: 20px;
-  text-wrap: nowrap;
 `

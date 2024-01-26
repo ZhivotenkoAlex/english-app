@@ -97,6 +97,7 @@ const Container = styled.div`
   background: ${colors.lightBlue};
   width: fit-content;
   border-radius: 16px;
+  flex-wrap: wrap;
 `
 
 const StyledTextField = styled(TextField)<{ error: boolean }>`
