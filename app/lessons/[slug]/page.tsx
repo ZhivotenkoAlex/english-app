@@ -18,6 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `Lesson | ${lesson?.slug.replace(/_/g, ' ')}`,
+    description: 'Easy way to learn English',
   }
 }
 

@@ -18,6 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const capitalizedName = capitalizedWord(articleName)
   return {
     title: `Reading | ${capitalizedName}`,
+    description: 'Easy way to learn English',
   }
 }
 
