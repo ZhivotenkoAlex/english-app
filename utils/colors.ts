@@ -18,6 +18,7 @@ export const colors = {
 
 export enum COLORS_ENUM {
   BLUE = 'BLUE',
+  LIGHT_BLUE = 'LIGHT_BLUE',
   GREY = 'GREY',
   DARK_GREY = 'DARK_GREY',
   LIGHT_GREY = 'LIGHT_GREY',
@@ -30,6 +31,7 @@ export enum COLORS_ENUM {
 
 export const COLOR: { [key: string]: string } = {
   [COLORS_ENUM.BLUE]: colors.blue,
+  [COLORS_ENUM.LIGHT_BLUE]: colors.lightBlue,
   [COLORS_ENUM.DARK]: colors.dark,
   [COLORS_ENUM.DARK_GREY]: colors.darkGrey,
   [COLORS_ENUM.LIGHT_GREY]: colors.lightGrey,

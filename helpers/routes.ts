@@ -9,6 +9,7 @@ enum ROUTES {
   DICTIONARY = '/dictionary',
   USER_PROFILE = '/profile',
   RESTORE_PASSWORD = '/restore',
+  READING = '/reading',
 }
 
 export default ROUTES

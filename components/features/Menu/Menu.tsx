@@ -5,7 +5,7 @@ import { SideBar } from '../BurgerMenu'
 import { useMediaQuery } from '@mui/material'
 
 function Menu() {
-  const isBurgerShown = useMediaQuery('(min-width:1024px)')
+  const isBurgerShown = useMediaQuery('(min-width:1439px)')
   const MENU_ITEMS = [
     {
       id: 0,
@@ -33,6 +33,11 @@ function Menu() {
       id: 4,
       label: 'Dictionary',
       path: ROUTES.DICTIONARY,
+    },
+    {
+      id: 5,
+      label: 'Reading',
+      path: ROUTES.READING,
     },
   ]
   return isBurgerShown ? (

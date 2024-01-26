@@ -4,11 +4,6 @@ import { content } from '@/helpers/ArticlesData'
 import { Metadata, ResolvingMetadata } from 'next'
 import React from 'react'
 
-// export const metadata: Metadata = {
-//   title: 'Vocabulary',
-//   description: 'Easy way to learn English',
-// }
-
 type Props = {
   params: { slug: string }
   searchParams: { [key: string]: string | string[] | undefined }
@@ -25,7 +20,7 @@ export async function generateMetadata(
   const articleName = slug.replace(/_/g, ' ')
   const capitalizedName = capitalizedWord(articleName)
   return {
-    title: ` Articles | ${capitalizedName}`,
+    title: `Reading | ${capitalizedName}`,
   }
 }
 

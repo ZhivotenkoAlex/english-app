@@ -1153,6 +1153,13 @@ export const DashboardItems = [
     imageName: 'dictionary',
     path: ROUTES.DICTIONARY,
   },
+  {
+    id: '5',
+    title: 'Читанка',
+    subtitle: 'Читай тексти з підказками',
+    imageName: 'reading',
+    path: ROUTES.READING,
+  },
 ]
 
 export const lessonsSubtitles = {

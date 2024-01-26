@@ -1,6 +1,6 @@
 'use client'
 import TranslateWordPopover from '@/components/molecules/TranslateWordPopover'
-import { colors } from '@/utils/colors'
+import { COLORS_ENUM, colors } from '@/utils/colors'
 import React, { SyntheticEvent, useState } from 'react'
 import styled from 'styled-components'
 import Button from '../molecules/Button/Button'
@@ -72,7 +72,7 @@ export default function SingleArticlePage({ content }: PropTypes) {
         handleClose={handleClose}
       />
       <ButtonContainer href={`${ROUTES.VOCABULARY}/articles`}>
-        <Button fontColor={colors.lightWhite} label={'Back to articles'} />
+        <Button fontColor={COLORS_ENUM.LIGHT_WHITE} label={'Back to articles'} />
       </ButtonContainer>
     </Root>
   )

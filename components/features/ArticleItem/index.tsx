@@ -13,7 +13,7 @@ type PropTypes = {
 export default function ArticleItem({ content }: PropTypes) {
   const { slug, status, image, data } = content
   return (
-    <Root href={`${ROUTES.VOCABULARY}/articles/${slug}`}>
+    <Root href={`${ROUTES.READING}/${slug}`}>
       <Container>
         <StyledImage src={`/images/${image}.jpg`} alt="word cloud" width={200} height={140} />
         <Description>

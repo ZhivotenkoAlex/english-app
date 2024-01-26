@@ -2,7 +2,7 @@ import ArticlesPage from '@/components/pages/ArticlesPage'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Vocabulary | Articles',
+  title: 'Reading',
   description: 'Easy way to learn English',
 }
 
