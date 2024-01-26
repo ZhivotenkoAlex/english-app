@@ -1,7 +1,7 @@
 import SingleLessonPage from '@/components/pages/SingleLessonPage'
 import { Lessons } from '@/helpers/constants'
 import { LessonType } from '@/types'
-import { Metadata, ResolvingMetadata } from 'next'
+import { Metadata } from 'next'
 import React from 'react'
 
 type Props = {
@@ -9,10 +9,7 @@ type Props = {
   searchParams: { [key: string]: string | string[] | undefined }
 }
 
-export async function generateMetadata(
-  { params, searchParams }: Props,
-  parent: ResolvingMetadata,
-): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // read route params
   const slug = params.slug
 
