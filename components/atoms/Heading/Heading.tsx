@@ -1,10 +1,8 @@
 import { COLOR, COLORS_ENUM } from '../../../utils/colors'
 
-type HeadingColor = keyof typeof COLORS_ENUM
-
 interface IHeading {
   size?: number
-  color: HeadingColor
+  color: COLORS_ENUM
   title: string
   fontWeight?: number
 }

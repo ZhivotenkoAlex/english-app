@@ -8,12 +8,12 @@ interface IButton {
   label: string
   variant?: ButtonVariant
   onClick?: () => void
-  color?: keyof typeof COLORS_ENUM
+  color?: COLORS_ENUM
   size?: ButtonSize
   disabled?: boolean
   fullWidth?: boolean
   type?: ButtonType
-  fontColor?: keyof typeof COLORS_ENUM
+  fontColor?: COLORS_ENUM
   width?: string
 }
 
