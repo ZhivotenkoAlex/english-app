@@ -8,6 +8,7 @@ import Link from '../../atoms/Link/Link'
 import { useRouter } from 'next/router'
 import FullScreenWrapper from '../../atoms/FullScreenWrapper/FullScreenWrapper'
 import ROUTES from '@/helpers/routes'
+import { COLORS_ENUM } from '@/utils/colors'
 
 function RestorePasswordModal() {
   const router = useRouter()
@@ -25,8 +26,8 @@ function RestorePasswordModal() {
     <FullScreenWrapper>
       <ModalWrapper>
         <Heading
-          color={'DARK'}
-          title="На указанный e-mail будет отправлено письмо со ссылкой для сброса пароля"
+          color={COLORS_ENUM.DARK}
+          title="На вказаний e-mail буде надіслано лист з посиланням для скидання паролю"
           size={14}
         />
         <Form>
@@ -35,8 +36,8 @@ function RestorePasswordModal() {
           <Button
             onClick={() => {}}
             disabled
-            label="Создать аккаунт"
-            color={'GREEN'}
+            label="Створити акаунт"
+            color={COLORS_ENUM.GREEN}
             size="large"
           />
           <Link onClick={navigateToLoginModal} size={14} title={'Назад'} color="blue" />

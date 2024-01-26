@@ -1,5 +1,6 @@
 import Button from '@/components/molecules/Button/Button'
 import WordDeleteButton from '@/components/molecules/WordDeleteButton/WordDeleteButton'
+import { COLORS_ENUM } from '@/utils/colors'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -22,7 +23,7 @@ function ExerciseControlsButtons({
       {exerciseInProgress ? (
         <Button
           label="Skip"
-          color="GREY"
+          color={COLORS_ENUM.GREY}
           variant="contained"
           size="large"
           onClick={handleSkipWord}
@@ -30,7 +31,7 @@ function ExerciseControlsButtons({
       ) : (
         <Button
           label="Next"
-          color="GREEN"
+          color={COLORS_ENUM.GREEN}
           variant="contained"
           size="large"
           onClick={handleNextWord}

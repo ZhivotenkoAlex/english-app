@@ -8,6 +8,7 @@ import Button from '../../molecules/Button/Button'
 import Link from '../../atoms/Link/Link'
 import BackButton from '../../molecules/BackButton/BackButton'
 import ROUTES from '@/helpers/routes'
+import { COLORS_ENUM } from '@/utils/colors'
 
 function RegistrationModal() {
   const [email, setEmail] = useState('')
@@ -26,7 +27,7 @@ function RegistrationModal() {
   return (
     <ModalWrapper>
       <BackButton />
-      <Heading color={'DARK'} title="Бесплатная регистрация" size={16} />
+      <Heading color={COLORS_ENUM.DARK} title="Реєстрація" size={16} />
       <Form>
         <Input type="email" value={email} placeholder="Email" onChange={handleChangeEmail} />
         <Input
@@ -35,13 +36,14 @@ function RegistrationModal() {
           placeholder="Password"
           onChange={handleChangePassword}
         />
-        <Button onClick={() => {}} disabled label="Создать аккаунт" color={'GREEN'} size="large" />
-        <Link
-          onClick={navigateToLoginModal}
-          size={14}
-          title={'У меня уже есть аккаунт'}
-          color="blue"
+        <Button
+          onClick={() => {}}
+          disabled
+          label="Створити акаунт"
+          color={COLORS_ENUM.GREEN}
+          size="large"
         />
+        <Link onClick={navigateToLoginModal} size={14} title={'У мене уже є акаунт'} color="blue" />
       </Form>
     </ModalWrapper>
   )

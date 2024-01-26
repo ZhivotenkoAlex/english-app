@@ -7,6 +7,7 @@ import Link from 'next/link'
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
 import ResultWordsList from '../ResultWordsList/ResultWordsList'
+import { COLORS_ENUM } from '@/utils/colors'
 
 interface IResultModal {
   handleRepeat: () => void
@@ -28,10 +29,10 @@ function ResultModal({ handleRepeat, learnedWords, wrongWords }: IResultModal) {
         <Content>
           <TitleSubtitleComponent reverse title={status.title} subtitle={subtitle} />
           <ResultWordsList wrongWords={wrongWords} learnedWords={learnedWords} />
-          <Button label="Повторити" color="BLUE" onClick={handleRepeat} />
+          <Button label="Повторити" color={COLORS_ENUM.BLUE} onClick={handleRepeat} />
           <LinkWrapper>
             <Link href={'/vocabulary'}>
-              <Button label="Закрити" color="GREY" onClick={() => {}} fullWidth />
+              <Button label="Закрити" color={COLORS_ENUM.GREY} onClick={() => {}} fullWidth />
             </Link>
           </LinkWrapper>
         </Content>
