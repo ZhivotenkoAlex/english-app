@@ -6,11 +6,23 @@ import { Chip } from '@mui/material'
 import styled from 'styled-components'
 import { colors } from '@/utils/colors'
 
+enum AnswerStatus {
+  PENDING = 'pending',
+  WRONG = 'wrong',
+  SUCCESS = 'success',
+}
+
+const ContainerColors = {
+  [AnswerStatus.PENDING]: colors.lightGreen,
+  [AnswerStatus.SUCCESS]: colors.green,
+  [AnswerStatus.WRONG]: colors.lightWarning,
+}
+
 export default function ForestItem({ inProgress, handleProgress }: any) {
   const [activeIndex, setActiveIndex] = useState(0)
   const [activeWord, setActiveWord] = useState(forestData[activeIndex])
   const [answer, setAnswer] = useState('')
-  const [isWrong, setIsWrong] = useState(false)
+  const [answerStatus, setAnswerStatus] = useState<AnswerStatus>(AnswerStatus.PENDING)
   const [errorCount, setErrorCount] = useState(0)
 
   useEffect(() => {
@@ -19,7 +31,7 @@ export default function ForestItem({ inProgress, handleProgress }: any) {
 
   const handleChangeWord = () => {
     setActiveIndex(prev => prev + 1)
-    setIsWrong(false)
+    setAnswerStatus(AnswerStatus.PENDING)
     setAnswer('')
   }
   const handleFinish = () => handleProgress(true)
@@ -34,39 +46,35 @@ export default function ForestItem({ inProgress, handleProgress }: any) {
     textContent && setAnswer(textContent)
 
     if (textContent !== activeWord.answer) {
-      setIsWrong(true)
+      setAnswerStatus(AnswerStatus.WRONG)
       setErrorCount(prev => prev + 1)
     } else {
-      setIsWrong(false)
+      setAnswerStatus(AnswerStatus.SUCCESS)
     }
   }
 
   return (
-    <>
-      <Root>
-        <>
-          <ProgressTimer
-            rounds={forestData.length}
-            handleChangeWord={handleChangeWord}
-            handleFinish={handleFinish}
+    <Root>
+      <ProgressTimer
+        rounds={forestData.length}
+        handleChangeWord={handleChangeWord}
+        handleFinish={handleFinish}
+      />
+      <WordContainer $hasError={answerStatus}>
+        <Word>{activeWord.questionText}</Word>
+        <Word>{errorCount}</Word>
+      </WordContainer>
+      <ChipContainer>
+        {activeWord.variants.map(item => (
+          <StyledChip
+            $isActive={answer === item.answerText}
+            key={item.id}
+            label={item.answerText}
+            onClick={handleChipClick}
           />
-          <Container $hasError={isWrong}>
-            <Word>{activeWord.questionText}</Word>
-            <Word>{errorCount}</Word>
-          </Container>
-          <ChipContainer>
-            {activeWord.variants.map(item => (
-              <StyledChip
-                $isActive={answer === item.answerText}
-                key={item.id}
-                label={item.answerText}
-                onClick={handleChipClick}
-              />
-            ))}
-          </ChipContainer>
-        </>
-      </Root>
-    </>
+        ))}
+      </ChipContainer>
+    </Root>
   )
 }
 
@@ -78,6 +86,7 @@ const Root = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 180px;
+
   @media screen and (max-width: 1023px) {
     flex-direction: column;
     align-items: center;
@@ -87,15 +96,18 @@ const Root = styled.div`
   }
 `
 
-const Container = styled.div<{ $hasError: boolean }>`
+const WordContainer = styled.div<{ $hasError: AnswerStatus }>`
   display: flex;
   align-items: center;
   gap: 20px;
   margin: 20px 0;
   padding: 25px;
-  background: ${props => (props.$hasError === true ? colors.lightWarning : colors.green)};
+  background: ${props => ContainerColors[props.$hasError]};
   width: fit-content;
   border-radius: 16px;
+  box-shadow:
+    rgba(0, 0, 0, 0.16) 0px 3px 6px,
+    rgba(0, 0, 0, 0.23) 0px 3px 6px;
   @media screen and (max-width: 767px) {
     margin-bottom: 10px;
   }
@@ -129,6 +141,9 @@ const ChipContainer = styled.div`
   border-radius: 16px;
   flex-wrap: wrap;
   grid-template-columns: repeat(4, 1fr);
+  box-shadow:
+    rgba(0, 0, 0, 0.16) 0px 3px 6px,
+    rgba(0, 0, 0, 0.23) 0px 3px 6px;
   @media screen and (max-width: 1023px) {
     grid-template-columns: repeat(2, 1fr);
   }

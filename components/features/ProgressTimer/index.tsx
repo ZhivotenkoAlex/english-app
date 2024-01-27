@@ -1,5 +1,5 @@
 import { colors } from '@/utils/colors'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import styled from 'styled-components'
 
@@ -39,8 +39,7 @@ export default function ProgressTimer({
     const passedRounds = Math.ceil(totalElapsedTime / minuteSeconds)
     if (passedRounds < rounds) {
       handleChangeWord()
-    }
-    if (passedRounds >= rounds) {
+    } else {
       handleFinish()
     }
     return {
