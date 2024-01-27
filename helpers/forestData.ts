@@ -2,8 +2,8 @@ import { v4 as uuid } from 'uuid'
 export const forestData = [
   {
     id: uuid(),
-    answer: 'злитися на',
-    questionText: 'angry with',
+    translation: 'злитися на',
+    title: 'angry with',
     variants: [
       {
         id: uuid(),
@@ -25,8 +25,8 @@ export const forestData = [
   },
   {
     id: uuid(),
-    answer: 'м`який; ніжний',
-    questionText: 'balmy',
+    translation: 'м`який; ніжний',
+    title: 'balmy',
     variants: [
       {
         id: uuid(),
@@ -48,8 +48,8 @@ export const forestData = [
   },
   {
     id: uuid(),
-    answer: 'comprehend',
-    questionText: 'comprehend',
+    translation: 'розуміти',
+    title: 'comprehend',
     variants: [
       {
         id: uuid(),
@@ -71,8 +71,8 @@ export const forestData = [
   },
   {
     id: uuid(),
-    answer: 'невиразне мовлення',
-    questionText: 'gibber',
+    translation: 'невиразне мовлення',
+    title: 'gibber',
     variants: [
       {
         id: uuid(),
@@ -94,8 +94,8 @@ export const forestData = [
   },
   {
     id: uuid(),
-    answer: 'важко',
-    questionText: 'harsh',
+    translation: 'важко',
+    title: 'harsh',
     variants: [
       {
         id: uuid(),
@@ -117,8 +117,8 @@ export const forestData = [
   },
   {
     id: uuid(),
-    answer: 'довірливий',
-    questionText: 'trusting',
+    translation: 'довірливий',
+    title: 'trusting',
     variants: [
       {
         id: uuid(),
@@ -140,8 +140,8 @@ export const forestData = [
   },
   {
     id: uuid(),
-    answer: 'гуманний',
-    questionText: 'humane',
+    translation: 'гуманний',
+    title: 'humane',
     variants: [
       {
         id: uuid(),

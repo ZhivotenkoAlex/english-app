@@ -2,16 +2,31 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import ForestItem from '../features/ForestItem'
+import { forestData } from '@/helpers/forestData'
+import ResultModal from '../features/ResultModal/ResultModal'
 
 export default function ForestPage() {
-  const [inProgress, setInProgress] = useState(false)
+  const [isFinished, setIsFinished] = useState(false)
+  const [wrongWords, setWrongWords] = useState<any>([])
+  const handleWrongWords = (wordItem: any) => setWrongWords(prev => [...prev, wordItem] as never)
+  const learnedWords = forestData.filter(el => !wrongWords.includes(el))
+
+  const handleRepeat = () => setIsFinished(false)
 
   return (
     <Root>
-      {inProgress ? (
-        'Finished'
+      {isFinished ? (
+        <ResultModal
+          handleRepeat={handleRepeat}
+          wrongWords={wrongWords}
+          learnedWords={learnedWords as any}
+        />
       ) : (
-        <ForestItem inProgress={inProgress} handleProgress={setInProgress} />
+        <ForestItem
+          forestData={forestData}
+          handleProgress={setIsFinished}
+          handleWrongWords={handleWrongWords}
+        />
       )}
     </Root>
   )

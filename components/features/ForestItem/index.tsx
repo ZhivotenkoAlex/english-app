@@ -1,7 +1,7 @@
 'use client'
 import React, { SyntheticEvent, useEffect, useState } from 'react'
 import ProgressTimer from '../ProgressTimer'
-import { forestData } from '@/helpers/forestData'
+
 import { Chip } from '@mui/material'
 import styled from 'styled-components'
 import { colors } from '@/utils/colors'
@@ -18,7 +18,7 @@ const ContainerColors = {
   [AnswerStatus.WRONG]: colors.lightWarning,
 }
 
-export default function ForestItem({ inProgress, handleProgress }: any) {
+export default function ForestItem({ forestData, handleProgress, handleWrongWords }: any) {
   const [activeIndex, setActiveIndex] = useState(0)
   const [activeWord, setActiveWord] = useState(forestData[activeIndex])
   const [answer, setAnswer] = useState('')
@@ -27,7 +27,7 @@ export default function ForestItem({ inProgress, handleProgress }: any) {
 
   useEffect(() => {
     setActiveWord(forestData[activeIndex])
-  }, [activeIndex])
+  }, [activeIndex, forestData])
 
   const handleChangeWord = () => {
     setActiveIndex(prev => prev + 1)
@@ -45,8 +45,9 @@ export default function ForestItem({ inProgress, handleProgress }: any) {
 
     textContent && setAnswer(textContent)
 
-    if (textContent !== activeWord.answer) {
+    if (textContent !== activeWord.translation) {
       setAnswerStatus(AnswerStatus.WRONG)
+      handleWrongWords(activeWord)
       setErrorCount(prev => prev + 1)
     } else {
       setAnswerStatus(AnswerStatus.SUCCESS)
@@ -61,7 +62,7 @@ export default function ForestItem({ inProgress, handleProgress }: any) {
         handleFinish={handleFinish}
       />
       <WordContainer $hasError={answerStatus}>
-        <Word>{activeWord.questionText}</Word>
+        <Word>{activeWord.title}</Word>
         <Word>{errorCount}</Word>
       </WordContainer>
       <ChipContainer>
