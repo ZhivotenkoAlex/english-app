@@ -7,10 +7,10 @@ type ColorHex = `#${string}`
 
 type MultipleColors = { 0: ColorHex } & { 1: ColorHex } & ColorHex[]
 
-const minuteSeconds = 3
+const minuteSeconds = 5
 
 const timerProps = {
-  isPlaying: false,
+  isPlaying: true,
   size: 120,
   strokeWidth: 6,
 }

@@ -9,6 +9,7 @@ import { colors } from '@/utils/colors'
 export default function ForestItem({ inProgress, handleProgress }: any) {
   const [activeIndex, setActiveIndex] = useState(0)
   const [activeWord, setActiveWord] = useState(forestData[activeIndex])
+  const [answer, setAnswer] = useState('')
   const [isWrong, setIsWrong] = useState(false)
   const [errorCount, setErrorCount] = useState(0)
 
@@ -19,18 +20,22 @@ export default function ForestItem({ inProgress, handleProgress }: any) {
   const handleChangeWord = () => {
     setActiveIndex(prev => prev + 1)
     setIsWrong(false)
+    setAnswer('')
   }
   const handleFinish = () => handleProgress(true)
+
   const handleChipClick = (e: SyntheticEvent) => {
     const { textContent } = e.target as HTMLButtonElement
-    if (isWrong === true) {
+
+    if (answer !== '') {
       return
     }
-    if (textContent !== activeWord.answer && isWrong === false) {
+
+    textContent && setAnswer(textContent)
+
+    if (textContent !== activeWord.answer) {
       setIsWrong(true)
       setErrorCount(prev => prev + 1)
-    } else if (textContent !== activeWord.answer) {
-      return
     } else {
       setIsWrong(false)
     }
@@ -39,30 +44,27 @@ export default function ForestItem({ inProgress, handleProgress }: any) {
   return (
     <>
       <Root>
-        {inProgress ? (
-          'Finished'
-        ) : (
-          <>
-            <ProgressTimer
-              rounds={forestData.length}
-              handleChangeWord={handleChangeWord}
-              handleFinish={handleFinish}
-            />
-            <Container $hasError={isWrong}>
-              <Word>{activeWord.questionText}</Word>
-            </Container>
-            <ChipContainer>
-              {activeWord.variants.map(item => (
-                <StyledChip
-                  $isActive={activeWord.answer === item.answerText}
-                  key={item.id}
-                  label={item.answerText}
-                  onClick={handleChipClick}
-                />
-              ))}
-            </ChipContainer>
-          </>
-        )}
+        <>
+          <ProgressTimer
+            rounds={forestData.length}
+            handleChangeWord={handleChangeWord}
+            handleFinish={handleFinish}
+          />
+          <Container $hasError={isWrong}>
+            <Word>{activeWord.questionText}</Word>
+            <Word>{errorCount}</Word>
+          </Container>
+          <ChipContainer>
+            {activeWord.variants.map(item => (
+              <StyledChip
+                $isActive={answer === item.answerText}
+                key={item.id}
+                label={item.answerText}
+                onClick={handleChipClick}
+              />
+            ))}
+          </ChipContainer>
+        </>
       </Root>
     </>
   )
