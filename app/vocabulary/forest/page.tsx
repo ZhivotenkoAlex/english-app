@@ -1,4 +1,4 @@
-import PageContainer from '@/components/atoms/PageContainer/PageContainer'
+import ForestPage from '@/components/pages/ForestPage'
 import { Metadata } from 'next'
 import React from 'react'
 
@@ -8,9 +8,5 @@ export const metadata: Metadata = {
 }
 
 export default function Forest() {
-  return (
-    <PageContainer>
-      <div>Forest</div>
-    </PageContainer>
-  )
+  return <ForestPage />
 }

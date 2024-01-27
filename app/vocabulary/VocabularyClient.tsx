@@ -9,12 +9,12 @@ function VocabularyClient() {
   const [trainings, setTrainings] = useState(VOCABULARY_TRAININGS)
   const isTablet = useMediaQuery('(max-width:900px)')
 
-  useEffect(() => {
-    if (isTablet) {
-      let arr = trainings.filter(item => !tabletVersionTrainings.includes(item.title))
-      setTrainings(arr)
-    }
-  }, [isTablet, trainings])
+  // useEffect(() => {
+  //   // if (isTablet) {
+  //   let arr = trainings.filter(item => !tabletVersionTrainings.includes(item.title))
+  //   setTrainings(arr)
+  //   // }
+  // }, [isTablet, trainings])
 
   return (
     <Wrapper>
