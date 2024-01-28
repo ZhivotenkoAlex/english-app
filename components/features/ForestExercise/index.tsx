@@ -33,7 +33,6 @@ export default function ForestExercise({
   const [activeWord, setActiveWord] = useState(forestData[activeIndex])
   const [answer, setAnswer] = useState('')
   const [answerStatus, setAnswerStatus] = useState<AnswerStatus>(AnswerStatus.PENDING)
-  const [errorCount, setErrorCount] = useState(0)
 
   useEffect(() => {
     setActiveWord(forestData[activeIndex])
@@ -64,7 +63,6 @@ export default function ForestExercise({
     if (textContent !== activeWord.translation) {
       setAnswerStatus(AnswerStatus.WRONG)
       handleWrongWords(activeWord)
-      setErrorCount(prev => prev + 1)
     } else {
       setAnswerStatus(AnswerStatus.SUCCESS)
     }
@@ -72,6 +70,11 @@ export default function ForestExercise({
 
   return (
     <Root>
+      <CountContainer>
+        <Word>
+          {activeIndex + 1} / {forestData.length}
+        </Word>
+      </CountContainer>
       <ProgressTimer
         rounds={forestData.length}
         handleChangeWord={handleChangeWord}
@@ -96,20 +99,45 @@ export default function ForestExercise({
 }
 
 const Root = styled.div`
-  margin: 0 auto;
+  margin: 0 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   justify-content: center;
   align-items: center;
   min-height: 180px;
+  width: 70%;
+
+  border: 1px solid ${colors.green};
+  padding: 24px;
+  border-radius: 16px;
+
+  @media screen and (max-width: 1439px) {
+    width: 95%;
+  }
 
   @media screen and (max-width: 1023px) {
     flex-direction: column;
     align-items: center;
   }
   @media screen and (max-width: 767px) {
-    max-width: 100%;
+    min-width: 100%;
+    border: none;
+    padding: 0;
+    border-radius: 16px;
+  }
+`
+
+const CountContainer = styled.div`
+  display: flex;
+  padding: 15px;
+  border-radius: 16px;
+  align-self: flex-end;
+  box-shadow:
+    rgba(0, 0, 0, 0.16) 0px 3px 6px,
+    rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  @media screen and (max-width: 767px) {
+    margin-right: 20px;
   }
 `
 
@@ -154,7 +182,8 @@ const ChipContainer = styled.div`
   margin: 20px auto;
   padding: 25px;
   background: ${colors.lightBlue};
-  width: fit-content;
+  /* width: fit-content; */
+  min-width: 100%;
   border-radius: 16px;
   flex-wrap: wrap;
   grid-template-columns: repeat(4, 1fr);

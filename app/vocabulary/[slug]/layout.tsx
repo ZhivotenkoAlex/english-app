@@ -1,7 +1,7 @@
 'use client'
 import BreadCrumbs from '@/components/features/Breadcrumbs'
 import ExerciseCloseBlock from '@/components/molecules/ExerciseCloseBlock/ExerciseCloseBlock'
-import ExerciseNameBlock from '@/components/molecules/ExerciseNameBlock/ExerciseNameBlock'
+// import ExerciseNameBlock from '@/components/molecules/ExerciseNameBlock/ExerciseNameBlock'
 import { capitalizedWord } from '@/helpers/capitalized'
 import ROUTES from '@/helpers/routes'
 import styled from 'styled-components'

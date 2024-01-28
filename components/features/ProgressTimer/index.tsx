@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import ProgressTimerContent from './ProgressTimerContent'
 
 export default function ProgressTimer({
-  rounds = 5,
+  rounds,
   handleChangeWord,
   handleFinish,
   handleNoAnswer,
