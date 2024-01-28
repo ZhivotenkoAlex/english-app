@@ -1,6 +1,6 @@
 import PageContainer from '../../components/atoms/PageContainer/PageContainer'
 import ClientOnlyProvider from '@/components/features/ClientOnlyProvider/ClientOnlyProvider'
-import VocabularyClient from './VocabularyClient'
+import VocabularyClient from '../../components/molecules/VocabularyClient/VocabularyClient'
 import EmptyState from '@/components/features/EmptyState/EmptyState'
 import { Metadata } from 'next'
 

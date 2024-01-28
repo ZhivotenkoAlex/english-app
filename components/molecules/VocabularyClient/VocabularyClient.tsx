@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import TrainingCard from './TrainingCard'
+import TrainingCard from '../TrainingCard/TrainingCard'
 import VOCABULARY_TRAININGS, { tabletVersionTrainings } from '@/helpers/vocabulary'
 import { useMediaQuery } from '@mui/material'
 
@@ -9,12 +9,14 @@ function VocabularyClient() {
   const [trainings, setTrainings] = useState(VOCABULARY_TRAININGS)
   const isTablet = useMediaQuery('(max-width:900px)')
 
-  // useEffect(() => {
-  //   // if (isTablet) {
-  //   let arr = trainings.filter(item => !tabletVersionTrainings.includes(item.title))
-  //   setTrainings(arr)
-  //   // }
-  // }, [isTablet, trainings])
+  useEffect(() => {
+    if (isTablet) {
+      let arr = trainings.filter(item => !tabletVersionTrainings.includes(item.title))
+      setTrainings(arr)
+    } else {
+      setTrainings(trainings)
+    }
+  }, [isTablet, trainings])
 
   return (
     <Wrapper>
