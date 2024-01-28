@@ -1,4 +1,5 @@
 'use client'
+import BreadCrumbs from '@/components/features/Breadcrumbs'
 import ExerciseCloseBlock from '@/components/molecules/ExerciseCloseBlock/ExerciseCloseBlock'
 import ExerciseNameBlock from '@/components/molecules/ExerciseNameBlock/ExerciseNameBlock'
 import { capitalizedWord } from '@/helpers/capitalized'
@@ -15,7 +16,8 @@ export default function VocabularyExercisesLayout({ params, children }: PropType
   return (
     <section>
       <PageMenuContainer>
-        <ExerciseNameBlock title={pageTitle} subtitle={'Vocabulary Training'} />
+        <BreadCrumbs />
+        {/* <ExerciseNameBlock title={pageTitle} subtitle={'Vocabulary Training'} /> */}
         <ExerciseCloseBlock link={ROUTES.VOCABULARY} />
       </PageMenuContainer>
       {children}

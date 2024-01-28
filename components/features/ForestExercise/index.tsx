@@ -80,7 +80,6 @@ export default function ForestExercise({
       />
       <WordContainer $hasError={answerStatus}>
         <Word>{activeWord.title}</Word>
-        <Word>{errorCount}</Word>
       </WordContainer>
       <ChipContainer>
         {activeWord.variants.map(item => (
