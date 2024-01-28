@@ -1,32 +1,22 @@
 'use client'
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import ForestItem from '../features/ForestItem'
-import { forestData } from '@/helpers/forestData'
-import ResultModal from '../features/ResultModal/ResultModal'
+import StartTimer from '../features/StartTimer'
+import ForestContent from '../features/ForestContent'
 
 export default function ForestPage() {
-  const [isFinished, setIsFinished] = useState(false)
-  const [wrongWords, setWrongWords] = useState<any>([])
-  const handleWrongWords = (wordItem: any) => setWrongWords(prev => [...prev, wordItem] as never)
-  const learnedWords = forestData.filter(el => !wrongWords.includes(el))
+  const [isStarted, setStarted] = useState(false)
 
-  const handleRepeat = () => setIsFinished(false)
+  const handleTimerOut = () => {
+    setStarted(true)
+  }
 
   return (
     <Root>
-      {isFinished ? (
-        <ResultModal
-          handleRepeat={handleRepeat}
-          wrongWords={wrongWords}
-          learnedWords={learnedWords as any}
-        />
+      {isStarted ? (
+        <ForestContent handleStarted={setStarted} />
       ) : (
-        <ForestItem
-          forestData={forestData}
-          handleProgress={setIsFinished}
-          handleWrongWords={handleWrongWords}
-        />
+        <StartTimer handleTimerOut={handleTimerOut} />
       )}
     </Root>
   )

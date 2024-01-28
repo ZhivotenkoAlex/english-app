@@ -1,47 +1,29 @@
-import { colors } from '@/utils/colors'
+import CountdownTimer from '@/components/molecules/CountdownTimer'
 import React from 'react'
-import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import styled from 'styled-components'
-
-type ColorHex = `#${string}`
-
-type MultipleColors = { 0: ColorHex } & { 1: ColorHex } & ColorHex[]
-
-const minuteSeconds = 5
-
-const timerProps = {
-  isPlaying: true,
-  size: 120,
-  strokeWidth: 6,
-}
-
-const renderTime = (dimension: string, time: number) => {
-  return (
-    <div>
-      <Timer>{time}</Timer>
-      <div>{dimension}</div>
-    </div>
-  )
-}
-
-const getTimeSeconds = (time: number) => (minuteSeconds - time + 1) | 0
+import ProgressTimerContent from './ProgressTimerContent'
 
 export default function ProgressTimer({
   rounds = 5,
   handleChangeWord,
   handleFinish,
+  handleNoAnswer,
 }: {
   rounds: number
   handleChangeWord: any
   handleFinish: () => void
+  handleNoAnswer: () => void
 }) {
+  const minuteSeconds = 5
   const handleComplete = (totalElapsedTime: number) => {
     const passedRounds = Math.ceil(totalElapsedTime / minuteSeconds)
+    handleNoAnswer()
     if (passedRounds < rounds) {
       handleChangeWord()
     } else {
       handleFinish()
     }
+
     return {
       shouldRepeat: passedRounds < rounds,
     }
@@ -49,18 +31,7 @@ export default function ProgressTimer({
 
   return (
     <Root>
-      <CountdownCircleTimer
-        {...timerProps}
-        colors={[colors.green, colors.orange, colors.red] as MultipleColors}
-        colorsTime={[4, 2, 0]}
-        duration={minuteSeconds}
-        initialRemainingTime={minuteSeconds - 1}
-        onComplete={handleComplete}
-      >
-        {({ elapsedTime, color }) => (
-          <span style={{ color }}>{renderTime('seconds', getTimeSeconds(elapsedTime))}</span>
-        )}
-      </CountdownCircleTimer>
+      <CountdownTimer onComplete={handleComplete} RenderTime={ProgressTimerContent} />
     </Root>
   )
 }
@@ -71,7 +42,4 @@ const Root = styled.div`
   font-family: sans-serif;
   text-align: center;
   padding-top: 40px;
-`
-const Timer = styled.div`
-  font-size: 32px;
 `

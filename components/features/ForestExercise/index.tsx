@@ -1,7 +1,6 @@
 'use client'
 import React, { SyntheticEvent, useEffect, useState } from 'react'
 import ProgressTimer from '../ProgressTimer'
-
 import { Chip } from '@mui/material'
 import styled from 'styled-components'
 import { colors } from '@/utils/colors'
@@ -18,7 +17,7 @@ const ContainerColors = {
   [AnswerStatus.WRONG]: colors.lightWarning,
 }
 
-export default function ForestItem({ forestData, handleProgress, handleWrongWords }: any) {
+export default function ForestExercise({ forestData, handleProgress, handleWrongWords }: any) {
   const [activeIndex, setActiveIndex] = useState(0)
   const [activeWord, setActiveWord] = useState(forestData[activeIndex])
   const [answer, setAnswer] = useState('')
@@ -35,6 +34,12 @@ export default function ForestItem({ forestData, handleProgress, handleWrongWord
     setAnswer('')
   }
   const handleFinish = () => handleProgress(true)
+
+  const handleNoAnswer = () => {
+    if (!answer) {
+      handleWrongWords(activeWord)
+    }
+  }
 
   const handleChipClick = (e: SyntheticEvent) => {
     const { textContent } = e.target as HTMLButtonElement
@@ -60,6 +65,7 @@ export default function ForestItem({ forestData, handleProgress, handleWrongWord
         rounds={forestData.length}
         handleChangeWord={handleChangeWord}
         handleFinish={handleFinish}
+        handleNoAnswer={handleNoAnswer}
       />
       <WordContainer $hasError={answerStatus}>
         <Word>{activeWord.title}</Word>
