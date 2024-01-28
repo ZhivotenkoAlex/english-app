@@ -131,7 +131,7 @@ const StyledChip = styled(Chip)<{ $isActive: boolean }>`
     background-color: ${props => (props.$isActive === true ? colors.green : colors.lightGreen)};
     padding: 20px;
   }
-  &:hover {
+  &&:hover {
     background-color: ${colors.green};
   }
 `

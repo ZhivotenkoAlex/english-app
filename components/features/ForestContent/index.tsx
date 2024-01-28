@@ -3,7 +3,11 @@ import ResultModal from '../ResultModal/ResultModal'
 import ForestExercise from '../ForestExercise'
 import { forestData } from '@/helpers/forestData'
 
-export default function ForestContent(handleStarted) {
+type PropTypes = {
+  handleStarted: () => void
+}
+
+export default function ForestContent({ handleStarted }: PropTypes) {
   const [wrongWords, setWrongWords] = useState<any>([])
   const [isFinished, setIsFinished] = useState(false)
   const handleWrongWords = (wordItem: any) => setWrongWords(prev => [...prev, wordItem] as never)
@@ -12,7 +16,7 @@ export default function ForestContent(handleStarted) {
   const handleRepeat = () => {
     setIsFinished(false)
     setWrongWords([])
-    handleStarted(false)
+    handleStarted()
   }
   return isFinished ? (
     <ResultModal

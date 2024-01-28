@@ -11,10 +11,12 @@ export default function ForestPage() {
     setStarted(true)
   }
 
+  const handleStarted = () => setStarted(false)
+
   return (
     <Root>
       {isStarted ? (
-        <ForestContent handleStarted={setStarted} />
+        <ForestContent handleStarted={handleStarted} />
       ) : (
         <StartTimer handleTimerOut={handleTimerOut} />
       )}
