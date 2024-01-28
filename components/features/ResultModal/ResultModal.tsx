@@ -2,7 +2,7 @@ import CardWrapper from '@/components/atoms/CardWrapper/CardWrapper'
 import Button from '@/components/molecules/Button/Button'
 import TitleSubtitleComponent from '@/components/molecules/TitleSubtitleComponent/TitleSubtitleComponent'
 import { getExerciseResultStatus } from '@/helpers/resultStatuses'
-import { IWord } from '@/types'
+import { IForestItem, IWord } from '@/types'
 import Link from 'next/link'
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
@@ -11,8 +11,8 @@ import { COLORS_ENUM } from '@/utils/colors'
 
 interface IResultModal {
   handleRepeat: () => void
-  learnedWords: IWord[]
-  wrongWords: IWord[]
+  learnedWords: IWord[] | IForestItem[]
+  wrongWords: IWord[] | IForestItem[]
 }
 function ResultModal({ handleRepeat, learnedWords, wrongWords }: IResultModal) {
   const subtitle = useMemo(

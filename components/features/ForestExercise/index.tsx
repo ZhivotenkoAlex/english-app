@@ -4,6 +4,7 @@ import ProgressTimer from '../ProgressTimer'
 import { Chip } from '@mui/material'
 import styled from 'styled-components'
 import { colors } from '@/utils/colors'
+import { IForestItem } from '@/types'
 
 enum AnswerStatus {
   PENDING = 'pending',
@@ -17,7 +18,17 @@ const ContainerColors = {
   [AnswerStatus.WRONG]: colors.lightWarning,
 }
 
-export default function ForestExercise({ forestData, handleProgress, handleWrongWords }: any) {
+type PropTypes = {
+  forestData: IForestItem[]
+  handleProgress: (arg: boolean) => void
+  handleWrongWords: (arg: IForestItem) => void
+}
+
+export default function ForestExercise({
+  forestData,
+  handleProgress,
+  handleWrongWords,
+}: PropTypes) {
   const [activeIndex, setActiveIndex] = useState(0)
   const [activeWord, setActiveWord] = useState(forestData[activeIndex])
   const [answer, setAnswer] = useState('')

@@ -21,7 +21,7 @@ export interface IMenuItem {
 }
 
 export type AnyObject = {
-  [key: string]: any
+  [key: string]: unknown
 }
 
 export interface IPopupMenuItem extends Omit<IMenuItem, 'subItems'> {
@@ -107,7 +107,7 @@ export interface IArticle {
   status: EXERCISE_STATUS
   image: string
   slug: string
-  data: any
+  data: IArticleData
 }
 
 export interface IArticleData {
@@ -126,4 +126,16 @@ export interface IParsedContent {
 export interface IParsedItem {
   id: string
   w: string
+}
+
+export interface IForestItem {
+  id: string
+  translation: string
+  title: string
+  variants: IForestVariant[]
+}
+
+export interface IForestVariant {
+  id: string
+  answerText: string
 }

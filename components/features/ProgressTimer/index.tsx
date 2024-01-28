@@ -10,7 +10,7 @@ export default function ProgressTimer({
   handleNoAnswer,
 }: {
   rounds: number
-  handleChangeWord: any
+  handleChangeWord: () => void
   handleFinish: () => void
   handleNoAnswer: () => void
 }) {

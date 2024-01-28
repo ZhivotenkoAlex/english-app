@@ -5,7 +5,12 @@ import { capitalizedWord } from '@/helpers/capitalized'
 import ROUTES from '@/helpers/routes'
 import styled from 'styled-components'
 
-export default function VocabularyExercisesLayout({ params, children }: any) {
+type PropTypes = {
+  params: { slug: string }
+  children: React.ReactNode
+}
+
+export default function VocabularyExercisesLayout({ params, children }: PropTypes) {
   const pageTitle = capitalizedWord(params.slug).replace('-', ' ')
   return (
     <section>

@@ -1,4 +1,4 @@
-import { IWord } from '@/types'
+import { IForestItem, IWord } from '@/types'
 
 export const RESULT_STATUSES = [
   {
@@ -15,7 +15,10 @@ export const RESULT_STATUSES = [
   },
 ]
 
-export const getExerciseResultStatus = (learned: IWord[], wrong: IWord[]) => {
+export const getExerciseResultStatus = (
+  learned: IWord[] | IForestItem[],
+  wrong: IWord[] | IForestItem[],
+) => {
   const totalWords = learned.length + wrong.length
   const accuracy = totalWords === 0 ? 0 : (learned.length / totalWords) * 100
 
