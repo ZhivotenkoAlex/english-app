@@ -1,10 +1,11 @@
 'use client'
-import React, { SyntheticEvent, useEffect, useState } from 'react'
+import React, { SyntheticEvent, useEffect, useMemo, useState } from 'react'
 import ProgressTimer from '../ProgressTimer'
 import { Chip } from '@mui/material'
 import styled from 'styled-components'
 import { colors } from '@/utils/colors'
 import { IForestItem } from '@/types'
+import { shuffleArray } from '@/helpers/shuffleArray'
 
 enum AnswerStatus {
   PENDING = 'pending',
@@ -33,6 +34,8 @@ export default function ForestExercise({
   const [activeWord, setActiveWord] = useState(forestData[activeIndex])
   const [answer, setAnswer] = useState('')
   const [answerStatus, setAnswerStatus] = useState<AnswerStatus>(AnswerStatus.PENDING)
+
+  const shuffledVariants = useMemo(() => shuffleArray(activeWord.variants), [activeWord.variants])
 
   useEffect(() => {
     setActiveWord(forestData[activeIndex])
@@ -85,7 +88,7 @@ export default function ForestExercise({
         <Word>{activeWord.title}</Word>
       </WordContainer>
       <ChipContainer>
-        {activeWord.variants.map(item => (
+        {shuffledVariants.map(item => (
           <StyledChip
             $isActive={answer === item.answerText}
             key={item.id}
@@ -182,7 +185,6 @@ const ChipContainer = styled.div`
   margin: 20px auto;
   padding: 25px;
   background: ${colors.lightBlue};
-  /* width: fit-content; */
   min-width: 100%;
   border-radius: 16px;
   flex-wrap: wrap;
