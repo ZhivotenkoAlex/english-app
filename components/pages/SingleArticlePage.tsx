@@ -45,7 +45,7 @@ export default function SingleArticlePage({ content }: PropTypes) {
         />
       </ImageContainer>
       <TitleContainer>
-        {content?.data.parsedTitle[0].items.map((el: { w: string; id: string }) => {
+        {content?.data.parsedTitle[0].items?.map((el: { w: string; id: string }) => {
           return (
             <Word key={el.id} onClick={handleWordClick}>
               {el.w}

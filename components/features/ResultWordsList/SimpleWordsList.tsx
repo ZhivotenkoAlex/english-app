@@ -1,14 +1,13 @@
-import { themeColors } from '@/lib/theme'
-import { IWord } from '@/types'
+import { IForestItem, IWord } from '@/types'
 import { COLOR, COLORS_ENUM } from '@/utils/colors'
 import React from 'react'
 import styled from 'styled-components'
 
-interface ISimpleWordsList {
-  words: IWord[]
+interface ISimpleWordsList<T> {
+  words: T[]
 }
 
-function SimpleWordsList({ words }: ISimpleWordsList) {
+function SimpleWordsList({ words }: ISimpleWordsList<IWord | IForestItem>) {
   return (
     <Wrapper>
       {words.map(word => (

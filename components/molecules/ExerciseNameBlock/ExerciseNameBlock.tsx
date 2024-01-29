@@ -7,7 +7,7 @@ interface IExerciseNameBlock {
 }
 function ExerciseNameBlock({ title, subtitle }: IExerciseNameBlock) {
   return (
-    <div style={{ flex: 4 }}>
+    <div style={{ flex: 4, textWrap: 'nowrap' }}>
       <TitleSubtitleComponent title={title} subtitle={subtitle} reverse />
     </div>
   )

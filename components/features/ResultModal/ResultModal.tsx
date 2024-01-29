@@ -1,8 +1,8 @@
 import CardWrapper from '@/components/atoms/CardWrapper/CardWrapper'
 import Button from '@/components/molecules/Button/Button'
 import TitleSubtitleComponent from '@/components/molecules/TitleSubtitleComponent/TitleSubtitleComponent'
-import { RESULT_STATUSES, getExerciseResultStatus } from '@/helpers/resultStatuses'
-import { IWord } from '@/types'
+import { getExerciseResultStatus } from '@/helpers/resultStatuses'
+import { IForestItem, IWord } from '@/types'
 import Link from 'next/link'
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
@@ -11,8 +11,8 @@ import { COLORS_ENUM } from '@/utils/colors'
 
 interface IResultModal {
   handleRepeat: () => void
-  learnedWords: IWord[]
-  wrongWords: IWord[]
+  learnedWords: IWord[] | IForestItem[]
+  wrongWords: IWord[] | IForestItem[]
 }
 function ResultModal({ handleRepeat, learnedWords, wrongWords }: IResultModal) {
   const subtitle = useMemo(
@@ -23,18 +23,21 @@ function ResultModal({ handleRepeat, learnedWords, wrongWords }: IResultModal) {
   const status = useMemo(() => {
     return getExerciseResultStatus(learnedWords, wrongWords)
   }, [learnedWords, wrongWords])
+
   return (
     <Wrapper>
       <CardWrapper>
         <Content>
           <TitleSubtitleComponent reverse title={status.title} subtitle={subtitle} />
           <ResultWordsList wrongWords={wrongWords} learnedWords={learnedWords} />
-          <Button label="Повторити" color={COLORS_ENUM.BLUE} onClick={handleRepeat} />
-          <LinkWrapper>
-            <Link href={'/vocabulary'}>
-              <Button label="Закрити" color={COLORS_ENUM.GREY} onClick={() => {}} fullWidth />
-            </Link>
-          </LinkWrapper>
+          <ButtonContainer>
+            <LinkWrapper>
+              <Link href={'/vocabulary'}>
+                <Button label="Закрити" color={COLORS_ENUM.GREY} fullWidth />
+              </Link>
+            </LinkWrapper>
+            <Button label="Повторити" color={COLORS_ENUM.BLUE} onClick={handleRepeat} />
+          </ButtonContainer>
         </Content>
       </CardWrapper>
     </Wrapper>
@@ -54,6 +57,7 @@ const Wrapper = styled('div')`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 30px 0;
 `
 
 const Content = styled.div`
@@ -63,5 +67,11 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+`
+
+const ButtonContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
 `
 export default ResultModal

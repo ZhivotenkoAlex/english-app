@@ -1,16 +1,16 @@
 import WordsList from '@/app/dictionary/WordsList'
 import Heading from '@/components/atoms/Heading/Heading'
-import { IWord } from '@/types'
+import { IForestItem, IWord } from '@/types'
 import React from 'react'
 import SimpleWordsList from './SimpleWordsList'
 import { Typography } from '@mui/material'
 import styled from 'styled-components'
 
-interface IResultWordsList {
-  learnedWords?: IWord[]
-  wrongWords?: IWord[]
+interface IResultWordsList<T> {
+  learnedWords?: T[]
+  wrongWords?: T[]
 }
-function ResultWordsList({ learnedWords, wrongWords }: IResultWordsList) {
+function ResultWordsList({ learnedWords, wrongWords }: IResultWordsList<IWord | IForestItem>) {
   return (
     <Wrapper>
       {wrongWords?.length ? (
