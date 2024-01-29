@@ -1,7 +1,7 @@
 'use client'
 import { Lessons } from '@/helpers/constants'
-import { PracticeTypes } from '@/types'
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import { LessonPractice, PracticeTypes } from '@/types'
+import React, { useMemo, useState } from 'react'
 import PracticeItem from '../features/PracticeItem'
 import ResultModal from '../features/ResultModal/ResultModal'
 
@@ -13,10 +13,10 @@ const getTasks = () =>
 export default function SentenceBuilderPage() {
   const tasks = getTasks()
   const [isFinished, setIsFinished] = useState(false)
-  const [wrongWords, setWrongWords] = useState<any[]>([])
+  const [wrongWords, setWrongWords] = useState([])
 
   const handleFinish = () => setIsFinished(true)
-  const handleWrongWords = (wordItem: any) => {
+  const handleWrongWords = (wordItem: LessonPractice) => {
     setWrongWords([...new Set([...wrongWords, wordItem])] as never)
   }
 
@@ -25,7 +25,10 @@ export default function SentenceBuilderPage() {
     setWrongWords([])
   }
 
-  const learnedWords = tasks.filter(el => !tasks.includes(el)) as any[]
+  const learnedWords = useMemo(
+    () => tasks.filter(el => !wrongWords.includes(el as never)) as never,
+    [tasks, wrongWords],
+  )
 
   return isFinished ? (
     <ResultModal handleRepeat={handleRepeat} wrongWords={wrongWords} learnedWords={learnedWords} />

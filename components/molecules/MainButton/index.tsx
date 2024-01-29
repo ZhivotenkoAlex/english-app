@@ -1,4 +1,4 @@
-import { Button, ButtonTypeMap, styled } from '@mui/material'
+import { Button, styled } from '@mui/material'
 
 type PropTypes = {
   type: 'text' | 'outlined' | 'contained'

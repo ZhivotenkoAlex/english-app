@@ -8,7 +8,7 @@ import Logo from '@/components/molecules/Logo/Logo'
 export const SideBar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false)
 
-  const handleOnClose = e => {
+  const handleOnClose = () => {
     setIsOpen(!isOpen)
   }
 

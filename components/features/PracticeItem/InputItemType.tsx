@@ -13,13 +13,13 @@ type PropTypes = {
 }
 
 export default function InputItemType({ activeItem, input, isChecked, isValidated }: PropTypes) {
-  const contentArray = activeItem?.missed.split('$')
+  const contentArray = activeItem?.missed?.split('$')
   const error = isValidated === false ? 'Wrong answer!' : null
   return (
     <>
       <TranslationContainer $isChecked={isChecked}>
         <InputContainer>
-          {contentArray.map((item, index) =>
+          {contentArray?.map((item, index) =>
             index == 1 ? (
               <span key={index}>
                 <StyledTextField

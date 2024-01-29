@@ -1,5 +1,3 @@
-import WordsList from '@/app/dictionary/WordsList'
-import Heading from '@/components/atoms/Heading/Heading'
 import { IForestItem, IWord } from '@/types'
 import React from 'react'
 import SimpleWordsList from './SimpleWordsList'

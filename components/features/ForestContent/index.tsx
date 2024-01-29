@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import ResultModal from '../ResultModal/ResultModal'
 import ForestExercise from '../ForestExercise'
 import { forestData } from '@/helpers/forestData'
@@ -13,7 +13,10 @@ export default function ForestContent({ handleStarted }: PropTypes) {
   const [isFinished, setIsFinished] = useState(false)
   const handleWrongWords = (wordItem: IForestItem) =>
     setWrongWords(prev => [...prev, wordItem] as never)
-  const learnedWords = forestData.filter(el => !wrongWords.includes(el)) as IForestItem[]
+  const learnedWords = useMemo(
+    () => forestData.filter(el => !wrongWords.includes(el)) as IForestItem[],
+    [wrongWords],
+  )
 
   const handleRepeat = () => {
     setIsFinished(false)

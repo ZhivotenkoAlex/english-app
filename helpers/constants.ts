@@ -1175,3 +1175,38 @@ export const PracticeTasks = {
   construct: 'Put together',
   translate: 'Translate the phrase',
 }
+
+export const MENU_ITEMS = [
+  {
+    id: 0,
+    label: 'Dashboard',
+    path: ROUTES.DASHBOARD,
+  },
+  {
+    id: 1,
+    label: 'Lessons',
+    path: ROUTES.LESSONS,
+  },
+  {
+    id: 2,
+    label: 'Vocabulary',
+    path: ROUTES.VOCABULARY,
+  },
+
+  {
+    id: 3,
+    label: 'Grammar',
+    path: ROUTES.GRAMMAR,
+  },
+
+  {
+    id: 4,
+    label: 'Dictionary',
+    path: ROUTES.DICTIONARY,
+  },
+  {
+    id: 5,
+    label: 'Reading',
+    path: ROUTES.READING,
+  },
+]

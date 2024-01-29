@@ -6,7 +6,6 @@ import { Chip, InputAdornment } from '@mui/material'
 import { TextField } from '@mui/material'
 import { FieldInputProps, useForm } from 'react-final-form'
 import { LessonPractice } from '@/types'
-import { shuffleArray } from '@/helpers/shuffleArray'
 import CloseIcon from 'remixicon-react/CloseLineIcon'
 
 type ChipData = {
@@ -32,10 +31,7 @@ export default function ConstructItemType({
     .split(' ')
     .map((item: string, index: number) => ({ label: item, key: index + 1 }))
 
-  // const shuffledArray = shuffleArray(contentArray)
-  const shuffledArray = contentArray
-
-  const [chipData, setChipData] = useState<readonly ChipData[]>(shuffledArray)
+  const [chipData, setChipData] = useState<readonly ChipData[]>(contentArray)
   const [text, setText] = useState<string>('')
 
   const handleClick = (chipToDelete: ChipData) => () => {
@@ -47,7 +43,7 @@ export default function ConstructItemType({
 
   const handleDelete = () => {
     setText('')
-    setChipData(shuffledArray)
+    setChipData(contentArray)
     form.change('answer', '')
   }
 
@@ -60,6 +56,7 @@ export default function ConstructItemType({
         <span>
           <StyledTextField
             {...input}
+            id={activeItem.id}
             placeholder={activeItem.placeholder}
             autoComplete="off"
             autoCorrect="false"
