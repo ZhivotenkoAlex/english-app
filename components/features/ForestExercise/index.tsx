@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import { colors } from '@/utils/colors'
 import { IForestItem } from '@/types'
 import { shuffleArray } from '@/helpers/shuffleArray'
+import PencilLineIcon from 'remixicon-react/PencilRulerLineIcon'
 
 enum AnswerStatus {
   PENDING = 'pending',
@@ -71,13 +72,15 @@ export default function ForestExercise({
     }
   }
 
+  const counterLabel = `${activeIndex + 1} / ${forestData.length}`
+
   return (
     <Root>
-      <CountContainer>
-        <Word>
-          {activeIndex + 1} / {forestData.length}
-        </Word>
-      </CountContainer>
+      <TaskContainer>
+        <PencilLineIcon color={colors.grey} />
+        <Task>Choose the correct</Task>
+      </TaskContainer>
+      <Counter label={counterLabel} $isDone={false} />
       <ProgressTimer
         rounds={forestData.length}
         handleChangeWord={handleChangeWord}
@@ -110,10 +113,11 @@ const Root = styled.div`
   align-items: center;
   min-height: 180px;
   width: 70%;
-
+  position: relative;
   border: 1px solid ${colors.green};
   padding: 24px;
   border-radius: 16px;
+  background: #f6ffff;
 
   @media screen and (max-width: 1439px) {
     width: 95%;
@@ -128,19 +132,6 @@ const Root = styled.div`
     border: none;
     padding: 0;
     border-radius: 16px;
-  }
-`
-
-const CountContainer = styled.div`
-  display: flex;
-  padding: 15px;
-  border-radius: 16px;
-  align-self: flex-end;
-  box-shadow:
-    rgba(0, 0, 0, 0.16) 0px 3px 6px,
-    rgba(0, 0, 0, 0.23) 0px 3px 6px;
-  @media screen and (max-width: 767px) {
-    margin-right: 20px;
   }
 `
 
@@ -198,5 +189,30 @@ const ChipContainer = styled.div`
   @media screen and (max-width: 767px) {
     grid-template-columns: repeat(1, 1fr);
     width: 100%;
+  }
+`
+
+const Counter = styled(Chip)<{ $isDone: boolean }>`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: ${props => (props.$isDone ? colors.green : 'white')};
+  box-shadow:
+    rgba(0, 0, 0, 0.16) 0px 3px 6px,
+    rgba(0, 0, 0, 0.23) 0px 3px 6px;
+`
+
+const Task = styled.p`
+  font-weight: 600;
+  color: ${colors.grey};
+  letter-spacing: 0.4px;
+`
+
+const TaskContainer = styled.div`
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  @media screen and (max-width: 767px) {
+    margin-top: 24px;
   }
 `
