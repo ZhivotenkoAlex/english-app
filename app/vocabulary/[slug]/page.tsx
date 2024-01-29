@@ -3,6 +3,7 @@ import { capitalizedWord } from '@/helpers/capitalized'
 import { Metadata } from 'next'
 import React from 'react'
 import WordBuilderPage from '@/components/pages/WordBuilderPage'
+import SentenceBuilderPage from '@/components/pages/SentenceBuilderPage'
 
 type Props = {
   params: { slug: string }
@@ -24,6 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 const exercises = {
   forest: <ForestPage />,
   'word-builder': <WordBuilderPage />,
+  'sentence-builder': <SentenceBuilderPage />,
 }
 
 export default function page({ params }: { params: { slug: string } }) {

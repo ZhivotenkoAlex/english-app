@@ -21,9 +21,10 @@ type InitialValue = {
 
 type PropTypes = {
   practice: LessonPractice[]
-  clickHandler: (num: number) => void
+  clickHandler: () => void
+  handleWrongWords?: (item: any) => void
 }
-export default function PracticeItem({ practice, clickHandler }: PropTypes) {
+export default function PracticeItem({ practice, clickHandler, handleWrongWords }: PropTypes) {
   const [activeIndex, setActiveIndex] = useState<number>(0)
   const [activeItem, setActiveItem] = useState<LessonPractice>(practice[activeIndex])
   const [isChecked, setIsChecked] = useState<boolean>(false)
@@ -55,6 +56,10 @@ export default function PracticeItem({ practice, clickHandler }: PropTypes) {
         setIsDone(true)
       }
 
+      if (handleWrongWords && !isCorrect) {
+        handleWrongWords(activeItem)
+      }
+
       if (isChecked && isCorrect && !isDone) {
         setActiveIndex(activeIndex + 1)
         setActiveItem(practice[activeIndex + 1])
@@ -74,7 +79,14 @@ export default function PracticeItem({ practice, clickHandler }: PropTypes) {
     ],
   )
 
-  const handleNextExercise = () => clickHandler(3)
+  const handleNextExercise = () => clickHandler()
+
+  const handleHintCLick = (form: FormApi<Record<string, any>, Partial<Record<string, any>>>) => {
+    form.change('answer', activeItem.hint)
+    if (handleWrongWords) {
+      handleWrongWords(activeItem)
+    }
+  }
 
   const counterLabel = `${activeIndex + 1} / ${practice.length}`
 
@@ -110,7 +122,7 @@ export default function PracticeItem({ practice, clickHandler }: PropTypes) {
               />
             )}
             {!isDone && (
-              <IconContainer onClick={() => form.change('answer', activeItem.hint)}>
+              <IconContainer onClick={() => handleHintCLick(form)}>
                 <HintIcon Icon={QuestionLineIcon} isComplete={!isChecked} />
               </IconContainer>
             )}

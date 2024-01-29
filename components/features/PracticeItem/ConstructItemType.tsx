@@ -32,7 +32,8 @@ export default function ConstructItemType({
     .split(' ')
     .map((item: string, index: number) => ({ label: item, key: index + 1 }))
 
-  const shuffledArray = shuffleArray(contentArray)
+  // const shuffledArray = shuffleArray(contentArray)
+  const shuffledArray = contentArray
 
   const [chipData, setChipData] = useState<readonly ChipData[]>(shuffledArray)
   const [text, setText] = useState<string>('')

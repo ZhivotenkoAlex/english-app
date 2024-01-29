@@ -46,14 +46,14 @@ export type LessonVocabulary = {
 export type LessonPractice = {
   id: string
   type: PracticeTypes
-  missed: string
+  missed?: string
   en: string
   ua: string
   variants: string[]
-  placeholder: 'string'
   multiselect: LessonMultiselect[] | []
   correctVariant: string
   hint: string
+  placeholder?: string
 }
 
 export type LessonContent = {
