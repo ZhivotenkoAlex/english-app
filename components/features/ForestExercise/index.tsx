@@ -4,21 +4,9 @@ import ProgressTimer from '../ProgressTimer'
 import { Chip } from '@mui/material'
 import styled from 'styled-components'
 import { colors } from '@/utils/colors'
-import { IForestItem } from '@/types'
+import { AnswerStatus, ContainerColors, IForestItem, IForestVariant } from '@/types'
 import { shuffleArray } from '@/helpers/shuffleArray'
 import PencilLineIcon from 'remixicon-react/PencilRulerLineIcon'
-
-enum AnswerStatus {
-  PENDING = 'pending',
-  WRONG = 'wrong',
-  SUCCESS = 'success',
-}
-
-const ContainerColors = {
-  [AnswerStatus.PENDING]: colors.lightGreen,
-  [AnswerStatus.SUCCESS]: colors.green,
-  [AnswerStatus.WRONG]: colors.lightWarning,
-}
 
 type PropTypes = {
   forestData: IForestItem[]
@@ -74,6 +62,8 @@ export default function ForestExercise({
 
   const counterLabel = `${activeIndex + 1} / ${forestData.length}`
 
+  const isChipActive = (item: IForestVariant) => answer === item.answerText
+
   return (
     <Root>
       <TaskContainer>
@@ -93,7 +83,7 @@ export default function ForestExercise({
       <ChipContainer>
         {shuffledVariants.map(item => (
           <StyledChip
-            $isActive={answer === item.answerText}
+            $isActive={isChipActive(item)}
             key={item.id}
             label={item.answerText}
             onClick={handleChipClick}
@@ -160,7 +150,7 @@ const Word = styled.span`
 const StyledChip = styled(Chip)<{ $isActive: boolean }>`
   && {
     font-size: 20px;
-    background-color: ${props => (props.$isActive === true ? colors.green : colors.lightGreen)};
+    background-color: ${props => (props.$isActive ? colors.green : colors.lightGreen)};
     padding: 20px;
   }
   &&:hover {

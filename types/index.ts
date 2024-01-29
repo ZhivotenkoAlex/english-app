@@ -1,3 +1,4 @@
+import { colors } from '@/utils/colors'
 import { StaticImageData } from 'next/image'
 import { RemixiconReactIconComponentType } from 'remixicon-react'
 
@@ -138,4 +139,16 @@ export interface IForestItem {
 export interface IForestVariant {
   id: string
   answerText: string
+}
+
+export enum AnswerStatus {
+  PENDING = 'pending',
+  WRONG = 'wrong',
+  SUCCESS = 'success',
+}
+
+export const ContainerColors = {
+  [AnswerStatus.PENDING]: colors.lightGreen,
+  [AnswerStatus.SUCCESS]: colors.green,
+  [AnswerStatus.WRONG]: colors.lightWarning,
 }
