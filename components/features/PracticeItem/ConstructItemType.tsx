@@ -28,11 +28,12 @@ export default function ConstructItemType({
   isValidated,
 }: PropTypes) {
   const form = useForm()
-  const contentArray = activeItem?.en
+  const contentArray = activeItem?.translation
     .split(' ')
     .map((item: string, index: number) => ({ label: item, key: index + 1 }))
 
-  const shuffledArray = shuffleArray(contentArray)
+  // const shuffledArray = shuffleArray(contentArray)
+  const shuffledArray = contentArray
 
   const [chipData, setChipData] = useState<readonly ChipData[]>(shuffledArray)
   const [text, setText] = useState<string>('')
@@ -55,7 +56,7 @@ export default function ConstructItemType({
   return (
     <>
       <TranslationContainer $isChecked={isChecked}>
-        <TaskPhrase>{activeItem.ua}</TaskPhrase>
+        <TaskPhrase>{activeItem.title}</TaskPhrase>
         <span>
           <StyledTextField
             {...input}

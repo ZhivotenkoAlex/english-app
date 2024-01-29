@@ -36,8 +36,8 @@ type LessonMultiselect = {
 
 export type LessonVocabulary = {
   id: string
-  en: string
-  ua: string
+  translation: string
+  title: string
   transcription: string
   definition: string
   synonyms: string[]
@@ -47,14 +47,14 @@ export type LessonVocabulary = {
 export type LessonPractice = {
   id: string
   type: PracticeTypes
-  missed: string
-  en: string
-  ua: string
+  missed?: string
+  translation: string
+  title: string
   variants: string[]
-  placeholder: 'string'
   multiselect: LessonMultiselect[] | []
   correctVariant: string
   hint: string
+  placeholder?: string
 }
 
 export type LessonContent = {

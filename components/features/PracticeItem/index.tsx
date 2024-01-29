@@ -21,9 +21,10 @@ type InitialValue = {
 
 type PropTypes = {
   practice: LessonPractice[]
-  clickHandler: (num: number) => void
+  clickHandler: () => void
+  handleWrongWords?: (item: any) => void
 }
-export default function PracticeItem({ practice, clickHandler }: PropTypes) {
+export default function PracticeItem({ practice, clickHandler, handleWrongWords }: PropTypes) {
   const [activeIndex, setActiveIndex] = useState<number>(0)
   const [activeItem, setActiveItem] = useState<LessonPractice>(practice[activeIndex])
   const [isChecked, setIsChecked] = useState<boolean>(false)
@@ -44,7 +45,7 @@ export default function PracticeItem({ practice, clickHandler }: PropTypes) {
 
       const isCorrect =
         activeItem.type === PracticeTypes.CONSTRUCT
-          ? answer === activeItem.en
+          ? answer === activeItem.translation
           : correctVariant.includes(answer)
       setIsValidated(isCorrect)
       setIsChecked(isCorrect)
@@ -53,6 +54,10 @@ export default function PracticeItem({ practice, clickHandler }: PropTypes) {
 
       if (isCorrect && isLastItem) {
         setIsDone(true)
+      }
+
+      if (handleWrongWords && !isCorrect) {
+        handleWrongWords(activeItem)
       }
 
       if (isChecked && isCorrect && !isDone) {
@@ -66,7 +71,7 @@ export default function PracticeItem({ practice, clickHandler }: PropTypes) {
     [
       activeIndex,
       activeItem.correctVariant,
-      activeItem.en,
+      activeItem.translation,
       activeItem.type,
       isChecked,
       isDone,
@@ -74,7 +79,14 @@ export default function PracticeItem({ practice, clickHandler }: PropTypes) {
     ],
   )
 
-  const handleNextExercise = () => clickHandler(3)
+  const handleNextExercise = () => clickHandler()
+
+  const handleHintCLick = (form: FormApi<Record<string, any>, Partial<Record<string, any>>>) => {
+    form.change('answer', activeItem.hint)
+    if (handleWrongWords) {
+      handleWrongWords(activeItem)
+    }
+  }
 
   const counterLabel = `${activeIndex + 1} / ${practice.length}`
 
@@ -96,9 +108,11 @@ export default function PracticeItem({ practice, clickHandler }: PropTypes) {
           <form onSubmit={handleSubmit}>
             {isChecked ? (
               <TranslationContainer $isChecked={isChecked}>
-                <Word>{isChecked ? activeItem.en : ' '}</Word>
+                <Word>{isChecked ? activeItem.translation : ' '}</Word>
                 {isChecked ? (
-                  <VolumeAction onClick={() => getVoice(activeItem?.en, 'en', 0.7)} />
+                  <VolumeAction
+                    onClick={() => getVoice(activeItem?.translation, 'translation', 0.7)}
+                  />
                 ) : null}
               </TranslationContainer>
             ) : (
@@ -110,7 +124,7 @@ export default function PracticeItem({ practice, clickHandler }: PropTypes) {
               />
             )}
             {!isDone && (
-              <IconContainer onClick={() => form.change('answer', activeItem.hint)}>
+              <IconContainer onClick={() => handleHintCLick(form)}>
                 <HintIcon Icon={QuestionLineIcon} isComplete={!isChecked} />
               </IconContainer>
             )}

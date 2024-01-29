@@ -15,7 +15,7 @@ type PropType = {
 
 export default function SingleLessonPage({ lesson }: PropType) {
   const [currentStep, setCurrentStep] = useState<number>(0)
-  const clickHandler = (step: number) => setCurrentStep(step)
+  const clickHandler = () => setCurrentStep(prev => prev + 1)
 
   const stepComponents = {
     0: (
