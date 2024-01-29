@@ -4,20 +4,9 @@ import ProgressTimer from '../ProgressTimer'
 import { Chip } from '@mui/material'
 import styled from 'styled-components'
 import { colors } from '@/utils/colors'
-import { IForestItem } from '@/types'
+import { AnswerStatus, ContainerColors, IForestItem, IForestVariant } from '@/types'
 import { shuffleArray } from '@/helpers/shuffleArray'
-
-enum AnswerStatus {
-  PENDING = 'pending',
-  WRONG = 'wrong',
-  SUCCESS = 'success',
-}
-
-const ContainerColors = {
-  [AnswerStatus.PENDING]: colors.lightGreen,
-  [AnswerStatus.SUCCESS]: colors.green,
-  [AnswerStatus.WRONG]: colors.lightWarning,
-}
+import PencilLineIcon from 'remixicon-react/PencilRulerLineIcon'
 
 type PropTypes = {
   forestData: IForestItem[]
@@ -71,13 +60,17 @@ export default function ForestExercise({
     }
   }
 
+  const counterLabel = `${activeIndex + 1} / ${forestData.length}`
+
+  const isChipActive = (item: IForestVariant) => answer === item.answerText
+
   return (
     <Root>
-      <CountContainer>
-        <Word>
-          {activeIndex + 1} / {forestData.length}
-        </Word>
-      </CountContainer>
+      <TaskContainer>
+        <PencilLineIcon color={colors.grey} />
+        <Task>Choose the correct</Task>
+      </TaskContainer>
+      <Counter label={counterLabel} $isDone={false} />
       <ProgressTimer
         rounds={forestData.length}
         handleChangeWord={handleChangeWord}
@@ -90,7 +83,7 @@ export default function ForestExercise({
       <ChipContainer>
         {shuffledVariants.map(item => (
           <StyledChip
-            $isActive={answer === item.answerText}
+            $isActive={isChipActive(item)}
             key={item.id}
             label={item.answerText}
             onClick={handleChipClick}
@@ -110,10 +103,11 @@ const Root = styled.div`
   align-items: center;
   min-height: 180px;
   width: 70%;
-
+  position: relative;
   border: 1px solid ${colors.green};
   padding: 24px;
   border-radius: 16px;
+  background: #f6ffff;
 
   @media screen and (max-width: 1439px) {
     width: 95%;
@@ -128,19 +122,6 @@ const Root = styled.div`
     border: none;
     padding: 0;
     border-radius: 16px;
-  }
-`
-
-const CountContainer = styled.div`
-  display: flex;
-  padding: 15px;
-  border-radius: 16px;
-  align-self: flex-end;
-  box-shadow:
-    rgba(0, 0, 0, 0.16) 0px 3px 6px,
-    rgba(0, 0, 0, 0.23) 0px 3px 6px;
-  @media screen and (max-width: 767px) {
-    margin-right: 20px;
   }
 `
 
@@ -169,7 +150,7 @@ const Word = styled.span`
 const StyledChip = styled(Chip)<{ $isActive: boolean }>`
   && {
     font-size: 20px;
-    background-color: ${props => (props.$isActive === true ? colors.green : colors.lightGreen)};
+    background-color: ${props => (props.$isActive ? colors.green : colors.lightGreen)};
     padding: 20px;
   }
   &&:hover {
@@ -198,5 +179,30 @@ const ChipContainer = styled.div`
   @media screen and (max-width: 767px) {
     grid-template-columns: repeat(1, 1fr);
     width: 100%;
+  }
+`
+
+const Counter = styled(Chip)<{ $isDone: boolean }>`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: ${props => (props.$isDone ? colors.green : 'white')};
+  box-shadow:
+    rgba(0, 0, 0, 0.16) 0px 3px 6px,
+    rgba(0, 0, 0, 0.23) 0px 3px 6px;
+`
+
+const Task = styled.p`
+  font-weight: 600;
+  color: ${colors.grey};
+  letter-spacing: 0.4px;
+`
+
+const TaskContainer = styled.div`
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  @media screen and (max-width: 767px) {
+    margin-top: 24px;
   }
 `
