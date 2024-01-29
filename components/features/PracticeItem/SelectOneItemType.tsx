@@ -18,7 +18,7 @@ export default function SelectOneItemType({
   isChecked,
   isValidated,
 }: PropTypes) {
-  const contentArray = activeItem?.missed.split('$')
+  const contentArray = activeItem?.missed?.split('$')
 
   const error = isValidated === false ? 'Wrong answer!' : null
   return (
@@ -26,7 +26,7 @@ export default function SelectOneItemType({
       <Root>
         <Container $isChecked={isChecked}>
           <InputContainer>
-            {contentArray.map((item, index) =>
+            {contentArray?.map((item, index) =>
               index == 1 ? (
                 <span key={index}>
                   <StyledTextField

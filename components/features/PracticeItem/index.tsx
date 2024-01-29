@@ -22,7 +22,7 @@ type InitialValue = {
 type PropTypes = {
   practice: LessonPractice[]
   clickHandler: () => void
-  handleWrongWords?: (item: any) => void
+  handleWrongWords?: (item: LessonPractice) => void
 }
 export default function PracticeItem({ practice, clickHandler, handleWrongWords }: PropTypes) {
   const [activeIndex, setActiveIndex] = useState<number>(0)
@@ -68,20 +68,14 @@ export default function PracticeItem({ practice, clickHandler, handleWrongWords 
         setIsValidated(null)
       }
     },
-    [
-      activeIndex,
-      activeItem.correctVariant,
-      activeItem.translation,
-      activeItem.type,
-      isChecked,
-      isDone,
-      practice,
-    ],
+    [activeIndex, activeItem, handleWrongWords, isChecked, isDone, practice],
   )
 
   const handleNextExercise = () => clickHandler()
 
-  const handleHintCLick = (form: FormApi<Record<string, any>, Partial<Record<string, any>>>) => {
+  const handleHintCLick = (
+    form: FormApi<Record<string, string>, Partial<Record<string, string>>>,
+  ) => {
     form.change('answer', activeItem.hint)
     if (handleWrongWords) {
       handleWrongWords(activeItem)
