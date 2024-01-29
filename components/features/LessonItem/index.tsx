@@ -36,6 +36,10 @@ const Root = styled(Link)`
   border: black 1px solid;
   border-radius: 16px;
   transition: scale 0.5s ease-in-out;
+  @media screen and (max-width: 1023px) {
+    justify-content: center;
+  }
+
   @media screen and (max-width: 767px) {
     flex-direction: column;
   }
@@ -60,7 +64,6 @@ const StyledImage = styled(Image)`
   border-radius: 16px;
   object-fit: fit;
   filter: grayscale(20%);
-  min-width: 30%;
   max-width: 100%;
 `
 
@@ -71,11 +74,11 @@ const Description = styled.div`
   gap: 20px;
   margin-left: 16px;
   text-wrap: nowrap;
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 1023px) {
     align-items: center;
   }
 `
 
 const StyledTitle = styled.h3`
-  text-wrap: nowrap;
+  text-wrap: pretty;
 `

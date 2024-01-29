@@ -2,10 +2,12 @@
 import { colors } from '@/utils/colors'
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Chip } from '@mui/material'
+import { Chip, InputAdornment } from '@mui/material'
 import { TextField } from '@mui/material'
 import { FieldInputProps, useForm } from 'react-final-form'
 import { LessonPractice } from '@/types'
+import { shuffleArray } from '@/helpers/shuffleArray'
+import CloseIcon from 'remixicon-react/CloseLineIcon'
 
 type ChipData = {
   key: number
@@ -30,7 +32,9 @@ export default function ConstructItemType({
     .split(' ')
     .map((item: string, index: number) => ({ label: item, key: index + 1 }))
 
-  const [chipData, setChipData] = useState<readonly ChipData[]>(contentArray)
+  const shuffledArray = shuffleArray(contentArray)
+
+  const [chipData, setChipData] = useState<readonly ChipData[]>(shuffledArray)
   const [text, setText] = useState<string>('')
 
   const handleClick = (chipToDelete: ChipData) => () => {
@@ -40,11 +44,18 @@ export default function ConstructItemType({
     setChipData(chips => chips.filter(chip => chip.key !== chipToDelete.key))
   }
 
+  const handleDelete = () => {
+    setText('')
+    setChipData(shuffledArray)
+    form.change('answer', '')
+  }
+
   const error = isValidated === false ? 'Wrong answer!' : null
 
   return (
     <>
       <TranslationContainer $isChecked={isChecked}>
+        <TaskPhrase>{activeItem.ua}</TaskPhrase>
         <span>
           <StyledTextField
             {...input}
@@ -55,6 +66,11 @@ export default function ConstructItemType({
             fullWidth
             InputProps={{
               readOnly: true,
+              endAdornment: (
+                <InputAdornment position="end" onClick={handleDelete}>
+                  <DeleteIcon />
+                </InputAdornment>
+              ),
             }}
             error={!!error}
             multiline
@@ -97,6 +113,7 @@ const Container = styled.div`
   background: ${colors.lightBlue};
   width: fit-content;
   border-radius: 16px;
+  flex-wrap: wrap;
 `
 
 const StyledTextField = styled(TextField)<{ error: boolean }>`
@@ -107,5 +124,21 @@ const StyledTextField = styled(TextField)<{ error: boolean }>`
   }
   p {
     text-align: center;
+  }
+`
+
+const TaskPhrase = styled.span`
+  display: inline-flex;
+  color: ${colors.darkGrey};
+  margin-bottom: 20px;
+  padding-right: 24px;
+`
+
+const DeleteIcon = styled(CloseIcon)`
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    fill: ${colors.red};
+    scale: 1.1;
   }
 `

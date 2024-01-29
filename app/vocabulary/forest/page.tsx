@@ -1,19 +1,16 @@
 import PageContainer from '@/components/atoms/PageContainer/PageContainer'
-import React from 'react'
-import WordBuilderClient from './WordBuilderClient'
 import { Metadata } from 'next'
+import React from 'react'
 
 export const metadata: Metadata = {
-  title: 'Vocabulary | WordBuilder',
+  title: 'Vocabulary | Forest',
   description: 'Easy way to learn English',
 }
 
-function WordBuilder() {
+export default function Forest() {
   return (
     <PageContainer>
-      <WordBuilderClient />
+      <div>Forest</div>
     </PageContainer>
   )
 }
-
-export default WordBuilder

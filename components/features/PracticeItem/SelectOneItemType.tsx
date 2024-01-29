@@ -73,7 +73,7 @@ const Root = styled.div`
   gap: 10px;
   justify-content: center;
   min-height: 180px;
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 1023px) {
     flex-direction: column;
     align-items: center;
   }
