@@ -7,7 +7,6 @@ import Form from '../../atoms/Form/Form'
 import Button from '../../molecules/Button/Button'
 import Link from '../../atoms/Link/Link'
 import BackButton from '../../molecules/BackButton/BackButton'
-import ROUTES from '@/helpers/routes'
 import { COLORS_ENUM } from '@/utils/colors'
 
 function RegistrationModal() {

@@ -89,15 +89,7 @@ function BreadCrumbs({ maxItems = 3, customName, isCustomBreadCrumbs, customCrum
 
 export default BreadCrumbs
 
-const Root = styled(Breadcrumbs)`
-  /* padding: 24px 80px 0px 80px;
-  @media (max-width: 1439px) {
-    padding: 24px 24px 0px 24px;
-  }
-  @media (max-width: 767px) {
-    padding: 16px 8px 0px 16px;
-  } */
-`
+const Root = styled(Breadcrumbs)``
 
 const StyledBreadcrumbs = styled(Breadcrumbs)`
   .MuiBreadcrumbs-ol {

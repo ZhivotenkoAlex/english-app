@@ -1,6 +1,6 @@
 'use client'
 import { Lessons } from '@/helpers/constants'
-import { IWord, LessonPractice, PracticeTypes } from '@/types'
+import { LessonPractice, PracticeTypes } from '@/types'
 import React, { useMemo, useState } from 'react'
 import PracticeItem from '../features/PracticeItem'
 import ResultModal from '../features/ResultModal/ResultModal'
