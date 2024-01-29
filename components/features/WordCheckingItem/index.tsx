@@ -29,7 +29,7 @@ export default function WordCheckingItem({ vocabulary, clickHandler }: PropTypes
 
   const onSubmit = useCallback(
     (data: InitialValue, form: FormApi) => {
-      const isCorrect = data.word === activeItem.en
+      const isCorrect = data.word === activeItem.translation
       setIsChecked(isCorrect)
       if (activeIndex + 1 === vocabulary.length) {
         setIsDone(true)
@@ -41,7 +41,7 @@ export default function WordCheckingItem({ vocabulary, clickHandler }: PropTypes
         form.change('word', '')
       }
     },
-    [activeIndex, activeItem.en, isChecked, isDone, vocabulary],
+    [activeIndex, activeItem.translation, isChecked, isDone, vocabulary],
   )
 
   const handleNextExercise = () => clickHandler(2)
@@ -51,7 +51,7 @@ export default function WordCheckingItem({ vocabulary, clickHandler }: PropTypes
   return (
     <Root>
       <WordContainer>
-        <Word>{activeItem?.ua}</Word>
+        <Word>{activeItem?.title}</Word>
         <Counter label={counterLabel} $isDone={isDone} />
       </WordContainer>
       <Form
@@ -83,11 +83,13 @@ export default function WordCheckingItem({ vocabulary, clickHandler }: PropTypes
 
             {isChecked ? (
               <TranslationContainer $isChecked={isChecked}>
-                <Word>{isChecked ? activeItem.en : ' '}</Word>
-                {isChecked ? <VolumeAction onClick={() => getVoice(activeItem?.en)} /> : null}
+                <Word>{isChecked ? activeItem.translation : ' '}</Word>
+                {isChecked ? (
+                  <VolumeAction onClick={() => getVoice(activeItem?.translation)} />
+                ) : null}
               </TranslationContainer>
             ) : (
-              <IconContainer onClick={() => form.change('word', activeItem.en)}>
+              <IconContainer onClick={() => form.change('word', activeItem.translation)}>
                 <HintIcon Icon={QuestionLineIcon} />
               </IconContainer>
             )}

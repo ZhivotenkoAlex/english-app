@@ -39,8 +39,8 @@ export default function WordLearningItem({ vocabulary, clickHandler }: PropTypes
   return (
     <Root>
       <WordContainer>
-        <Word>{activeItem.en}</Word>
-        <VolumeAction onClick={() => getVoice(activeItem.en)} />
+        <Word>{activeItem.translation}</Word>
+        <VolumeAction onClick={() => getVoice(activeItem.translation)} />
         <Counter label={counterLabel} $isDone={isDone} />
       </WordContainer>
       <Transcription>{activeItem?.transcription}</Transcription>
@@ -69,7 +69,7 @@ export default function WordLearningItem({ vocabulary, clickHandler }: PropTypes
             </Container>
           )}
           <TranslationContainer>
-            <Word>{isTranslated ? activeItem.ua : ' '}</Word>
+            <Word>{isTranslated ? activeItem.title : ' '}</Word>
           </TranslationContainer>
         </>
       </Collapse>

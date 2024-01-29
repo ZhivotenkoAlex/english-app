@@ -45,7 +45,7 @@ export default function PracticeItem({ practice, clickHandler, handleWrongWords 
 
       const isCorrect =
         activeItem.type === PracticeTypes.CONSTRUCT
-          ? answer === activeItem.en
+          ? answer === activeItem.translation
           : correctVariant.includes(answer)
       setIsValidated(isCorrect)
       setIsChecked(isCorrect)
@@ -71,7 +71,7 @@ export default function PracticeItem({ practice, clickHandler, handleWrongWords 
     [
       activeIndex,
       activeItem.correctVariant,
-      activeItem.en,
+      activeItem.translation,
       activeItem.type,
       isChecked,
       isDone,
@@ -108,9 +108,11 @@ export default function PracticeItem({ practice, clickHandler, handleWrongWords 
           <form onSubmit={handleSubmit}>
             {isChecked ? (
               <TranslationContainer $isChecked={isChecked}>
-                <Word>{isChecked ? activeItem.en : ' '}</Word>
+                <Word>{isChecked ? activeItem.translation : ' '}</Word>
                 {isChecked ? (
-                  <VolumeAction onClick={() => getVoice(activeItem?.en, 'en', 0.7)} />
+                  <VolumeAction
+                    onClick={() => getVoice(activeItem?.translation, 'translation', 0.7)}
+                  />
                 ) : null}
               </TranslationContainer>
             ) : (

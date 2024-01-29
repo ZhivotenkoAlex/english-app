@@ -28,7 +28,7 @@ export default function ConstructItemType({
   isValidated,
 }: PropTypes) {
   const form = useForm()
-  const contentArray = activeItem?.en
+  const contentArray = activeItem?.translation
     .split(' ')
     .map((item: string, index: number) => ({ label: item, key: index + 1 }))
 
@@ -56,7 +56,7 @@ export default function ConstructItemType({
   return (
     <>
       <TranslationContainer $isChecked={isChecked}>
-        <TaskPhrase>{activeItem.ua}</TaskPhrase>
+        <TaskPhrase>{activeItem.title}</TaskPhrase>
         <span>
           <StyledTextField
             {...input}
