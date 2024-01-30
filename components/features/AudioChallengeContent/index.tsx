@@ -4,11 +4,7 @@ import { forestData } from '@/helpers/forestData'
 import { IForestItem } from '@/types'
 import AudioChallenge from '../AudioChallenge'
 
-type PropTypes = {
-  handleStarted: () => void
-}
-
-export default function AudioChallengeContent({ handleStarted }: PropTypes) {
+export default function AudioChallengeContent() {
   const [wrongWords, setWrongWords] = useState<IForestItem[]>([])
   const [isFinished, setIsFinished] = useState(false)
   const handleWrongWords = (wordItem: IForestItem) =>
@@ -21,7 +17,6 @@ export default function AudioChallengeContent({ handleStarted }: PropTypes) {
   const handleRepeat = () => {
     setIsFinished(false)
     setWrongWords([])
-    handleStarted()
   }
   return isFinished ? (
     <ResultModal handleRepeat={handleRepeat} wrongWords={wrongWords} learnedWords={learnedWords} />

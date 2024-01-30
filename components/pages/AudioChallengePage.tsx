@@ -1,25 +1,12 @@
 'use client'
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import StartTimer from '../features/StartTimer'
 import AudioChallengeContent from '../features/AudioChallengeContent'
 
 export default function AudioChallengePage() {
-  const [isStarted, setStarted] = useState(false)
-
-  const handleTimerOut = () => {
-    setStarted(true)
-  }
-
-  const handleStarted = () => setStarted(false)
-
   return (
     <Root>
-      {isStarted ? (
-        <AudioChallengeContent handleStarted={handleStarted} />
-      ) : (
-        <StartTimer handleTimerOut={handleTimerOut} />
-      )}
+      <AudioChallengeContent />)
     </Root>
   )
 }
