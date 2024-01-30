@@ -138,7 +138,7 @@ const TranslationContainer = styled.div<{ $isChecked: boolean }>`
   align-items: center;
   gap: 20px;
   margin: 20px auto;
-  padding: 16px;
+  padding: 12px;
   background: ${props => (props.$isChecked === true ? colors.lightGreen : colors.lightBlue)};
   width: fit-content;
   border-radius: 16px;
@@ -192,5 +192,5 @@ const InputContainer = styled.div`
 const IconContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin: 20px 0;
+  margin: 29px 0;
 `

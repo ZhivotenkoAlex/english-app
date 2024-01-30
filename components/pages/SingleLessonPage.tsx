@@ -5,7 +5,7 @@ import WordLearningItem from '../features/WordLearningItem'
 import CustomizedStepper from '../features/Stepper'
 import WordCheckingItem from '../features/WordCheckingItem'
 import { lessonsSubtitles } from '@/helpers/constants'
-import PracticeItem from '../features/PracticeItem'
+import PracticeItem from '../features/PracticeTypeItem'
 import LessonGreeting from '../features/LessonGreeting'
 import { LessonType } from '@/types'
 
