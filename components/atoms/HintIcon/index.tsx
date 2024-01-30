@@ -3,13 +3,16 @@ import React from 'react'
 import { RemixiconReactIconComponentType } from 'remixicon-react'
 import styled from 'styled-components'
 
+type SizeType = 'small' | 'normal'
+
 type PropType = {
   Icon: RemixiconReactIconComponentType
   isComplete?: boolean
+  size?: SizeType
   props?: StepIconProps
 }
 
-export default function HintIcon({ Icon, isComplete = true, props }: PropType) {
+export default function HintIcon({ Icon, isComplete = true, size = 'small', props }: PropType) {
   const { active, completed, className } = props ?? {
     completed: isComplete,
     active: isComplete,
@@ -17,21 +20,22 @@ export default function HintIcon({ Icon, isComplete = true, props }: PropType) {
   }
 
   return (
-    <Root $ownerState={{ completed: completed, active: active }} className={className}>
-      <Icon />
+    <Root $ownerState={{ completed: completed, active: active }} $size={size} className={className}>
+      <Icon size={size === 'normal' ? 24 : 20} />
     </Root>
   )
 }
 
 const Root = styled.div<{
   $ownerState: { completed?: boolean; active?: boolean }
-}>(({ theme, $ownerState }) => ({
+  $size: SizeType
+}>(({ theme, $ownerState, $size }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? theme.palette.grey[700] : '#ccc',
   zIndex: 1,
   borderBlock: 'content-box',
   color: '#fff',
-  width: 50,
-  height: 50,
+  width: $size === 'normal' ? 50 : 30,
+  height: $size === 'normal' ? 50 : 30,
   display: 'flex',
   borderRadius: '50%',
   justifyContent: 'center',
