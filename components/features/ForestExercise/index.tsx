@@ -53,7 +53,7 @@ export default function ForestExercise({
     textContent && setAnswer(textContent)
 
     if (textContent !== activeWord.translation) {
-      setAnswerStatus(AnswerStatus.WRONG)
+      setAnswerStatus(AnswerStatus.FAIL)
       handleWrongWords(activeWord)
     } else {
       setAnswerStatus(AnswerStatus.SUCCESS)
