@@ -1,5 +1,5 @@
 'use client'
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { colors } from '@/utils/colors'
 import { Chip, PropTypes, TextField } from '@mui/material'
 import styled from 'styled-components'
@@ -33,6 +33,10 @@ export default function WordCheckingItem({
   const [answer, setAnswer] = useState<string>('')
   const [isCorrect, setIsCorrect] = useState<AnswerStatus>(AnswerStatus.PENDING)
   const hasError = isCorrect === AnswerStatus.FAIL
+
+  useEffect(() => {
+    getVoice(activeItem?.translation)
+  }, [activeItem?.translation, answer])
 
   const onSubmit = (data: InitialValue, form: FormApi) => {
     setAnswer(data.word)
