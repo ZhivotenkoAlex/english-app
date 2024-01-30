@@ -35,6 +35,12 @@ const StyledEmptyLetterCell = styled('div')<{
   text-transform: uppercase;
   color: white;
   ${({ $clickable }) => ($clickable ? `cursor:pointer;` : null)};
+
+  @media screen and (max-width: 480px) {
+    width: 40px;
+    height: 35px;
+    font-size: 1rem;
+  }
 `
 
 export default LetterCell
