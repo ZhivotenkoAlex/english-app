@@ -48,7 +48,7 @@ function ExerciseContent({
           updatedChars[index].background = themeColors.primary
           return updatedChars
         })
-      })
+      }, 500)
     } else {
       setInitialChars(initialChars.filter((el, i) => i !== index))
       setContainedCells([...containedCells, char])
@@ -136,6 +136,9 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  @media screen and (max-width: 480px) {
+    padding: 1.5rem;
+  }
 `
 
 export default ExerciseContent
