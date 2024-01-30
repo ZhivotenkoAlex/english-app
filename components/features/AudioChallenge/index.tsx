@@ -1,12 +1,15 @@
 'use client'
-import React, { SyntheticEvent, useEffect, useMemo, useState } from 'react'
-import ProgressTimer from '../ProgressTimer'
+import React, { SyntheticEvent, useEffect, useState } from 'react'
 import { Chip } from '@mui/material'
 import styled from 'styled-components'
-import { colors } from '@/utils/colors'
+import { COLORS_ENUM, colors } from '@/utils/colors'
 import { AnswerStatus, ContainerColors, IForestItem, IForestVariant } from '@/types'
-import { shuffleArray } from '@/helpers/shuffleArray'
 import PencilLineIcon from 'remixicon-react/PencilRulerLineIcon'
+import VolumeUpFillIcon from 'remixicon-react/VolumeUpFillIcon'
+import { getVoice } from '@/helpers/getVoice'
+import HintIcon from '@/components/atoms/HintIcon'
+import QuestionLineIcon from 'remixicon-react/QuestionLineIcon'
+import Button from '@/components/molecules/Button/Button'
 
 type PropTypes = {
   forestData: IForestItem[]
@@ -14,7 +17,7 @@ type PropTypes = {
   handleWrongWords: (arg: IForestItem) => void
 }
 
-export default function ForestExercise({
+export default function AudioChallenge({
   forestData,
   handleProgress,
   handleWrongWords,
@@ -23,12 +26,17 @@ export default function ForestExercise({
   const [activeWord, setActiveWord] = useState(forestData[activeIndex])
   const [answer, setAnswer] = useState('')
   const [answerStatus, setAnswerStatus] = useState<AnswerStatus>(AnswerStatus.PENDING)
-
-  const shuffledVariants = useMemo(() => shuffleArray(activeWord.variants), [activeWord.variants])
+  const isChecked = answerStatus !== AnswerStatus.PENDING
+  const counterLabel = `${activeIndex + 1} / ${forestData.length}`
+  const isDone = activeIndex + 1 === forestData.length
 
   useEffect(() => {
     setActiveWord(forestData[activeIndex])
   }, [activeIndex, forestData])
+
+  useEffect(() => {
+    getVoice(activeWord?.title)
+  }, [activeWord])
 
   const handleChangeWord = () => {
     setActiveIndex(prev => prev + 1)
@@ -39,17 +47,17 @@ export default function ForestExercise({
 
   const handleNoAnswer = () => {
     if (!answer) {
+      setAnswerStatus(AnswerStatus.FAIL)
       handleWrongWords(activeWord)
+      getVoice(activeWord?.title)
     }
   }
 
   const handleChipClick = (e: SyntheticEvent) => {
-    const { textContent } = e.target as HTMLButtonElement
-
     if (answer !== '') {
       return
     }
-
+    const { textContent } = e.target as HTMLButtonElement
     textContent && setAnswer(textContent)
 
     if (textContent !== activeWord.translation) {
@@ -58,11 +66,17 @@ export default function ForestExercise({
     } else {
       setAnswerStatus(AnswerStatus.SUCCESS)
     }
+    getVoice(activeWord?.title)
   }
 
-  const counterLabel = `${activeIndex + 1} / ${forestData.length}`
+  const isChipActive = (item: IForestVariant) => {
+    if (isChecked) {
+      return item.answerText === activeWord.translation
+    }
+    return false
+  }
 
-  const isChipActive = (item: IForestVariant) => answer === item.answerText
+  const isChipDisabled = (item: IForestVariant) => isChecked && !isChipActive(item)
 
   return (
     <Root>
@@ -71,18 +85,12 @@ export default function ForestExercise({
         <Task>Choose the correct</Task>
       </TaskContainer>
       <Counter label={counterLabel} $isDone={false} />
-      <ProgressTimer
-        rounds={forestData.length}
-        handleChangeWord={handleChangeWord}
-        handleFinish={handleFinish}
-        handleNoAnswer={handleNoAnswer}
-      />
-      <WordContainer $hasError={answerStatus}>
-        <Word>{activeWord.title}</Word>
-      </WordContainer>
+      <VolumeAction size={50} onClick={() => getVoice(activeWord?.title, 0.3)} />
+
       <ChipContainer>
-        {shuffledVariants.map(item => (
+        {activeWord.variants.map(item => (
           <StyledChip
+            disabled={isChipDisabled(item)}
             $isActive={isChipActive(item)}
             key={item.id}
             label={item.answerText}
@@ -90,6 +98,27 @@ export default function ForestExercise({
           />
         ))}
       </ChipContainer>
+      {isChecked ? (
+        <>
+          <WordContainer $hasError={answerStatus}>
+            <Word>{activeWord.title}</Word>
+          </WordContainer>
+        </>
+      ) : (
+        <IconContainer onClick={handleNoAnswer}>
+          <HintIcon Icon={QuestionLineIcon} isComplete={true} />
+        </IconContainer>
+      )}
+      {!isDone && isChecked && (
+        <StyledButton
+          label="NEXT"
+          color={COLORS_ENUM.GREEN}
+          onClick={handleChangeWord}
+          size="medium"
+          disabled={false}
+        ></StyledButton>
+      )}
+      {isDone && <StyledButton label={'FINISH'} onClick={handleFinish}></StyledButton>}
     </Root>
   )
 }
@@ -150,11 +179,14 @@ const Word = styled.span`
 const StyledChip = styled(Chip)<{ $isActive: boolean }>`
   && {
     font-size: 20px;
-    background-color: ${props => (props.$isActive ? colors.green : colors.lightGreen)};
+    background-color: ${({ $isActive }) => ($isActive ? colors.green : colors.lightGreen)};
     padding: 20px;
+    transition: all 0.5s ease-in-out;
+    scale: ${({ $isActive }) => ($isActive ? 1.1 : 1)};
   }
   &&:hover {
     background-color: ${colors.green};
+    scale: 1.1;
   }
 `
 
@@ -163,7 +195,7 @@ const ChipContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 30px;
-  margin: 20px auto;
+  margin: 50px auto 20px auto;
   padding: 25px;
   background: ${colors.lightBlue};
   min-width: 100%;
@@ -202,7 +234,29 @@ const TaskContainer = styled.div`
   display: flex;
   align-items: flex-end;
   gap: 5px;
+  margin-bottom: 20px;
   @media screen and (max-width: 767px) {
     margin-top: 24px;
   }
+`
+const VolumeAction = styled(VolumeUpFillIcon)`
+  fill: ${colors.successGreen};
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    fill: ${colors.blue};
+  }
+`
+
+const IconContainer = styled.div`
+  display: flex;
+  width: 50px;
+  justify-content: center;
+  margin: 20px auto;
+  cursor: pointer;
+`
+
+const StyledButton = styled(Button)`
+  margin: 0 auto;
+  width: fit-content;
 `

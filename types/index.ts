@@ -143,12 +143,12 @@ export interface IForestVariant {
 
 export enum AnswerStatus {
   PENDING = 'pending',
-  WRONG = 'wrong',
+  FAIL = 'fail',
   SUCCESS = 'success',
 }
 
 export const ContainerColors = {
   [AnswerStatus.PENDING]: colors.lightGreen,
   [AnswerStatus.SUCCESS]: colors.green,
-  [AnswerStatus.WRONG]: colors.lightWarning,
+  [AnswerStatus.FAIL]: colors.lightWarning,
 }

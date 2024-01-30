@@ -18,7 +18,7 @@ const STATE_ICON = {
 function WordRow({ word }) {
   const isStandardView = false
   const handlePlayAudio = () => {
-    getVoice(word.title, 'en', 0.8)
+    getVoice(word.title, 0.8)
   }
   return (
     <Wrapper>
