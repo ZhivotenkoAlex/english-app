@@ -110,7 +110,7 @@ export default function WordCheckingItem({
                   <Word>{activeItem.translation}</Word>
                 </TranslationContainer>
                 <Transcription>{activeItem.transcription}</Transcription>
-                {answerStatus === AnswerStatus.FAIL && <FailedAnswer>{answer}</FailedAnswer>}
+                {hasError && <FailedAnswer>{answer}</FailedAnswer>}
                 <Word>{activeItem.title}</Word>
                 <ExampleContainer></ExampleContainer>
               </Container>
