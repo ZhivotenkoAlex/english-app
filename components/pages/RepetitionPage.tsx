@@ -11,6 +11,13 @@ import { getVoice } from '@/helpers/getVoice'
 
 function Repetition() {
   const [isStarted, setStarted] = useState(false)
+  const [isPronunciation, setIsPronunciation] = useState(true)
+  const [activeIndex, setActiveIndex] = useState<number>(0)
+  const words = WORDS
+  const [wrongWords, setWrongWords] = useState<IWord[]>([])
+  const [isFinished, setIsFinished] = useState(false)
+
+  const learnedWords = useMemo(() => words.filter(el => !wrongWords.includes(el)), [wrongWords])
 
   const handleTimerOut = () => {
     setStarted(true)
@@ -18,16 +25,7 @@ function Repetition() {
 
   const handleStarted = () => setStarted(false)
 
-  const [isPronunciation, setIsPronunciation] = useState(true)
-  const [activeIndex, setActiveIndex] = useState<number>(0)
-  const words = WORDS
-
-  const [wrongWords, setWrongWords] = useState<IWord[]>([])
-  const [isFinished, setIsFinished] = useState(false)
-
   const handleAddWrongWords = (wordItem: IWord) => setWrongWords(prev => [...prev, wordItem])
-
-  const learnedWords = useMemo(() => words.filter(el => !wrongWords.includes(el)), [wrongWords])
 
   const handleRepeat = () => {
     setIsFinished(false)
@@ -42,7 +40,7 @@ function Repetition() {
 
   useEffect(() => {
     if (isStarted) {
-      getVoice(words[activeIndex].title, 'en', 0.8)
+      getVoice(words[activeIndex].title, 0.8)
     }
   }, [activeIndex, isStarted])
 
