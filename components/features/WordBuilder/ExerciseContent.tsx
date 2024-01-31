@@ -57,7 +57,7 @@ function ExerciseContent({
 
   useEffect(() => {
     if (isPronunciation && !exerciseInProgress) {
-      getVoice(word.title, 'en', 0.8)
+      getVoice(word.title, 0.8)
     }
   }, [exerciseInProgress, isPronunciation, word.title])
 

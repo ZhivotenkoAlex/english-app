@@ -44,7 +44,7 @@ export default function TranslateWordPopover({ isOpen, word, anchorEl, handleClo
           </Container>
         ))}
         <Divider />
-        <VolumeAction onClick={() => getVoice(word, 'en', 0.7)} />
+        <VolumeAction onClick={() => getVoice(word, 0.7)} />
       </RootContent>
     </StyledPopover>
   )

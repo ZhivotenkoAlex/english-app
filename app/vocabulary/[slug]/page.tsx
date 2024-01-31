@@ -4,6 +4,7 @@ import { Metadata } from 'next'
 import React from 'react'
 import WordBuilderPage from '@/components/pages/WordBuilderPage'
 import SentenceBuilderPage from '@/components/pages/SentenceBuilderPage'
+import AudioChallengePage from '@/components/pages/AudioChallengePage'
 
 type Props = {
   params: { slug: string }
@@ -26,6 +27,7 @@ const exercises = {
   forest: <ForestPage />,
   'word-builder': <WordBuilderPage />,
   'sentence-builder': <SentenceBuilderPage />,
+  'audio-challenge': <AudioChallengePage />,
 }
 
 export default function page({ params }: { params: { slug: string } }) {
