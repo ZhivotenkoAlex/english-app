@@ -2,13 +2,13 @@ import React, { useMemo, useState } from 'react'
 import ResultModal from '../ResultModal/ResultModal'
 import { forestData } from '@/helpers/forestData'
 import { IForestItem } from '@/types'
-import ForestExercise from '../ForestExercise'
+import SprintExercise from '../SprintExercise'
 
 type PropTypes = {
   handleStarted: () => void
 }
 
-export default function ForestContent({ handleStarted }: PropTypes) {
+export default function SprintContent({ handleStarted }: PropTypes) {
   const [wrongWords, setWrongWords] = useState<IForestItem[]>([])
   const [isFinished, setIsFinished] = useState(false)
   const handleWrongWords = (wordItem: IForestItem) =>
@@ -26,7 +26,7 @@ export default function ForestContent({ handleStarted }: PropTypes) {
   return isFinished ? (
     <ResultModal handleRepeat={handleRepeat} wrongWords={wrongWords} learnedWords={learnedWords} />
   ) : (
-    <ForestExercise
+    <SprintExercise
       forestData={forestData}
       handleProgress={setIsFinished}
       handleWrongWords={handleWrongWords}

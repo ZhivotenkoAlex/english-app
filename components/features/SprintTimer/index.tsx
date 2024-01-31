@@ -1,30 +1,21 @@
 import CountdownTimer, { TimerSize } from '@/components/molecules/CountdownTimer'
 import React from 'react'
 import styled from 'styled-components'
-import ProgressTimerContent from './ProgressTimerContent'
+import SprintTimerContent from './SprintTimerContent'
 
-export default function ProgressTimer({
+export default function SprintTimer({
   rounds,
-  size = 'small',
-  handleChangeWord,
   handleFinish,
-  handleNoAnswer,
 }: {
   rounds: number
   size?: TimerSize
-  handleChangeWord: () => void
   handleFinish: () => void
-  handleNoAnswer: () => void
 }) {
   const minuteSeconds = 5
   const handleComplete = (totalElapsedTime: number) => {
     const passedRounds = Math.ceil(totalElapsedTime / minuteSeconds)
-    handleNoAnswer()
-    if (passedRounds < rounds) {
-      handleChangeWord()
-    } else {
-      handleFinish()
-    }
+
+    handleFinish()
 
     return {
       shouldRepeat: passedRounds < rounds,
@@ -33,7 +24,12 @@ export default function ProgressTimer({
 
   return (
     <Root>
-      <CountdownTimer onComplete={handleComplete} RenderTime={ProgressTimerContent} size={size} />
+      <CountdownTimer
+        duration={6}
+        onComplete={handleComplete}
+        RenderTime={SprintTimerContent}
+        size="small"
+      />
     </Root>
   )
 }

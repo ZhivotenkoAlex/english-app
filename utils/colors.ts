@@ -14,6 +14,7 @@ export const colors = {
   darkGreen: '#1c8d63',
   red: '#ee6044',
   warning: '#d32f2f',
+  lightWarning2: '#ff7474',
   lightWarning: '#f6c0c0',
 }
 
