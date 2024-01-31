@@ -6,7 +6,7 @@ import AudioChallengeContent from '../features/AudioChallengeContent'
 export default function AudioChallengePage() {
   return (
     <Root>
-      <AudioChallengeContent />)
+      <AudioChallengeContent />
     </Root>
   )
 }
