@@ -5,32 +5,14 @@ import ExerciseContent from './ExerciseContent'
 import { IWord } from '@/types'
 import ResultModal from '@/components/features/ResultModal/ResultModal'
 import ExerciseControlsButtons from '@/components/features/ExerciseControlsButtons/ExerciseControlsButtons'
+import { WORDS } from '@/helpers/mock-data'
 
 function Exercise() {
   const [isPronunciation, setIsPronunciation] = useState(true)
   const [isInProgress, setIsInProgress] = useState(true)
   const [isResultModalShown, setIsResultModalShown] = useState(false)
   const [wrongWords, setWrongWords] = useState<IWord[]>([])
-  const words: IWord[] = useMemo(
-    () => [
-      {
-        id: 1,
-        title: 'apple',
-        translation: 'яблуко',
-        picture: 'https://usapple.org/wp-content/uploads/2019/10/apple-pink-lady.png',
-        state: 'in progress',
-      },
-      {
-        id: 2,
-        title: 'hello',
-        translation: 'привіт',
-        picture: 'https://usapple.org/wp-content/uploads/2019/10/apple-pink-lady.png',
-        state: 'in progress',
-      },
-    ],
-    [],
-  )
-
+  const words = WORDS
   const [currentWordIndex, setCurrentWordIndex] = useState<number>(0)
 
   const learnedWords = useMemo(
