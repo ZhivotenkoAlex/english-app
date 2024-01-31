@@ -33,6 +33,7 @@ export default function WordCheckingItem({
   const [answer, setAnswer] = useState<string>('')
   const [isCorrect, setIsCorrect] = useState<AnswerStatus>(AnswerStatus.PENDING)
   const hasError = isCorrect === AnswerStatus.FAIL
+  const isChecked = isCorrect !== AnswerStatus.PENDING
 
   useEffect(() => {
     getVoice(activeItem?.translation)
@@ -48,7 +49,7 @@ export default function WordCheckingItem({
     if (hasError && answer) {
       handleWrongWords(activeItem)
     }
-    if (isCorrect !== AnswerStatus.PENDING && !isDone && answer) {
+    if (isChecked && !isDone && answer) {
       setActiveIndex(activeIndex + 1)
       setActiveItem(vocabulary[activeIndex + 1])
       setIsCorrect(AnswerStatus.PENDING)
@@ -77,7 +78,7 @@ export default function WordCheckingItem({
         onSubmit={onSubmit}
         render={({ handleSubmit, form }) => (
           <form onSubmit={handleSubmit}>
-            {isDone || (isCorrect !== AnswerStatus.PENDING && answer) ? null : (
+            {isDone || (isChecked && answer) ? null : (
               <Field
                 name="word"
                 render={({ input, meta }) => {
@@ -101,7 +102,7 @@ export default function WordCheckingItem({
               />
             )}
 
-            {isCorrect !== AnswerStatus.PENDING && answer ? (
+            {isChecked && answer ? (
               <Container>
                 <TranslationContainer $error={hasError}>
                   <Word>{activeItem.translation}</Word>
@@ -122,10 +123,7 @@ export default function WordCheckingItem({
               </>
             ) : (
               <ButtonContainer>
-                <StyledButton
-                  label={isCorrect !== AnswerStatus.PENDING ? 'NEXT' : 'CHECK'}
-                  type="submit"
-                ></StyledButton>
+                <StyledButton label={isChecked ? 'NEXT' : 'CHECK'} type="submit"></StyledButton>
               </ButtonContainer>
             )}
           </form>
