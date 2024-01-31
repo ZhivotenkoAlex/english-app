@@ -5,6 +5,7 @@ import React from 'react'
 import WordBuilderPage from '@/components/pages/WordBuilderPage'
 import SentenceBuilderPage from '@/components/pages/SentenceBuilderPage'
 import ListeningPage from '@/components/pages/ListeningPage'
+import AudioChallengePage from '@/components/pages/AudioChallengePage'
 
 type Props = {
   params: { slug: string }
@@ -29,6 +30,7 @@ const exercises = {
   'word-builder': <WordBuilderPage />,
   'sentence-builder': <SentenceBuilderPage />,
   listening: <ListeningPage />,
+  'audio-challenge': <AudioChallengePage />,
 }
 
 export default function page({ params }: { params: { slug: string } }) {

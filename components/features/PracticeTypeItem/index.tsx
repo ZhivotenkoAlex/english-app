@@ -104,9 +104,7 @@ export default function PracticeItem({ practice, clickHandler, handleWrongWords 
               <TranslationContainer $isChecked={isChecked}>
                 <Word>{isChecked ? activeItem.translation : ' '}</Word>
                 {isChecked ? (
-                  <VolumeAction
-                    onClick={() => getVoice(activeItem?.translation, 'translation', 0.7)}
-                  />
+                  <VolumeAction onClick={() => getVoice(activeItem?.translation, 0.7)} />
                 ) : null}
               </TranslationContainer>
             ) : (

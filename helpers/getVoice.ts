@@ -1,4 +1,4 @@
-export const getVoice = (value: string, lang = 'en', rate = 0.1) => {
+export const getVoice = (value: string, rate = 0.1, lang = 'en') => {
   const output = new SpeechSynthesisUtterance(value)
   output.lang = lang
   output.pitch = 1

@@ -21,7 +21,7 @@ export default function SingleArticlePage({ content }: PropTypes) {
   const handleWordClick = (e: SyntheticEvent) => {
     const { textContent } = e.target as HTMLButtonElement
     setAnchorEl(e.currentTarget as HTMLButtonElement)
-    const regSigns = textContent?.match(/[.,!?();:—"]/g)
+    const regSigns = textContent?.match(/[.,!?();:—" ]/g)
     if (!textContent || !e.currentTarget || regSigns) {
       return
     }
@@ -65,6 +65,7 @@ export default function SingleArticlePage({ content }: PropTypes) {
           )
         })
       })}
+
       <TranslateWordPopover
         isOpen={isModalOpen}
         word={activeWord}
