@@ -177,7 +177,6 @@ const TranslationContainer = styled.div<{ $isChecked: boolean }>`
 
 const Word = styled.span`
   font-size: 20px;
-  text-wrap: nowrap;
   @media screen and (max-width: 1023px) {
     text-wrap: pretty;
   }

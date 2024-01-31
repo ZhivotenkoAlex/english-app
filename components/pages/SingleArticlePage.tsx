@@ -72,7 +72,7 @@ export default function SingleArticlePage({ content }: PropTypes) {
         anchorEl={anchorEl}
         handleClose={handleClose}
       />
-      <ButtonContainer href={`${ROUTES.VOCABULARY}/articles`}>
+      <ButtonContainer href={`${ROUTES.READING}`}>
         <Button fontColor={COLORS_ENUM.LIGHT_WHITE} label={'Back to articles'} />
       </ButtonContainer>
     </Root>

@@ -1,7 +1,7 @@
 'use client'
+import React, { useCallback, useEffect, useState } from 'react'
 import { colors } from '@/utils/colors'
-import React, { useCallback, useState } from 'react'
-import { Chip, TextField } from '@mui/material'
+import { Chip, PropTypes, TextField } from '@mui/material'
 import styled from 'styled-components'
 import VolumeUpFillIcon from 'remixicon-react/VolumeUpFillIcon'
 import { getVoice } from '@/helpers/getVoice'
@@ -10,7 +10,7 @@ import { Form, Field } from 'react-final-form'
 import QuestionLineIcon from 'remixicon-react/QuestionLineIcon'
 import HintIcon from '@/components/atoms/HintIcon'
 import { FormApi } from 'final-form'
-import { LessonVocabulary } from '@/types'
+import { AnswerStatus, LessonVocabulary } from '@/types'
 
 type InitialValue = {
   word: string
@@ -18,47 +18,69 @@ type InitialValue = {
 
 type PropTypes = {
   vocabulary: LessonVocabulary[]
-  clickHandler: (num: number) => void
+  handleFinish: () => void
+  handleWrongWords: (item: LessonVocabulary) => void
 }
 
-export default function WordCheckingItem({ vocabulary, clickHandler }: PropTypes) {
+export default function WordCheckingItem({
+  vocabulary,
+  handleFinish,
+  handleWrongWords,
+}: PropTypes) {
   const [activeIndex, setActiveIndex] = useState<number>(0)
   const [activeItem, setActiveItem] = useState<LessonVocabulary>(vocabulary[activeIndex])
-  const [isChecked, setIsChecked] = useState<boolean>(false)
   const [isDone, setIsDone] = useState<boolean>(false)
+  const [answer, setAnswer] = useState<string>('')
+  const [answerStatus, setAnswerStatus] = useState<AnswerStatus>(AnswerStatus.PENDING)
+  const hasError = answerStatus === AnswerStatus.FAIL
+  const isChecked = answerStatus !== AnswerStatus.PENDING
 
-  const onSubmit = useCallback(
-    (data: InitialValue, form: FormApi) => {
-      const isCorrect = data.word === activeItem.translation
-      setIsChecked(isCorrect)
-      if (activeIndex + 1 === vocabulary.length) {
-        setIsDone(true)
-      }
-      if (isChecked && isCorrect && !isDone) {
-        setActiveIndex(activeIndex + 1)
-        setActiveItem(vocabulary[activeIndex + 1])
-        setIsChecked(false)
-        form.change('word', '')
-      }
-    },
-    [activeIndex, activeItem.translation, isChecked, isDone, vocabulary],
-  )
+  useEffect(() => {
+    getVoice(activeItem?.translation)
+  }, [activeItem?.translation, answer])
 
-  const handleNextExercise = () => clickHandler(2)
+  const onSubmit = (data: InitialValue, form: FormApi) => {
+    setAnswer(data.word)
+
+    setAnswerStatus(data.word === activeItem.translation ? AnswerStatus.SUCCESS : AnswerStatus.FAIL)
+    if (activeIndex + 1 === vocabulary.length) {
+      setIsDone(true)
+    }
+    if (hasError && answer) {
+      handleWrongWords(activeItem)
+    }
+    if (isChecked && !isDone && answer) {
+      setActiveIndex(activeIndex + 1)
+      setActiveItem(vocabulary[activeIndex + 1])
+      setAnswerStatus(AnswerStatus.PENDING)
+      setAnswer('')
+      form.change('word', '')
+    }
+  }
 
   const counterLabel = `${activeIndex + 1} / ${vocabulary.length}`
+
+  const getHint = useCallback(
+    (form: FormApi) => {
+      form.change('word', activeItem.translation)
+      handleWrongWords(activeItem)
+    },
+    [activeItem, handleWrongWords],
+  )
+
+  const handleVolumeClick = () => getVoice(activeItem?.translation)
 
   return (
     <Root>
       <WordContainer>
-        <Word>{activeItem?.title}</Word>
+        <VolumeAction size={30} onClick={handleVolumeClick} />
         <Counter label={counterLabel} $isDone={isDone} />
       </WordContainer>
       <Form
         onSubmit={onSubmit}
         render={({ handleSubmit, form }) => (
           <form onSubmit={handleSubmit}>
-            {isDone ? null : (
+            {isDone || (isChecked && answer) ? null : (
               <Field
                 name="word"
                 render={({ input, meta }) => {
@@ -67,6 +89,7 @@ export default function WordCheckingItem({ vocabulary, clickHandler }: PropTypes
                       <div>
                         <StyledTextField
                           {...input}
+                          error={hasError}
                           placeholder="Введіть переклад"
                           autoComplete="off"
                           autoCorrect="false"
@@ -81,21 +104,24 @@ export default function WordCheckingItem({ vocabulary, clickHandler }: PropTypes
               />
             )}
 
-            {isChecked ? (
-              <TranslationContainer $isChecked={isChecked}>
-                <Word>{isChecked ? activeItem.translation : ' '}</Word>
-                {isChecked ? (
-                  <VolumeAction onClick={() => getVoice(activeItem?.translation)} />
-                ) : null}
-              </TranslationContainer>
+            {isChecked && answer ? (
+              <Container>
+                <TranslationContainer $error={hasError}>
+                  <Word>{activeItem.translation}</Word>
+                </TranslationContainer>
+                <Transcription>{activeItem.transcription}</Transcription>
+                {hasError && <FailedAnswer>{answer}</FailedAnswer>}
+                <Word>{activeItem.title}</Word>
+                <ExampleContainer></ExampleContainer>
+              </Container>
             ) : (
-              <IconContainer onClick={() => form.change('word', activeItem.translation)}>
+              <IconContainer onClick={() => getHint(form)}>
                 <HintIcon Icon={QuestionLineIcon} />
               </IconContainer>
             )}
             {isDone ? (
               <>
-                <StyledButton label={'NEXT EXERCISE'} onClick={handleNextExercise}></StyledButton>
+                <StyledButton label={'FINISH'} onClick={handleFinish}></StyledButton>
               </>
             ) : (
               <ButtonContainer>
@@ -125,6 +151,11 @@ const Root = styled.div`
   }
 `
 
+const Container = styled.div`
+  display: grid;
+  gap: 10px;
+`
+
 const WordContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -133,19 +164,32 @@ const WordContainer = styled.div`
   position: relative;
 `
 
-const TranslationContainer = styled.div<{ $isChecked: boolean }>`
+const TranslationContainer = styled.div<{ $error: boolean }>`
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 20px;
-  margin: 20px auto;
-  padding: 12px;
-  background: ${props => (props.$isChecked === true ? colors.lightGreen : colors.lightBlue)};
+  margin: 0 auto 20px auto;
+  padding: 16px;
+  background: ${({ $error }) => ($error ? colors.lightWarning : colors.lightGreen)};
   width: fit-content;
   border-radius: 16px;
-  max-height: 50px;
+  min-height: 62px;
+  min-width: 236px;
 `
 
 const Word = styled.h4`
+  text-transform: uppercase;
+`
+
+const Transcription = styled.p`
+  color: ${colors.grey};
+`
+
+const FailedAnswer = styled.h4`
+  text-decoration-line: line-through;
+  text-decoration-thickness: 1.5px;
+  color: ${colors.red};
   text-transform: uppercase;
 `
 
@@ -172,8 +216,10 @@ const Counter = styled(Chip)<{ $isDone: boolean }>`
   position: absolute;
   top: -5px;
   right: 0;
-  background: ${props => (props.$isDone ? colors.green : 'auto')};
+  background: ${({ $isDone }) => ($isDone ? colors.green : 'auto')};
 `
+
+const ExampleContainer = styled.div``
 
 const StyledTextField = styled(TextField)`
   input {
@@ -192,5 +238,5 @@ const InputContainer = styled.div`
 const IconContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin: 29px 0;
+  margin: 20px 0;
 `

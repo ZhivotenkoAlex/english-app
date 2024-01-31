@@ -4,6 +4,7 @@ import { Metadata } from 'next'
 import React from 'react'
 import WordBuilderPage from '@/components/pages/WordBuilderPage'
 import SentenceBuilderPage from '@/components/pages/SentenceBuilderPage'
+import ListeningPage from '@/components/pages/ListeningPage'
 import AudioChallengePage from '@/components/pages/AudioChallengePage'
 
 type Props = {
@@ -23,10 +24,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: 'Easy way to learn English',
   }
 }
+
 const exercises = {
   forest: <ForestPage />,
   'word-builder': <WordBuilderPage />,
   'sentence-builder': <SentenceBuilderPage />,
+  listening: <ListeningPage />,
   'audio-challenge': <AudioChallengePage />,
 }
 

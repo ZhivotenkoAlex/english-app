@@ -1,7 +1,7 @@
-import ConstructItemType from '@/components/features/PracticeItem/ConstructItemType'
-import CorrectItemType from '@/components/features/PracticeItem/CorrectItemType'
-import InputItemType from '@/components/features/PracticeItem/InputItemType'
-import SelectOneItemType from '@/components/features/PracticeItem/SelectOneItemType'
+import ConstructItemType from '@/components/features/PracticeTypeItem/ConstructItemType'
+import CorrectItemType from '@/components/features/PracticeTypeItem/CorrectItemType'
+import InputItemType from '@/components/features/PracticeTypeItem/InputItemType'
+import SelectOneItemType from '@/components/features/PracticeTypeItem/SelectOneItemType'
 import { LessonPractice, LessonType, PracticeTypes } from '@/types'
 import { FieldInputProps } from 'react-final-form'
 

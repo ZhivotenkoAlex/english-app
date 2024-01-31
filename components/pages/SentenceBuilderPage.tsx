@@ -2,7 +2,7 @@
 import { Lessons } from '@/helpers/constants'
 import { LessonPractice, PracticeTypes } from '@/types'
 import React, { useMemo, useState } from 'react'
-import PracticeItem from '../features/PracticeItem'
+import PracticeItem from '../features/PracticeTypeItem'
 import ResultModal from '../features/ResultModal/ResultModal'
 
 const getTasks = () =>
