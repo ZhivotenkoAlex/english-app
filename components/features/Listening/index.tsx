@@ -31,9 +31,9 @@ export default function WordCheckingItem({
   const [activeItem, setActiveItem] = useState<LessonVocabulary>(vocabulary[activeIndex])
   const [isDone, setIsDone] = useState<boolean>(false)
   const [answer, setAnswer] = useState<string>('')
-  const [isCorrect, setIsCorrect] = useState<AnswerStatus>(AnswerStatus.PENDING)
-  const hasError = isCorrect === AnswerStatus.FAIL
-  const isChecked = isCorrect !== AnswerStatus.PENDING
+  const [answerStatus, setAnswerStatus] = useState<AnswerStatus>(AnswerStatus.PENDING)
+  const hasError = answerStatus === AnswerStatus.FAIL
+  const isChecked = answerStatus !== AnswerStatus.PENDING
 
   useEffect(() => {
     getVoice(activeItem?.translation)
@@ -42,7 +42,7 @@ export default function WordCheckingItem({
   const onSubmit = (data: InitialValue, form: FormApi) => {
     setAnswer(data.word)
 
-    setIsCorrect(data.word === activeItem.translation ? AnswerStatus.SUCCESS : AnswerStatus.FAIL)
+    setAnswerStatus(data.word === activeItem.translation ? AnswerStatus.SUCCESS : AnswerStatus.FAIL)
     if (activeIndex + 1 === vocabulary.length) {
       setIsDone(true)
     }
@@ -52,7 +52,7 @@ export default function WordCheckingItem({
     if (isChecked && !isDone && answer) {
       setActiveIndex(activeIndex + 1)
       setActiveItem(vocabulary[activeIndex + 1])
-      setIsCorrect(AnswerStatus.PENDING)
+      setAnswerStatus(AnswerStatus.PENDING)
       setAnswer('')
       form.change('word', '')
     }
@@ -68,10 +68,12 @@ export default function WordCheckingItem({
     [activeItem, handleWrongWords],
   )
 
+  const handleVolumeClick = () => getVoice(activeItem?.translation)
+
   return (
     <Root>
       <WordContainer>
-        <VolumeAction size={30} onClick={() => getVoice(activeItem?.translation)} />
+        <VolumeAction size={30} onClick={handleVolumeClick} />
         <Counter label={counterLabel} $isDone={isDone} />
       </WordContainer>
       <Form
@@ -108,7 +110,7 @@ export default function WordCheckingItem({
                   <Word>{activeItem.translation}</Word>
                 </TranslationContainer>
                 <Transcription>{activeItem.transcription}</Transcription>
-                {isCorrect === AnswerStatus.FAIL && <FailedAnswer>{answer}</FailedAnswer>}
+                {answerStatus === AnswerStatus.FAIL && <FailedAnswer>{answer}</FailedAnswer>}
                 <Word>{activeItem.title}</Word>
                 <ExampleContainer></ExampleContainer>
               </Container>
