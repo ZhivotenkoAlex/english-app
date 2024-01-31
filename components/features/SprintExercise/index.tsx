@@ -6,17 +6,18 @@ import { colors } from '@/utils/colors'
 import { IForestItem } from '@/types'
 import PencilLineIcon from 'remixicon-react/PencilRulerLineIcon'
 import SprintTimer from '../SprintTimer'
+import { useMediaQuery } from '@mui/material'
 
 type PropTypes = {
   forestData: IForestItem[]
   handleProgress: (arg: boolean) => void
-  handleWrongWords: (arg: IForestItem) => void
+  handleLearnedWords: (arg: IForestItem) => void
 }
 
 export default function SprintExercise({
   forestData,
   handleProgress,
-  handleWrongWords,
+  handleLearnedWords,
 }: PropTypes) {
   const [activeIndex, setActiveIndex] = useState(0)
   const [activeWord, setActiveWord] = useState(forestData[activeIndex])
@@ -24,6 +25,8 @@ export default function SprintExercise({
   const isVariantCorrect = variant.answerText === activeWord.translation
   const isVariantsOver = activeIndex + 1 === forestData.length
   const counterLabel = `${activeIndex + 1} / ${forestData.length}`
+  const isMobileView = useMediaQuery('(max-width:739px)')
+  const timerSize = isMobileView ? 'mobile' : 'small'
 
   useEffect(() => {
     setActiveWord(forestData[activeIndex])
@@ -37,12 +40,11 @@ export default function SprintExercise({
 
     if (isVariantsOver) {
       handleFinish()
-      return
     }
     if ((isVariantCorrect && isClickOnCorrect) || (!isVariantCorrect && !isClickOnCorrect)) {
       setActiveIndex(prev => prev + 1)
+      handleLearnedWords(activeWord)
     } else {
-      handleWrongWords(activeWord)
       setActiveIndex(prev => prev + 1)
     }
   }
@@ -50,7 +52,7 @@ export default function SprintExercise({
   return (
     <Root>
       <TimerContainer>
-        <SprintTimer rounds={1} size="small" handleFinish={handleFinish} />
+        <SprintTimer rounds={1} size={timerSize} handleFinish={handleFinish} />
       </TimerContainer>
       <TaskContainer>
         <PencilLineIcon color={colors.grey} />
@@ -150,7 +152,6 @@ const ChipContainer = styled.div`
   margin: 20px auto;
   padding: 25px;
   background: ${colors.lightBlue};
-  /* min-width: 100%; */
   border-radius: 16px;
   flex-wrap: wrap;
   grid-template-columns: repeat(2, 1fr);

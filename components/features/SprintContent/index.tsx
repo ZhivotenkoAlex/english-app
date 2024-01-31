@@ -9,18 +9,20 @@ type PropTypes = {
 }
 
 export default function SprintContent({ handleStarted }: PropTypes) {
-  const [wrongWords, setWrongWords] = useState<IForestItem[]>([])
   const [isFinished, setIsFinished] = useState(false)
-  const handleWrongWords = (wordItem: IForestItem) =>
-    setWrongWords(prev => [...prev, wordItem] as never)
-  const learnedWords = useMemo(
-    () => forestData.filter(el => !wrongWords.includes(el)) as IForestItem[],
-    [wrongWords],
+  const [learnedWords, setLearnedWords] = useState<IForestItem[]>([])
+
+  const handleLearnedWords = (wordItem: IForestItem) =>
+    setLearnedWords(prev => [...prev, wordItem] as never)
+
+  const wrongWords = useMemo(
+    () => forestData.filter(el => !learnedWords.includes(el)) as IForestItem[],
+    [learnedWords],
   )
 
   const handleRepeat = () => {
     setIsFinished(false)
-    setWrongWords([])
+    setLearnedWords([])
     handleStarted()
   }
   return isFinished ? (
@@ -29,7 +31,7 @@ export default function SprintContent({ handleStarted }: PropTypes) {
     <SprintExercise
       forestData={forestData}
       handleProgress={setIsFinished}
-      handleWrongWords={handleWrongWords}
+      handleLearnedWords={handleLearnedWords}
     />
   )
 }

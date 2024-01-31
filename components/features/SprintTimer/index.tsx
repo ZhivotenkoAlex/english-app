@@ -6,6 +6,7 @@ import SprintTimerContent from './SprintTimerContent'
 export default function SprintTimer({
   rounds,
   handleFinish,
+  size,
 }: {
   rounds: number
   size?: TimerSize
@@ -14,9 +15,7 @@ export default function SprintTimer({
   const minuteSeconds = 5
   const handleComplete = (totalElapsedTime: number) => {
     const passedRounds = Math.ceil(totalElapsedTime / minuteSeconds)
-
     handleFinish()
-
     return {
       shouldRepeat: passedRounds < rounds,
     }
@@ -25,10 +24,10 @@ export default function SprintTimer({
   return (
     <Root>
       <CountdownTimer
-        duration={6}
+        duration={30}
         onComplete={handleComplete}
         RenderTime={SprintTimerContent}
-        size="small"
+        size={size}
       />
     </Root>
   )

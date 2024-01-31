@@ -13,7 +13,7 @@ export default function StartTimer({ handleTimerOut }: { handleTimerOut: () => v
 
   return (
     <Root>
-      <CountdownTimer onComplete={handleComplete} RenderTime={StartTimerContent} size={240} />
+      <CountdownTimer onComplete={handleComplete} RenderTime={StartTimerContent} size="large" />
     </Root>
   )
 }

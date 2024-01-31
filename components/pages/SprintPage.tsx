@@ -15,11 +15,11 @@ export default function SprintPage() {
 
   return (
     <Root>
-      {/* {isStarted ? ( */}
-      <SprintContent handleStarted={handleStarted} />
-      {/* ) : (
+      {isStarted ? (
+        <SprintContent handleStarted={handleStarted} />
+      ) : (
         <StartTimer handleTimerOut={handleTimerOut} />
-      )} */}
+      )}
     </Root>
   )
 }
