@@ -16,7 +16,7 @@ function VocabularyClient() {
     } else {
       setTrainings(trainings)
     }
-  }, [isTablet, trainings])
+  }, [isTablet])
 
   return (
     <Wrapper>
