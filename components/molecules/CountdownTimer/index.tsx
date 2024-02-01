@@ -9,12 +9,28 @@ type MultipleColors = { 0: ColorHex } & { 1: ColorHex } & ColorHex[]
 
 export type DimensionType = 'seconds' | 'minutes' | 'hours'
 
-type RenderPropsType = { dimension: DimensionType; time: number }
+export type TimerSize = 'mobile' | 'small' | 'normal' | 'large'
+
+type RenderPropsType = { dimension: DimensionType; time: number; size: TimerSize }
+
+const TimerSizes = {
+  mobile: 60,
+  small: 80,
+  normal: 120,
+  large: 240,
+}
+
+const strokeWidths = {
+  mobile: 4,
+  small: 4,
+  normal: 6,
+  large: 6,
+}
 
 type PropTypes = {
   onComplete: (totalElapsedTime: number) => { shouldRepeat: boolean }
   RenderTime: (props: RenderPropsType) => ReactNode
-  size?: number
+  size?: TimerSize
   duration?: number
   dimension?: DimensionType
 }
@@ -22,7 +38,7 @@ type PropTypes = {
 export default function CountdownTimer({
   onComplete,
   RenderTime,
-  size = 120,
+  size = 'normal',
   duration = 5,
   dimension = 'seconds',
 }: PropTypes) {
@@ -36,12 +52,12 @@ export default function CountdownTimer({
         duration={duration}
         initialRemainingTime={duration}
         onComplete={onComplete}
-        size={size}
-        strokeWidth={6}
+        size={TimerSizes[size]}
+        strokeWidth={strokeWidths[size]}
       >
         {({ elapsedTime, color }) => (
           <span style={{ color }}>
-            <RenderTime dimension={dimension} time={getTimeSeconds(elapsedTime)} />
+            <RenderTime dimension={dimension} time={getTimeSeconds(elapsedTime)} size={size} />
           </span>
         )}
       </CountdownCircleTimer>

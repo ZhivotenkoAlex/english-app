@@ -6,6 +6,7 @@ import WordBuilderPage from '@/components/pages/WordBuilderPage'
 import SentenceBuilderPage from '@/components/pages/SentenceBuilderPage'
 import ListeningPage from '@/components/pages/ListeningPage'
 import AudioChallengePage from '@/components/pages/AudioChallengePage'
+import SprintPage from '@/components/pages/SprintPage'
 import RepetitionPage from '@/components/pages/RepetitionPage'
 
 type Props = {
@@ -32,6 +33,7 @@ const exercises = {
   'sentence-builder': <SentenceBuilderPage />,
   listening: <ListeningPage />,
   'audio-challenge': <AudioChallengePage />,
+  sprint: <SprintPage />,
   repetition: <RepetitionPage />,
 }
 
