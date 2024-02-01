@@ -35,7 +35,12 @@ const steps = [
   { label: 'Вітання', step: 3 },
 ]
 
-export default function CustomizedStepper({ currentStep = 2, clickHandler }) {
+type PropTypes = {
+  currentStep: number
+  clickHandler: (step: number) => void
+}
+
+export default function CustomizedStepper({ currentStep = 2, clickHandler }: PropTypes) {
   return (
     <Stack sx={{ width: '100%', margin: '0 auto' }} spacing={4}>
       <Stepper alternativeLabel activeStep={currentStep} connector={<Connector />}>

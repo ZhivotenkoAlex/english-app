@@ -16,6 +16,7 @@ type PropType = {
 export default function SingleLessonPage({ lesson }: PropType) {
   const [currentStep, setCurrentStep] = useState<number>(0)
   const clickHandler = () => setCurrentStep(prev => prev + 1)
+  const stepClickHandler = (step: React.SetStateAction<number>) => setCurrentStep(step)
 
   const stepComponents = {
     0: (
@@ -30,7 +31,7 @@ export default function SingleLessonPage({ lesson }: PropType) {
 
   return (
     <Root>
-      <CustomizedStepper currentStep={currentStep} clickHandler={clickHandler} />
+      <CustomizedStepper currentStep={currentStep} clickHandler={stepClickHandler} />
       <Container>
         <Heading>
           <PageTitle>{lesson?.topic}</PageTitle>
