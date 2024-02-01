@@ -33,7 +33,14 @@ export default function TranslationWordExercise({
     setActiveWord(data[activeIndex])
   }, [activeIndex, data])
 
-  if (!data) return <div>...Loading</div>
+  const isChipActive = (item: ITranslationVariants) => {
+    if (isChecked) {
+      return item.title === activeWord.title
+    }
+    return false
+  }
+
+  const isChipDisabled = (item: ITranslationVariants) => isChecked && !isChipActive(item)
 
   const handleNextWord = () => {
     setActiveIndex(prev => prev + 1)
@@ -59,14 +66,7 @@ export default function TranslationWordExercise({
     getVoice(activeWord?.title)
   }
 
-  const isChipActive = (item: ITranslationVariants) => {
-    if (isChecked) {
-      return item.title === activeWord.title
-    }
-    return false
-  }
-
-  const isChipDisabled = (item: ITranslationVariants) => isChecked && !isChipActive(item)
+  const iconClickHandler = () => getVoice(activeWord?.title)
 
   return !!data.length ? (
     <Root>
@@ -78,7 +78,7 @@ export default function TranslationWordExercise({
       <ContentContainer>
         <Container>
           <IconContainer>
-            {isChecked && <VolumeAction size={30} onClick={() => getVoice(activeWord?.title)} />}
+            {isChecked && <VolumeAction size={30} onClick={iconClickHandler} />}
           </IconContainer>
           <WordContainer $hasError={answerStatus}>
             <Word>{activeWord?.translation}</Word>
