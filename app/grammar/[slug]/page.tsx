@@ -1,6 +1,12 @@
 import GrammarTensePage from '@/components/pages/GrammarTensePage'
 import { capitalizedWord } from '@/helpers/capitalized'
 import { Lessons } from '@/helpers/constants'
+import { participlesData } from '@/helpers/participlesData'
+import { pastContinuousData } from '@/helpers/pastContinuousData'
+
+import { pastSimpleData } from '@/helpers/pastSimpleData'
+import { presentMeaningData } from '@/helpers/presentMeaningData'
+import { perfectPerfectData } from '@/helpers/presentPerfectData'
 import { presentSimpleData } from '@/helpers/presentSImpleData'
 import { LessonType } from '@/types'
 import { Metadata } from 'next'
@@ -13,11 +19,11 @@ type Props = {
 
 const grammarData = {
   present_simple: presentSimpleData,
-  past_simple: null,
-  past_continuous: null,
-  present_perfect: null,
-  participles: null,
-  present_meaning: null,
+  past_simple: pastSimpleData,
+  past_continuous: pastContinuousData,
+  present_perfect: perfectPerfectData,
+  participles: participlesData,
+  present_meaning: presentMeaningData,
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

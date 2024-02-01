@@ -20,7 +20,7 @@ export default function GrammarTensePage({ data, handleFinish, handleWrongWords 
   const notPunctuationItems = activeWord.items.filter(item => !item.isPunctuation)
   const punctuationItem = activeWord.items.find(item => item.isPunctuation)
   const isAnswerCorrect = answer.join(' ') === activeWord.title
-  const isAnswerComplete = notPunctuationItems.length === answer.lengthss
+  const isAnswerComplete = notPunctuationItems.length === answer.length
   const isLastWord = activeWordIndex + 1 === data.length
   const isDeleteButtonDisplayed = answer.length > 0 && !isAnswerComplete
 
