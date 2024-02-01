@@ -152,3 +152,16 @@ export const ContainerColors = {
   [AnswerStatus.SUCCESS]: colors.green,
   [AnswerStatus.FAIL]: colors.lightWarning,
 }
+
+export interface ITranslationWord {
+  id: string
+  title: string
+  translation: string
+  transcription: string
+  variants: ITranslationVariants[]
+}
+
+export interface ITranslationVariants {
+  id: string
+  title: string
+}
