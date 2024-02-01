@@ -3,34 +3,34 @@ import React, { SyntheticEvent, useEffect, useState } from 'react'
 import { Chip } from '@mui/material'
 import styled from 'styled-components'
 import { colors } from '@/utils/colors'
-import { IForestItem } from '@/types'
+import { IForestItem as ISprintItem } from '@/types'
 import PencilLineIcon from 'remixicon-react/PencilRulerLineIcon'
 import SprintTimer from '../SprintTimer'
 import { useMediaQuery } from '@mui/material'
 
 type PropTypes = {
-  forestData: IForestItem[]
+  sprintData: ISprintItem[]
   handleProgress: (arg: boolean) => void
-  handleLearnedWords: (arg: IForestItem) => void
+  handleLearnedWords: (arg: ISprintItem) => void
 }
 
 export default function SprintExercise({
-  forestData,
+  sprintData,
   handleProgress,
   handleLearnedWords,
 }: PropTypes) {
   const [activeIndex, setActiveIndex] = useState(0)
-  const [activeWord, setActiveWord] = useState(forestData[activeIndex])
+  const [activeWord, setActiveWord] = useState(sprintData[activeIndex])
   const variant = activeWord.variants[0]
   const isVariantCorrect = variant.answerText === activeWord.translation
-  const isVariantsOver = activeIndex + 1 === forestData.length
-  const counterLabel = `${activeIndex + 1} / ${forestData.length}`
+  const isVariantsOver = activeIndex + 1 === sprintData.length
+  const counterLabel = `${activeIndex + 1} / ${sprintData.length}`
   const isMobileView = useMediaQuery('(max-width:739px)')
   const timerSize = isMobileView ? 'mobile' : 'small'
 
   useEffect(() => {
-    setActiveWord(forestData[activeIndex])
-  }, [activeIndex, forestData])
+    setActiveWord(sprintData[activeIndex])
+  }, [activeIndex, sprintData])
 
   const handleFinish = () => handleProgress(true)
 
