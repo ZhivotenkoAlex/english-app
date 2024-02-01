@@ -8,13 +8,14 @@ export default function ProgressTimer({
   handleChangeWord,
   handleFinish,
   handleNoAnswer,
+  minuteSeconds = 5,
 }: {
   rounds: number
   handleChangeWord: () => void
   handleFinish: () => void
   handleNoAnswer: () => void
+  minuteSeconds?: number
 }) {
-  const minuteSeconds = 5
   const handleComplete = (totalElapsedTime: number) => {
     const passedRounds = Math.ceil(totalElapsedTime / minuteSeconds)
     handleNoAnswer()

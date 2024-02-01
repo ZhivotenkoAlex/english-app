@@ -7,6 +7,7 @@ import SentenceBuilderPage from '@/components/pages/SentenceBuilderPage'
 import ListeningPage from '@/components/pages/ListeningPage'
 import AudioChallengePage from '@/components/pages/AudioChallengePage'
 import TranslationWordPage from '@/components/pages/TranslationWordPage'
+import RepetitionPage from '@/components/pages/RepetitionPage'
 
 type Props = {
   params: { slug: string }
@@ -33,6 +34,7 @@ const exercises = {
   listening: <ListeningPage />,
   'audio-challenge': <AudioChallengePage />,
   'translation-word': <TranslationWordPage />,
+  repetition: <RepetitionPage />,
 }
 
 export default function page({ params }: { params: { slug: string } }) {
