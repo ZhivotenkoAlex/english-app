@@ -1,8 +1,8 @@
 import React, { useMemo, useState } from 'react'
 import ResultModal from '../ResultModal/ResultModal'
-import ForestExercise from '../ForestExercise'
 import { forestData } from '@/helpers/forestData'
 import { IForestItem } from '@/types'
+import ForestExercise from '../ForestExercise'
 
 type PropTypes = {
   handleStarted: () => void
