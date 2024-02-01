@@ -76,6 +76,7 @@ export type CardItem = {
   title: string
   subtitle: string
   icon: RemixiconReactIconComponentType
+  slug?: string
 }
 
 export interface ITraining {
