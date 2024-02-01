@@ -6,6 +6,7 @@ import WordBuilderPage from '@/components/pages/WordBuilderPage'
 import SentenceBuilderPage from '@/components/pages/SentenceBuilderPage'
 import ListeningPage from '@/components/pages/ListeningPage'
 import AudioChallengePage from '@/components/pages/AudioChallengePage'
+import TranslationWordPage from '@/components/pages/TranslationWordPage'
 import SprintPage from '@/components/pages/SprintPage'
 import RepetitionPage from '@/components/pages/RepetitionPage'
 
@@ -33,6 +34,7 @@ const exercises = {
   'sentence-builder': <SentenceBuilderPage />,
   listening: <ListeningPage />,
   'audio-challenge': <AudioChallengePage />,
+  'translation-word': <TranslationWordPage />,
   sprint: <SprintPage />,
   repetition: <RepetitionPage />,
 }
