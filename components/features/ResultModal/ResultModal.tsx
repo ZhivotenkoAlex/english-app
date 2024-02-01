@@ -8,13 +8,20 @@ import React, { useMemo } from 'react'
 import styled from 'styled-components'
 import ResultWordsList from '../ResultWordsList/ResultWordsList'
 import { COLORS_ENUM } from '@/utils/colors'
+import ROUTES from '@/helpers/routes'
 
 interface IResultModal {
-  handleRepeat: () => void
   learnedWords: IWord[] | IForestItem[]
   wrongWords: IWord[] | IForestItem[]
+  onCloseTarget?: ROUTES
+  handleRepeat: () => void
 }
-function ResultModal({ handleRepeat, learnedWords, wrongWords }: IResultModal) {
+function ResultModal({
+  onCloseTarget = ROUTES.VOCABULARY,
+  learnedWords,
+  wrongWords,
+  handleRepeat,
+}: IResultModal) {
   const subtitle = useMemo(
     () => `${learnedWords.length} вивчено, ${wrongWords.length} потрібно вивчити`,
     [learnedWords, wrongWords],
@@ -32,7 +39,7 @@ function ResultModal({ handleRepeat, learnedWords, wrongWords }: IResultModal) {
           <ResultWordsList wrongWords={wrongWords} learnedWords={learnedWords} />
           <ButtonContainer>
             <LinkWrapper>
-              <Link href={'/vocabulary'}>
+              <Link href={onCloseTarget}>
                 <Button label="Закрити" color={COLORS_ENUM.GREY} fullWidth />
               </Link>
             </LinkWrapper>
