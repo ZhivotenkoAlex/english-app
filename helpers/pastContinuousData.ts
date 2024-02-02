@@ -29,7 +29,7 @@ export const pastContinuousData = [
       },
     ],
     title: "He wasn't attacking anyone.",
-    translation: 'Он не нападал ни на кого.',
+    translation: 'Він не нападав ні на кого.',
   },
   {
     id: 3145732,
@@ -61,7 +61,7 @@ export const pastContinuousData = [
       },
     ],
     title: "He wasn't doing anything.",
-    translation: 'Он не делал ничего.',
+    translation: 'Він нічого не робив.',
   },
   {
     id: 3080201,
@@ -98,7 +98,7 @@ export const pastContinuousData = [
       },
     ],
     title: 'Who were you calling then?',
-    translation: 'Кому вы звонили тогда?',
+    translation: 'Кому ви телефонували тоді?',
   },
   {
     id: 3080196,
@@ -135,7 +135,7 @@ export const pastContinuousData = [
       },
     ],
     title: 'What was he doing there?',
-    translation: 'Что он делал там?',
+    translation: 'Що він там робив?',
   },
   {
     id: 3014665,
@@ -177,7 +177,7 @@ export const pastContinuousData = [
       },
     ],
     title: 'We were walking along the beach.',
-    translation: 'Мы гуляли вдоль пляжа.',
+    translation: 'Ми гуляли уздовж пляжу.',
   },
   {
     id: 3080194,
@@ -214,7 +214,7 @@ export const pastContinuousData = [
       },
     ],
     title: 'What was she doing there?',
-    translation: 'Что она делала там?',
+    translation: 'Що вона там робила?',
   },
   {
     id: 3080193,
@@ -246,7 +246,7 @@ export const pastContinuousData = [
       },
     ],
     title: 'What was he planning?',
-    translation: 'Что он планировал?',
+    translation: 'Що він планував?',
   },
   {
     id: 3145729,
@@ -278,7 +278,7 @@ export const pastContinuousData = [
       },
     ],
     title: "They weren't working today.",
-    translation: 'Они не работали сегодня.',
+    translation: 'Вони не працювали сьогодні.',
   },
   {
     id: 3014658,
@@ -320,7 +320,7 @@ export const pastContinuousData = [
       },
     ],
     title: 'They were sitting at the table.',
-    translation: 'Они сидели за столом.',
+    translation: 'Вони сиділи за столом.',
   },
   {
     id: 3145735,
@@ -352,6 +352,6 @@ export const pastContinuousData = [
       },
     ],
     title: "We weren't having fun.",
-    translation: 'Мы не веселились.',
+    translation: 'Ми не раділи.',
   },
 ]

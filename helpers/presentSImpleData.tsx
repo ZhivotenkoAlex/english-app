@@ -34,7 +34,7 @@ export const presentSimpleData = [
       },
     ],
     title: 'Have you got a balcony?',
-    translation: 'У тебя есть балкон?',
+    translation: 'У тебе є балкон?',
   },
   {
     id: 16449557,
@@ -76,7 +76,7 @@ export const presentSimpleData = [
       },
     ],
     title: "She eats lunch at two o'clock.",
-    translation: 'Она ест обед в два часа дня.',
+    translation: 'Вона їсть обід о другій годині дня.',
   },
   {
     id: 16449551,
@@ -108,7 +108,7 @@ export const presentSimpleData = [
       },
     ],
     title: "Cats don't like dogs.",
-    translation: 'Кошки не любят собак.',
+    translation: 'Кішки не люблять собак.',
   },
   {
     id: 16449553,
@@ -152,7 +152,7 @@ export const presentSimpleData = [
       },
     ],
     title: 'Where does he play basketball?',
-    translation: 'Где он играет в баскетбол?',
+    translation: 'Де він грає у баскетбол?',
   },
   {
     id: 16449555,
@@ -179,7 +179,7 @@ export const presentSimpleData = [
       },
     ],
     title: 'Do you cook?',
-    translation: 'Ты готовишь?',
+    translation: 'Ти готуєш?',
   },
   {
     id: 16449552,
@@ -216,7 +216,7 @@ export const presentSimpleData = [
       },
     ],
     title: 'When do you get up?',
-    translation: 'Когда ты встаешь?',
+    translation: 'Коли ти встаєш?',
   },
   {
     id: 16449549,
@@ -253,7 +253,7 @@ export const presentSimpleData = [
       },
     ],
     title: "I don't like board games.",
-    translation: 'Я не люблю настольные игры.',
+    translation: 'Я не люблю настільних ігор.',
   },
   {
     id: 16449554,
@@ -285,7 +285,7 @@ export const presentSimpleData = [
       },
     ],
     title: 'Does she like sport?',
-    translation: 'Ей нравится спорт?',
+    translation: 'Їй подобається спорт?',
   },
   {
     id: 16449548,
@@ -317,7 +317,7 @@ export const presentSimpleData = [
       },
     ],
     title: "They don't play football.",
-    translation: 'Они не играют в футбол.',
+    translation: 'Вони не грають у футбол.',
   },
   {
     id: 16449550,
@@ -354,6 +354,6 @@ export const presentSimpleData = [
       },
     ],
     title: "They haven't got a horse.",
-    translation: 'У них нет лошади.',
+    translation: 'У них немає коня.',
   },
 ]

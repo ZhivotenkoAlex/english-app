@@ -29,7 +29,7 @@ export const pastSimpleData = [
       },
     ],
     title: 'I got the gift.',
-    translation: 'Я получил подарок.',
+    translation: 'Я отримав подарунок.',
   },
   {
     id: 2031736,
@@ -66,7 +66,7 @@ export const pastSimpleData = [
       },
     ],
     title: 'I left him alone then.',
-    translation: 'Я оставил его одного тогда.',
+    translation: 'Я залишив його одного тоді.',
   },
   {
     id: 2294027,
@@ -98,7 +98,7 @@ export const pastSimpleData = [
       },
     ],
     title: "You didn't tell him.",
-    translation: 'Ты не сказал ему.',
+    translation: 'Ти не сказав йому.',
   },
   {
     id: 2031730,
@@ -130,7 +130,7 @@ export const pastSimpleData = [
       },
     ],
     title: 'She lost the phone.',
-    translation: 'Она потеряла телефон.',
+    translation: 'Вона втратила телефон.',
   },
   {
     id: 2031734,
@@ -162,7 +162,7 @@ export const pastSimpleData = [
       },
     ],
     title: 'She read it fast.',
-    translation: 'Она прочитала это быстро.',
+    translation: 'Вона прочитала це швидко.',
   },
   {
     id: 2031729,
@@ -189,7 +189,7 @@ export const pastSimpleData = [
       },
     ],
     title: 'She helped him.',
-    translation: 'Она помогла ему.',
+    translation: 'Вона допомогла йому.',
   },
   {
     id: 2031733,
@@ -226,7 +226,7 @@ export const pastSimpleData = [
       },
     ],
     title: 'They remembered him quite well.',
-    translation: 'Они помнили его достаточно хорошо.',
+    translation: `Вони пам'ятали його досить добре.`,
   },
   {
     id: 2031731,
@@ -263,7 +263,7 @@ export const pastSimpleData = [
       },
     ],
     title: 'She hit him only once.',
-    translation: 'Она ударила его только один раз.',
+    translation: 'Вона вдарила його лише один раз.',
   },
   {
     id: 2031735,
@@ -300,7 +300,7 @@ export const pastSimpleData = [
       },
     ],
     title: 'He loved them very much.',
-    translation: 'Он любил их очень сильно.',
+    translation: 'Він любив їх дуже сильно.',
   },
   {
     id: 2031732,
@@ -337,6 +337,6 @@ export const pastSimpleData = [
       },
     ],
     title: 'He explained it very slowly.',
-    translation: 'Он объяснил это очень медленно.',
+    translation: 'Він пояснив це дуже повільно.',
   },
 ]

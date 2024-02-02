@@ -53,7 +53,7 @@ export const presentMeaningData = [
       },
     ],
     title: 'Anna resembles her grandmother very much.',
-    translation: 'Анна очень похожа на свою бабушку.',
+    translation: 'Анна дуже схожа на свою бабусю.',
   },
   {
     id: 15859751,
@@ -102,7 +102,7 @@ export const presentMeaningData = [
       },
     ],
     title: 'They are doing absolutely stupid things!',
-    translation: 'Они делают абсолютные глупости!',
+    translation: 'Вони роблять абсолютні дурниці!',
   },
   {
     id: 15859747,
@@ -171,7 +171,7 @@ export const presentMeaningData = [
       },
     ],
     title: 'Lilly is not answering her phone, I am worried.',
-    translation: 'Лилли не берет телефон, я волнуюсь.',
+    translation: 'Ліллі не бере телефону, я хвилююся.',
   },
   {
     id: 15859743,
@@ -220,7 +220,7 @@ export const presentMeaningData = [
     pageId: 242,
 
     title: 'Who are you talking to right now?',
-    translation: 'С кем ты сейчас разговариваешь?',
+    translation: 'З ким ти зараз розмовляєш?',
   },
   {
     id: 15859745,
@@ -268,7 +268,7 @@ export const presentMeaningData = [
     ],
 
     title: "My parents don't like my new house.",
-    translation: 'Моим родителям не нравится мой новый дом.',
+    translation: 'Моїм батькам не подобається мій новий будинок.',
   },
   {
     id: 15859746,
@@ -306,7 +306,7 @@ export const presentMeaningData = [
     ],
 
     title: 'I usually walk to work.',
-    translation: 'Обычно я хожу на работу пешком.',
+    translation: 'Зазвичай я ходжу на роботу пішки.',
   },
   {
     id: 15859752,
@@ -344,7 +344,7 @@ export const presentMeaningData = [
     ],
 
     title: 'We often eat healthy food.',
-    translation: 'Мы часто едим здоровую пищу.',
+    translation: 'Ми часто їмо здорову їжу.',
   },
   {
     id: 15859749,
@@ -396,7 +396,7 @@ export const presentMeaningData = [
       },
     ],
     title: 'Has Lola been running for an hour already?',
-    translation: 'Лола бегает уже час?',
+    translation: 'Лола бігає вже годину?',
   },
   {
     id: 15859750,
@@ -453,7 +453,7 @@ export const presentMeaningData = [
       },
     ],
     title: 'My mother never goes to bed before eleven pm.',
-    translation: 'Моя мама никогда не ложится спать раньше 11.',
+    translation: 'Моя мама ніколи не лягає спати раніше 11 років.',
   },
   {
     id: 15859744,
@@ -485,6 +485,6 @@ export const presentMeaningData = [
       },
     ],
     title: 'Dad is working now.',
-    translation: 'Папа сейчас работает.',
+    translation: 'Тато зараз працює.',
   },
 ]

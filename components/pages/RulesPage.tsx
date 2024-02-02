@@ -41,7 +41,7 @@ export default function RulesPage({ isOpen, handleModal }: PropTypes) {
     setActiveType(rule?.data.find(item => item.title === event.target.value))
   }
   return (
-    <Modal
+    <StyledModal
       open={isOpen}
       onClose={() => {}}
       aria-labelledby="modal-modal-title"
@@ -58,6 +58,7 @@ export default function RulesPage({ isOpen, handleModal }: PropTypes) {
                   id="demo-simple-select-autowidth"
                   value={activeType?.title}
                   onChange={handleChange}
+                  sx={{ fontSize: 20, textAlign: 'center', color: colors.lightWhite }}
                 >
                   {rule?.data.map((item, index) => (
                     <MenuItem key={index} value={item.title}>
@@ -98,12 +99,16 @@ export default function RulesPage({ isOpen, handleModal }: PropTypes) {
           </Content>
         </Page>
       </Root>
-    </Modal>
+    </StyledModal>
   )
 }
 
 const Root = styled(Box)`
   height: 100%;
+`
+
+const StyledModal = styled(Modal)`
+  overflow: scroll;
 `
 
 const Page = styled.div`
@@ -137,6 +142,7 @@ const Content = styled.div`
   position: relative;
   padding: 40px;
   line-height: 1.63;
+  background: white;
   color: ${colors.darkGrey};
   h3 {
     font-size: 20px;

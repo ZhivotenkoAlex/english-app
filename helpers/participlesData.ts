@@ -34,7 +34,7 @@ export const participlesData = [
       },
     ],
     title: 'He was following your example.',
-    translation: 'Он следовал вашему примеру.',
+    translation: 'Він наслідував ваш приклад.',
   },
   {
     id: 10289159,
@@ -71,7 +71,7 @@ export const participlesData = [
       },
     ],
     title: 'I saw his mind working.',
-    translation: 'Я видел, как его ум работал.',
+    translation: 'Я бачив, як його розум працював.',
   },
   {
     id: 10289157,
@@ -108,7 +108,7 @@ export const participlesData = [
       },
     ],
     title: 'I felt my heartbeat rising.',
-    translation: 'Я чувствовал, как усиливалось моё сердцебиение.',
+    translation: 'Я відчував, як посилювалося моє серцебиття.',
   },
   {
     id: 10289155,
@@ -145,7 +145,7 @@ export const participlesData = [
       },
     ],
     title: 'I heard her carriage arriving.',
-    translation: 'Я слышал, как подъезжала её карета.',
+    translation: `Я чув, як під'їжджала її карета.`,
   },
   {
     id: 10289158,
@@ -182,7 +182,7 @@ export const participlesData = [
       },
     ],
     title: 'He felt his panic growing.',
-    translation: 'Он чувствовал, как его паника возрастала.',
+    translation: 'Він відчував, як його паніка зростала.',
   },
   {
     id: 10289162,
@@ -256,7 +256,7 @@ export const participlesData = [
       },
     ],
     title: 'He felt his mask slipping.',
-    translation: 'Он чувствовал, как его маска сползала.',
+    translation: 'Він відчував, як його маска сповзала.',
   },
   {
     id: 10289160,
@@ -293,7 +293,7 @@ export const participlesData = [
       },
     ],
     title: 'I heard my voice trembling.',
-    translation: 'Я слышал, как мой голос дрожал.',
+    translation: 'Я чув, як мій голос тремтів.',
   },
   {
     id: 10289153,
@@ -330,7 +330,7 @@ export const participlesData = [
       },
     ],
     title: 'He heard his mother calling.',
-    translation: 'Он слышал, как его мама звонила.',
+    translation: 'Він чув, як його мама дзвонила.',
   },
   {
     id: 10289156,
@@ -374,6 +374,6 @@ export const participlesData = [
       },
     ],
     title: 'He felt his excitement mounting.',
-    translation: 'Он чувствовал, как его волнение усиливалось.',
+    translation: 'Він відчував, як його хвилювання посилювалося.',
   },
 ]

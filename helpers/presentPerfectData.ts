@@ -24,7 +24,7 @@ export const perfectPerfectData = [
       },
     ],
     title: "You've seen them.",
-    translation: 'Вы видели их.',
+    translation: 'Ви бачили їх.',
   },
   {
     id: 1572971,
@@ -61,7 +61,7 @@ export const perfectPerfectData = [
       },
     ],
     title: "I haven't skipped another class.",
-    translation: 'Я не пропустил другой урок.',
+    translation: 'Я не пропустив іншого уроку.',
   },
   {
     id: 1441883,
@@ -88,7 +88,7 @@ export const perfectPerfectData = [
       },
     ],
     title: "I've admitted it.",
-    translation: 'Я признал это.',
+    translation: 'Я це визнав.',
   },
   {
     id: 1572974,
@@ -125,7 +125,7 @@ export const perfectPerfectData = [
       },
     ],
     title: "I haven't called the office.",
-    translation: 'Я не звонил в офис.',
+    translation: 'Я не дзвонив до офісу.',
   },
   {
     id: 1572976,
@@ -167,7 +167,7 @@ export const perfectPerfectData = [
       },
     ],
     title: 'I have never seen a gun.',
-    translation: 'Я никогда не видел ружьё.',
+    translation: 'Я ніколи не бачив рушниці.',
   },
   {
     id: 1441885,
@@ -194,7 +194,7 @@ export const perfectPerfectData = [
       },
     ],
     title: "I've checked it.",
-    translation: 'Я проверил это.',
+    translation: 'Я перевірив це.',
   },
   {
     id: 1507411,
@@ -226,7 +226,7 @@ export const perfectPerfectData = [
       },
     ],
     title: 'What have you chosen?',
-    translation: 'Что ты выбрал?',
+    translation: 'Що ти обрав?',
   },
   {
     id: 1507418,
@@ -258,7 +258,7 @@ export const perfectPerfectData = [
       },
     ],
     title: 'Have you seen me?',
-    translation: 'Ты видел меня?',
+    translation: 'Ти бачив мене?',
   },
   {
     id: 1572973,
@@ -295,7 +295,7 @@ export const perfectPerfectData = [
       },
     ],
     title: "We haven't left the camp.",
-    translation: 'Мы не покидали лагерь.',
+    translation: 'Ми не покидали табору.',
   },
   {
     id: 1441879,
@@ -322,6 +322,6 @@ export const perfectPerfectData = [
       },
     ],
     title: "I've lost it!",
-    translation: 'Я потерял это!',
+    translation: 'Я втратив це!',
   },
 ]
