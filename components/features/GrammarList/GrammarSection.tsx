@@ -2,7 +2,7 @@ import { Typography } from '@mui/material'
 import React from 'react'
 import styled from 'styled-components'
 import { IGrammarLevel } from '@/types'
-import GrammarItem from '@/components/features/GrammarItem'
+import GrammarCard from '@/components/features/GrammarCard'
 
 interface IGrammarSection {
   level: IGrammarLevel
@@ -14,7 +14,7 @@ function GrammarSection({ level }: IGrammarSection) {
       <StyledTitle variant="h5">{level.level}</StyledTitle>
       <GrammarExercises>
         {level.exercises.map(exercise => (
-          <GrammarItem key={exercise.title} exercise={exercise} />
+          <GrammarCard key={exercise.title} exercise={exercise} />
         ))}
       </GrammarExercises>
     </div>

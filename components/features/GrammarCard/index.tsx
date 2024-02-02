@@ -9,7 +9,7 @@ type PropTypes = {
   exercise: IGrammarExercise
 }
 
-export default function GrammarItem({ exercise }: PropTypes) {
+export default function GrammarCard({ exercise }: PropTypes) {
   const { slug, subtitle, icon, title } = exercise
   return (
     <Root href={`${ROUTES.GRAMMAR}/${slug}`}>
