@@ -5,12 +5,19 @@ export const translationWordData = [
     title: 'coddle',
     translation: 'розпестити',
     transcription: '[kˈɒdl]',
-    variants: [
+    variants_en: [
       { id: uuid(), title: 'cockle' },
       { id: uuid(), title: 'coddle' },
       { id: uuid(), title: 'crutches' },
       { id: uuid(), title: 'cradles' },
       { id: uuid(), title: 'accused of' },
+    ],
+    variants_ua: [
+      { id: uuid(), title: 'півень' },
+      { id: uuid(), title: 'розпестити' },
+      { id: uuid(), title: 'милиці' },
+      { id: uuid(), title: 'люльки' },
+      { id: uuid(), title: 'звинувачений' },
     ],
   },
   {
@@ -18,12 +25,19 @@ export const translationWordData = [
     title: 'angry with',
     translation: 'злитися на',
     transcription: '[ˈæŋgri wɪð]',
-    variants: [
+    variants_en: [
       { id: uuid(), title: 'emerald' },
       { id: uuid(), title: 'fugitive' },
       { id: uuid(), title: 'angry with' },
       { id: uuid(), title: 'angry mood' },
       { id: uuid(), title: 'for all' },
+    ],
+    variants_ua: [
+      { id: uuid(), title: 'смарагдовий' },
+      { id: uuid(), title: 'втікач' },
+      { id: uuid(), title: 'злитися на' },
+      { id: uuid(), title: 'сердитий настрій' },
+      { id: uuid(), title: 'разом з' },
     ],
   },
   {
@@ -31,12 +45,19 @@ export const translationWordData = [
     title: 'allergic to',
     translation: 'схильний до алергії',
     transcription: '[əˈlɜrʤɪk tu]',
-    variants: [
+    variants_en: [
       { id: uuid(), title: 'table tennis' },
       { id: uuid(), title: 'allergic to' },
       { id: uuid(), title: 'accustomed to' },
       { id: uuid(), title: 'comic opera' },
       { id: uuid(), title: 'miscellaneous' },
+    ],
+    variants_ua: [
+      { id: uuid(), title: 'настільний теніс' },
+      { id: uuid(), title: 'схильний до алергії' },
+      { id: uuid(), title: 'звичний до' },
+      { id: uuid(), title: 'комічна опера' },
+      { id: uuid(), title: 'різнобічний' },
     ],
   },
   {
@@ -44,12 +65,19 @@ export const translationWordData = [
     title: 'accustomed to',
     translation: 'звичний до',
     transcription: '[əˈkʌstəmd tu]',
-    variants: [
+    variants_en: [
       { id: uuid(), title: 'hostile' },
       { id: uuid(), title: 'lactic acid' },
       { id: uuid(), title: 'comes out' },
       { id: uuid(), title: 'tabby cat' },
       { id: uuid(), title: 'accustomed to' },
+    ],
+    variants_ua: [
+      { id: uuid(), title: 'ворожий' },
+      { id: uuid(), title: 'молочна кислота' },
+      { id: uuid(), title: 'виходить' },
+      { id: uuid(), title: 'смугастий кіт' },
+      { id: uuid(), title: 'звичний до' },
     ],
   },
   {
@@ -57,12 +85,19 @@ export const translationWordData = [
     title: 'amazed at/by',
     translation: 'здивована, вражена людина',
     transcription: '[əˈmeɪzd æt/baɪ]',
-    variants: [
+    variants_en: [
       { id: uuid(), title: 'flinch' },
       { id: uuid(), title: 'flourish' },
       { id: uuid(), title: 'aim at' },
       { id: uuid(), title: 'taxi rank' },
       { id: uuid(), title: 'amazed at/by' },
+    ],
+    variants_ua: [
+      { id: uuid(), title: 'здригатися' },
+      { id: uuid(), title: 'процвітати' },
+      { id: uuid(), title: 'націлений на' },
+      { id: uuid(), title: 'таксі' },
+      { id: uuid(), title: 'здивована, вражена людина' },
     ],
   },
   {
@@ -70,12 +105,19 @@ export const translationWordData = [
     title: 'credulous',
     translation: 'довірливий',
     transcription: '[krˈedjʊləs]',
-    variants: [
+    variants_en: [
       { id: uuid(), title: 'idle' },
       { id: uuid(), title: 'seize' },
       { id: uuid(), title: 'credulous' },
       { id: uuid(), title: 'legible' },
       { id: uuid(), title: 'futile' },
+    ],
+    variants_ua: [
+      { id: uuid(), title: 'непрацюючий' },
+      { id: uuid(), title: 'довірливий' },
+      { id: uuid(), title: 'легковірний' },
+      { id: uuid(), title: 'розбірливий' },
+      { id: uuid(), title: 'марний' },
     ],
   },
   {
@@ -83,12 +125,19 @@ export const translationWordData = [
     title: 'legible',
     translation: 'розбірливий',
     transcription: '[lˈedʒəbl]',
-    variants: [
+    variants_en: [
       { id: uuid(), title: 'reluctant' },
       { id: uuid(), title: 'allergic to' },
       { id: uuid(), title: 'amazed at/by' },
       { id: uuid(), title: 'legible' },
       { id: uuid(), title: 'humdrum' },
+    ],
+    variants_ua: [
+      { id: uuid(), title: 'вимушений' },
+      { id: uuid(), title: 'схильний до алергії' },
+      { id: uuid(), title: 'здивована, вражена людина' },
+      { id: uuid(), title: 'розбірливий' },
+      { id: uuid(), title: 'будні' },
     ],
   },
   {
@@ -96,12 +145,19 @@ export const translationWordData = [
     title: 'indecisive',
     translation: 'нерішучий',
     transcription: '[ɪndɪsˈaɪsɪv]',
-    variants: [
+    variants_en: [
       { id: uuid(), title: 'astounding' },
       { id: uuid(), title: 'gibber' },
       { id: uuid(), title: 'noble' },
       { id: uuid(), title: 'indecisive' },
       { id: uuid(), title: 'heart gave a leap' },
+    ],
+    variants_ua: [
+      { id: uuid(), title: 'вражаючий' },
+      { id: uuid(), title: 'лепетати' },
+      { id: uuid(), title: 'шляхетний' },
+      { id: uuid(), title: 'нерішучий' },
+      { id: uuid(), title: 'боягузливий' },
     ],
   },
   {
@@ -109,12 +165,19 @@ export const translationWordData = [
     title: 'shrill voice',
     translation: 'пронизливий голос',
     transcription: '[ʃrˈɪl vɔɪs]',
-    variants: [
+    variants_en: [
       { id: uuid(), title: 'hum' },
       { id: uuid(), title: 'legitimate' },
       { id: uuid(), title: 'liquefy' },
       { id: uuid(), title: 'make fun' },
       { id: uuid(), title: 'shrill voice' },
+    ],
+    variants_ua: [
+      { id: uuid(), title: 'гомін' },
+      { id: uuid(), title: 'законний' },
+      { id: uuid(), title: 'розріджений' },
+      { id: uuid(), title: 'висміювати' },
+      { id: uuid(), title: 'пронизливий голос' },
     ],
   },
   {
@@ -122,12 +185,19 @@ export const translationWordData = [
     title: 'creditable',
     translation: 'похвальний',
     transcription: '[krˈedɪtəbl]',
-    variants: [
+    variants_en: [
       { id: uuid(), title: 'coddle' },
       { id: uuid(), title: 'fragile' },
       { id: uuid(), title: 'angry with' },
       { id: uuid(), title: 'adjacent' },
       { id: uuid(), title: 'creditable' },
+    ],
+    variants_ua: [
+      { id: uuid(), title: 'пестити' },
+      { id: uuid(), title: 'крихкий' },
+      { id: uuid(), title: 'злий' },
+      { id: uuid(), title: 'суміжний' },
+      { id: uuid(), title: 'похвальний' },
     ],
   },
 ]
