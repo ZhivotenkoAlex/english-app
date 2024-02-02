@@ -15,7 +15,7 @@ export default function GrammarTensePage({ data, handleFinish, handleWrongWords 
   const [activeWord, setActiveWord] = useState(data[activeWordIndex])
   const [activeItemIndex, setActiveItemIndex] = useState(0)
   const [activeItem, setActiveItem] = useState(activeWord.items[0])
-  const [answer, setAnswer] = useState<any>([])
+  const [answer, setAnswer] = useState<string[]>([])
   const [isModalOpen, setIsModalOpen] = useState(false)
   const getAnswer = useMemo(() => answer.join(' '), [answer])
 
@@ -52,7 +52,7 @@ export default function GrammarTensePage({ data, handleFinish, handleWrongWords 
     if (isLastItem) {
       textContent = `${textContent}${punctuationItem.title}`
     }
-    setAnswer(prev => [...prev, textContent])
+    setAnswer(prev => [...prev, textContent as string])
     setActiveItemIndex(prev => prev + 1)
   }
 

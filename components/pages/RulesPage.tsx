@@ -34,7 +34,7 @@ type PropTypes = {
 export default function RulesPage({ isOpen, handleModal }: PropTypes) {
   const { slug } = useParams<{ slug: string }>()
   const rule = getRule(slug)
-  const [activeType, setActiveType] = useState<any>(rule?.data[0])
+  const [activeType, setActiveType] = useState(rule?.data[0])
   const isMobileView = useMediaQuery('(max-width:767px)')
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -56,7 +56,7 @@ export default function RulesPage({ isOpen, handleModal }: PropTypes) {
                 <Select
                   labelId="demo-simple-select-autowidth-label"
                   id="demo-simple-select-autowidth"
-                  value={activeType.title}
+                  value={activeType?.title}
                   onChange={handleChange}
                 >
                   {rule?.data.map((item, index) => (
@@ -71,7 +71,7 @@ export default function RulesPage({ isOpen, handleModal }: PropTypes) {
                 {rule?.data.map((item, index) => (
                   <SubtitleCover onClick={() => setActiveType(rule?.data[index])} key={item?.code}>
                     {icons[item?.code]}
-                    <Subtitle key={item.id} $isActive={item.title === activeType.title}>
+                    <Subtitle key={item.id} $isActive={item.title === activeType?.title}>
                       {item.title}
                     </Subtitle>
                   </SubtitleCover>

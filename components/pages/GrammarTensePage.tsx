@@ -2,11 +2,15 @@
 import React, { useMemo, useState } from 'react'
 import PageContainer from '../atoms/PageContainer/PageContainer'
 import ResultModal from '../features/ResultModal/ResultModal'
-import { LessonVocabulary } from '@/types'
+import { ITenseData, LessonVocabulary } from '@/types'
 import GrammarTenseContent from '../features/GrammarTenseContent'
 import ROUTES from '@/helpers/routes'
 
-export default function GrammarTensePage({ data }: any) {
+type PropTypes = {
+  data: ITenseData[]
+}
+
+export default function GrammarTensePage({ data }: PropTypes) {
   const [isFinished, setIsFinished] = useState(false)
   const [wrongWords, setWrongWords] = useState([])
 

@@ -52,9 +52,6 @@ export const presentMeaningData = [
         variants: [],
       },
     ],
-    pageId: 242,
-    soundUrl:
-      'https://audiocdn.lingualeo.com/v2/3/QW5uYSByZXNlbWJsZXMgaGVyIGdyYW5kbW90aGVyIHZlcnkgbXVjaC4=c53549a9.mp3',
     title: 'Anna resembles her grandmother very much.',
     translation: 'Анна очень похожа на свою бабушку.',
   },
@@ -104,9 +101,6 @@ export const presentMeaningData = [
         variants: [],
       },
     ],
-    pageId: 242,
-    soundUrl:
-      'https://audiocdn.lingualeo.com/v2/3/VGhleSBhcmUgZG9pbmcgYWJzb2x1dGVseSBzdHVwaWQgdGhpbmdzIQ==69fbf750.mp3',
     title: 'They are doing absolutely stupid things!',
     translation: 'Они делают абсолютные глупости!',
   },
@@ -176,9 +170,6 @@ export const presentMeaningData = [
         variants: [],
       },
     ],
-    pageId: 242,
-    soundUrl:
-      'https://audiocdn.lingualeo.com/v2/3/TGlsbHkgaXMgbm90IGFuc3dlcmluZyBoZXIgcGhvbmUsIEkgYW0gd29ycmllZC4=852e6b96.mp3',
     title: 'Lilly is not answering her phone, I am worried.',
     translation: 'Лилли не берет телефон, я волнуюсь.',
   },
@@ -227,8 +218,7 @@ export const presentMeaningData = [
       },
     ],
     pageId: 242,
-    soundUrl:
-      'https://audiocdn.lingualeo.com/v2/3/V2hvIGFyZSB5b3UgdGFsa2luZyB0byByaWdodCBub3c/5826a01a.mp3',
+
     title: 'Who are you talking to right now?',
     translation: 'С кем ты сейчас разговариваешь?',
   },
@@ -276,9 +266,7 @@ export const presentMeaningData = [
         variants: [],
       },
     ],
-    pageId: 242,
-    soundUrl:
-      'https://audiocdn.lingualeo.com/v2/3/TXkgcGFyZW50cyBkb24ndCBsaWtlIG15IG5ldyBob3VzZS4=abf90cd1.mp3',
+
     title: "My parents don't like my new house.",
     translation: 'Моим родителям не нравится мой новый дом.',
   },
@@ -316,8 +304,7 @@ export const presentMeaningData = [
         variants: [],
       },
     ],
-    pageId: 242,
-    soundUrl: 'https://audiocdn.lingualeo.com/v2/3/SSB1c3VhbGx5IHdhbGsgdG8gd29yay4=ef67cbb0.mp3',
+
     title: 'I usually walk to work.',
     translation: 'Обычно я хожу на работу пешком.',
   },
@@ -355,9 +342,7 @@ export const presentMeaningData = [
         variants: [],
       },
     ],
-    pageId: 242,
-    soundUrl:
-      'https://audiocdn.lingualeo.com/v2/3/V2Ugb2Z0ZW4gZWF0IGhlYWx0aHkgZm9vZC4=887a751a.mp3',
+
     title: 'We often eat healthy food.',
     translation: 'Мы часто едим здоровую пищу.',
   },
@@ -410,9 +395,6 @@ export const presentMeaningData = [
         variants: [],
       },
     ],
-    pageId: 242,
-    soundUrl:
-      'https://audiocdn.lingualeo.com/v2/3/SGFzIExvbGEgYmVlbiBydW5uaW5nIGZvciBhbiBob3VyIGFscmVhZHk/fa5349e5.mp3',
     title: 'Has Lola been running for an hour already?',
     translation: 'Лола бегает уже час?',
   },
@@ -470,9 +452,6 @@ export const presentMeaningData = [
         variants: [],
       },
     ],
-    pageId: 242,
-    soundUrl:
-      'https://audiocdn.lingualeo.com/v2/3/TXkgbW90aGVyIG5ldmVyIGdvZXMgdG8gYmVkIGJlZm9yZSBlbGV2ZW4gcG0u9156da5e.mp3',
     title: 'My mother never goes to bed before eleven pm.',
     translation: 'Моя мама никогда не ложится спать раньше 11.',
   },
@@ -505,8 +484,6 @@ export const presentMeaningData = [
         variants: [],
       },
     ],
-    pageId: 242,
-    soundUrl: 'https://audiocdn.lingualeo.com/v2/3/RGFkIGlzIHdvcmtpbmcgbm93Lg==0c6ba46b.mp3',
     title: 'Dad is working now.',
     translation: 'Папа сейчас работает.',
   },
