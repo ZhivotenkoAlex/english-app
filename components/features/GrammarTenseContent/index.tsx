@@ -8,6 +8,7 @@ import Button from '@/components/molecules/Button/Button'
 import VolumeUpFillIcon from 'remixicon-react/VolumeUpFillIcon'
 import CheckIcon from 'remixicon-react/ShieldCheckFillIcon'
 import { getVoice } from '@/helpers/getVoice'
+import RulesPage from '@/components/pages/RulesPage'
 
 export default function GrammarTensePage({ data, handleFinish, handleWrongWords }) {
   const [activeWordIndex, setActiveWordIndex] = useState(0)
@@ -15,6 +16,7 @@ export default function GrammarTensePage({ data, handleFinish, handleWrongWords 
   const [activeItemIndex, setActiveItemIndex] = useState(0)
   const [activeItem, setActiveItem] = useState(activeWord.items[0])
   const [answer, setAnswer] = useState<any>([])
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const getAnswer = useMemo(() => answer.join(' '), [answer])
 
   const notPunctuationItems = activeWord.items.filter(item => !item.isPunctuation)
@@ -72,6 +74,8 @@ export default function GrammarTensePage({ data, handleFinish, handleWrongWords 
     setActiveItemIndex(0)
   }
 
+  const handleModal = () => setIsModalOpen(prev => !prev)
+
   return (
     <Root>
       <WordContainer>
@@ -98,17 +102,28 @@ export default function GrammarTensePage({ data, handleFinish, handleWrongWords 
                 <VolumeAction size={50} onClick={() => getVoice(activeWord.title, 0.3)} />
                 <Hint>{activeWord.title}</Hint>
               </WordContainer>
-              <Button
-                label="TRY AGAIN"
-                color={COLORS_ENUM.GREEN}
-                variant="contained"
-                size="large"
-                onClick={handleTryAgain}
-              />
+              <ButtonContainer>
+                <Button
+                  label="TRY AGAIN"
+                  color={COLORS_ENUM.GREEN}
+                  variant="contained"
+                  size="large"
+                  onClick={handleTryAgain}
+                />
+                <Button
+                  label="Show rule"
+                  color={COLORS_ENUM.LIGHT_GREEN}
+                  fontColor={COLORS_ENUM.GREEN}
+                  variant="outlined"
+                  size="large"
+                  onClick={handleModal}
+                />
+              </ButtonContainer>
             </ErrorContainer>
           )}
         </DescriptionContainer>
       )}
+      <RulesPage isOpen={isModalOpen} handleModal={handleModal} />
     </Root>
   )
 }
@@ -242,4 +257,10 @@ const VolumeAction = styled(VolumeUpFillIcon)`
 
     scale: 1.05;
   }
+`
+
+const ButtonContainer = styled.div`
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
 `

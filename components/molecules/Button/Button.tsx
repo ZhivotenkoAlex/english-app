@@ -94,8 +94,8 @@ const ButtonElement = styled('button')<{
     if ($variant === 'outlined') {
       return `
                 background:transparent;
-                color: ${({ $fontColor }) => COLOR[$fontColor]};;
-                border: 2px solid ${COLOR[color]} 
+                color: ${({ $fontColor }) => COLOR[$fontColor]};
+                border: 2px solid ${COLOR[color]} ;
             `
     } else if ($variant === 'text') {
       return `
