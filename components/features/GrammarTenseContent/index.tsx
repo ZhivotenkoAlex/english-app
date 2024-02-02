@@ -114,14 +114,14 @@ export default function GrammarTensePage({ data, handleFinish, handleWrongWords 
 }
 
 const Root = styled.div`
-  margin: 0 20px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 10px;
   justify-content: center;
   align-items: center;
   min-height: 180px;
-  width: 70%;
+  width: 50%;
   position: relative;
   border: 1px solid ${colors.green};
   padding: 24px;
@@ -129,7 +129,7 @@ const Root = styled.div`
   background: #f6ffff;
 
   @media screen and (max-width: 1439px) {
-    width: 95%;
+    width: 85%;
   }
 
   @media screen and (max-width: 1023px) {
@@ -139,7 +139,7 @@ const Root = styled.div`
   @media screen and (max-width: 767px) {
     min-width: 100%;
     border: none;
-    padding: 0;
+    padding: 0 24px;
     border-radius: 16px;
   }
 `
@@ -178,6 +178,7 @@ const AnswerContainer = styled.div`
 const Word = styled.span`
   font-size: 20px;
   text-transform: uppercase;
+  text-align: center;
 `
 
 const Answer = styled.span<{ $hasError: boolean }>`
@@ -186,6 +187,10 @@ const Answer = styled.span<{ $hasError: boolean }>`
   color: ${({ $hasError }) => ($hasError ? colors.lightWarning2 : colors.darkGrey)};
   text-decoration: ${({ $hasError }) => ($hasError ? 'line-through' : 'none')};
   text-decoration-thickness: 2px;
+  @media screen and (max-width: 767px) {
+    font-size: 26px;
+    text-align: center;
+  }
 `
 
 const StyledChip = styled(Chip)`
@@ -194,7 +199,11 @@ const StyledChip = styled(Chip)`
     background-color: ${colors.lightGreen};
     padding: 20px;
     transition: all 0.5s ease-in-out;
+    @media screen and (max-width: 767px) {
+      font-size: 16px;
+    }
   }
+
   &&:hover {
     background-color: ${colors.green};
     scale: 1.05;
@@ -203,12 +212,20 @@ const StyledChip = styled(Chip)`
 
 const Hint = styled.p`
   font-size: 32px;
+  @media screen and (max-width: 767px) {
+    font-size: 26px;
+    text-align: center;
+  }
 `
 
 const ChipContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 5px;
+  @media screen and (max-width: 767px) {
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+  }
 `
 
 const DescriptionContainer = styled.div``

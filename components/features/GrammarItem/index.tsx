@@ -1,6 +1,5 @@
-import StatusIcon from '@/components/atoms/StatusIcon'
 import ROUTES from '@/helpers/routes'
-import { EXERCISE_STATUS, IGrammarExercise } from '@/types'
+import { IGrammarExercise } from '@/types'
 import { colors } from '@/utils/colors'
 import Image from 'next/image'
 import Link from 'next/link'

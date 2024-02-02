@@ -27,4 +27,5 @@ export default function VocabularyExercisesLayout({ params, children }: PropType
 const PageMenuContainer = styled.div`
   display: flex;
   padding: 20px 2rem;
+  align-items: center;
 `
