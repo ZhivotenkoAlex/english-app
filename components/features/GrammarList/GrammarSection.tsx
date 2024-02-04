@@ -1,8 +1,8 @@
 import { Typography } from '@mui/material'
 import React from 'react'
 import styled from 'styled-components'
-import GrammarCard from './GrammarCard'
 import { IGrammarLevel } from '@/types'
+import GrammarCard from '@/components/features/GrammarCard'
 
 interface IGrammarSection {
   level: IGrammarLevel
@@ -11,7 +11,7 @@ interface IGrammarSection {
 function GrammarSection({ level }: IGrammarSection) {
   return (
     <div>
-      <Typography variant="h5">{level.level}</Typography>
+      <StyledTitle variant="h5">{level.level}</StyledTitle>
       <GrammarExercises>
         {level.exercises.map(exercise => (
           <GrammarCard key={exercise.title} exercise={exercise} />
@@ -30,6 +30,13 @@ const GrammarExercises = styled('div')`
   @media screen and (max-width: 700px) {
     display: flex;
     flex-direction: column;
+  }
+`
+
+const StyledTitle = styled(Typography)`
+  && {
+    margin-bottom: 10px;
+    margin-left: 10px;
   }
 `
 

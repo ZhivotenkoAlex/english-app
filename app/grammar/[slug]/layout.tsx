@@ -10,11 +10,14 @@ type PropTypes = {
 }
 
 export default function VocabularyExercisesLayout({ params, children }: PropTypes) {
+  const slug = params.slug.replaceAll('_', ' ')
+  const customName = params.slug === 'present_meaning' ? 'Tenses with Present meaning' : slug
+
   return (
     <section>
       <PageMenuContainer>
-        <BreadCrumbs />
-        <ExerciseCloseBlock link={ROUTES.VOCABULARY} />
+        <BreadCrumbs customName={customName} />
+        <ExerciseCloseBlock link={ROUTES.GRAMMAR} />
       </PageMenuContainer>
       {children}
     </section>
@@ -24,4 +27,5 @@ export default function VocabularyExercisesLayout({ params, children }: PropType
 const PageMenuContainer = styled.div`
   display: flex;
   padding: 20px 2rem;
+  align-items: center;
 `

@@ -1,7 +1,5 @@
 import { Metadata } from 'next'
-import PageContainer from '../../components/atoms/PageContainer/PageContainer'
-import ClientOnlyProvider from '../../components/features/ClientOnlyProvider/ClientOnlyProvider'
-import GrammarClient from './GrammarClient'
+import GrammarPage from '@/components/pages/GrammarPage'
 
 export const metadata: Metadata = {
   title: 'Grammar',
@@ -9,13 +7,7 @@ export const metadata: Metadata = {
 }
 
 function Grammar() {
-  return (
-    <ClientOnlyProvider>
-      <PageContainer>
-        <GrammarClient />
-      </PageContainer>
-    </ClientOnlyProvider>
-  )
+  return <GrammarPage />
 }
 
 export default Grammar

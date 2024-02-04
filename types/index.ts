@@ -76,6 +76,7 @@ export type CardItem = {
   title: string
   subtitle: string
   icon: RemixiconReactIconComponentType
+  slug?: string
 }
 
 export interface ITraining {
@@ -164,4 +165,38 @@ export interface ITranslationWord {
 export interface ITranslationVariants {
   id: string
   title: string
+}
+
+export interface IRule {
+  code: string
+  slug: string
+  data: IRuleData[]
+}
+
+export interface ITenseData {
+  id: number
+  items: ITenseItem[]
+  title: string
+  translation: string
+}
+
+export interface ITenseItem {
+  isPunctuation: boolean
+  title: string
+  variants: string[]
+}
+
+export interface IRuleData {
+  code: string
+  description: string
+  id: number
+  tagId: number
+  title: string
+  examples: IRuleExamples[]
+}
+
+export interface IRuleExamples {
+  id: number
+  spelling: string
+  translation: string
 }

@@ -1,0 +1,50 @@
+'use client'
+import React, { useMemo, useState } from 'react'
+import PageContainer from '../atoms/PageContainer/PageContainer'
+import ResultModal from '../features/ResultModal/ResultModal'
+import { ITenseData, LessonVocabulary } from '@/types'
+import GrammarTenseContent from '../features/GrammarTenseContent'
+import ROUTES from '@/helpers/routes'
+
+type PropTypes = {
+  data: ITenseData[]
+}
+
+export default function GrammarTensePage({ data }: PropTypes) {
+  const [isFinished, setIsFinished] = useState(false)
+  const [wrongWords, setWrongWords] = useState([])
+
+  const handleFinish = () => setIsFinished(true)
+  const handleWrongWords = (wordItem: LessonVocabulary) => {
+    setWrongWords([...new Set([...wrongWords, wordItem])] as never)
+  }
+
+  const handleRepeat = () => {
+    setIsFinished(false)
+    setWrongWords([])
+  }
+
+  const learnedWords = useMemo(
+    () => data.filter(el => !wrongWords.includes(el as never)) as never,
+    [data, wrongWords],
+  )
+
+  return (
+    <PageContainer>
+      {isFinished ? (
+        <ResultModal
+          onCloseTarget={ROUTES.GRAMMAR}
+          handleRepeat={handleRepeat}
+          wrongWords={wrongWords}
+          learnedWords={learnedWords}
+        />
+      ) : (
+        <GrammarTenseContent
+          data={data}
+          handleFinish={handleFinish}
+          handleWrongWords={handleWrongWords}
+        />
+      )}
+    </PageContainer>
+  )
+}
