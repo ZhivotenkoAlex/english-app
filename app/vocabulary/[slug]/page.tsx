@@ -10,6 +10,7 @@ import TranslationWordPage from '@/components/pages/TranslationWordPage'
 import SprintPage from '@/components/pages/SprintPage'
 import RepetitionPage from '@/components/pages/RepetitionPage'
 import WordTranslationPage from '@/components/pages/WordTranslationPage'
+import VocabularyCardsPage from '@/components/pages/VocabularyCardsPage'
 
 type Props = {
   params: { slug: string }
@@ -39,6 +40,7 @@ const exercises = {
   'word-translation': <WordTranslationPage />,
   sprint: <SprintPage />,
   repetition: <RepetitionPage />,
+  'vocabulary-cards': <VocabularyCardsPage />,
 }
 
 export default function page({ params }: { params: { slug: string } }) {
