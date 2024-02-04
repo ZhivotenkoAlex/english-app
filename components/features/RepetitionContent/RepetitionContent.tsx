@@ -51,7 +51,7 @@ function RepetitionContent({
   const handleChipClick = (selectedVariant: IWord) => {
     setIsSelected(true)
     if (selectedVariant.translation !== currentWord.translation) {
-      setAnswerStatus(AnswerStatus.WRONG)
+      setAnswerStatus(AnswerStatus.FAIL)
       handleAddWrongWords(currentWord)
     } else {
       setAnswerStatus(AnswerStatus.SUCCESS)
