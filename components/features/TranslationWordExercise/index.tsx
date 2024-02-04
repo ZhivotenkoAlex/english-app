@@ -68,7 +68,7 @@ export default function TranslationWordExercise({
 
   const iconClickHandler = () => getVoice(activeWord?.title)
 
-  return !!data.length ? (
+  return data.length ? (
     <Root>
       <TaskContainer>
         <PencilLineIcon color={colors.grey} />

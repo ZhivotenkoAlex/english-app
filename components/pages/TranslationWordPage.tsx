@@ -10,7 +10,7 @@ import { shuffleArray } from '@/helpers/shuffleArray'
 const getData = async () => {
   let result: ITranslationWord[] = []
   translationWordData.forEach(item => {
-    result.push({ ...item, variants: shuffleArray(item.variants) })
+    result.push({ ...item, variants: shuffleArray(item.variants_en) })
   })
   return shuffleArray(result)
 }
