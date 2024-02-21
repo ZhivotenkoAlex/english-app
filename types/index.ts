@@ -89,11 +89,12 @@ export interface ITraining {
 }
 
 export interface IGrammarLevel {
+  id: string
   level: string
-  exercises: IGrammarExercise[]
+  levelExercises: IGrammarExercise[]
 }
 export type IGrammarExercise = Omit<CardItem, 'icon'> & {
-  icon: StaticImageData
+  icon: string
 }
 
 export interface IWord {

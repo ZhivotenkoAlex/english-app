@@ -3,11 +3,10 @@ import { capitalizedWord } from '@/helpers/capitalized'
 import { Lessons } from '@/helpers/constants'
 import { participlesData } from '@/helpers/participlesData'
 import { pastContinuousData } from '@/helpers/pastContinuousData'
-
 import { pastSimpleData } from '@/helpers/pastSimpleData'
 import { presentMeaningData } from '@/helpers/presentMeaningData'
 import { perfectPerfectData } from '@/helpers/presentPerfectData'
-import { presentSimpleData } from '@/helpers/presentSImpleData'
+import { presentSimpleData } from '@/helpers/presentSimpleData'
 import { LessonType } from '@/types'
 import { Metadata } from 'next'
 import React from 'react'
@@ -44,5 +43,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default function page({ params }: { params: { slug: string } }) {
   const slug = params.slug
+
   return <GrammarTensePage data={grammarData[slug]} />
 }
