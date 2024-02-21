@@ -1,5 +1,6 @@
 'use client'
 
+import { ApolloWrapper } from '@/lib/apollo-wrapper'
 import StyledComponentsRegistry from '@/lib/registry'
 import theme from '@/lib/theme'
 import React, { useState } from 'react'
@@ -10,11 +11,13 @@ function Providers({ children }: React.PropsWithChildren) {
   const [client] = useState(new QueryClient())
 
   return (
-    <QueryClientProvider client={client}>
+    // <QueryClientProvider client={client}>
+    <ApolloWrapper>
       <StyledComponentsRegistry>
         <ThemeProvider theme={theme}>{children}</ThemeProvider>
       </StyledComponentsRegistry>
-    </QueryClientProvider>
+    </ApolloWrapper>
+    // </QueryClientProvider>
   )
 }
 
