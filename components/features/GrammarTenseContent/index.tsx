@@ -82,7 +82,7 @@ export default function GrammarTensePage({ data, handleFinish, handleWrongWords 
     <Root>
       <WordContainer>
         <Word>{activeWord.translation}</Word>
-        <Counter label={counterLabel} $isDone={false} />
+        <Counter label={counterLabel} $isDone={true} />
       </WordContainer>
       <AnswerContainer>
         <Answer $hasError={isAnswerComplete && !isAnswerCorrect}>{getAnswer}</Answer>
@@ -144,7 +144,7 @@ const Root = styled.div`
   border: 1px solid ${colors.green};
   padding: 24px;
   border-radius: 16px;
-  background: #f6ffff;
+  background: ${colors.extraLightGreen};
 
   @media screen and (max-width: 1439px) {
     width: 85%;
@@ -183,7 +183,7 @@ const Counter = styled(Chip)<{ $isDone: boolean }>`
   position: absolute;
   top: 20px;
   right: 20px;
-  background: ${props => (props.$isDone ? colors.green : 'white')};
+  background: ${props => (props.$isDone ? colors.lightGreen : 'white')};
   box-shadow:
     rgba(0, 0, 0, 0.16) 0px 3px 6px,
     rgba(0, 0, 0, 0.23) 0px 3px 6px;

@@ -118,7 +118,7 @@ const Root = styled.div`
   border: ${colors.lightGrey2} 1px solid;
   border-radius: 15px;
   text-align: center;
-  background: #f6ffff;
+  background: ${colors.extraLightGreen};
   max-width: 500px;
   @media screen and (max-width: 767px) {
     min-width: 100%;
