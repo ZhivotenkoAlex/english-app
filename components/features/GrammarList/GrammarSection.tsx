@@ -13,7 +13,7 @@ function GrammarSection({ grammar }: IGrammarSection) {
     <div>
       <StyledTitle variant="h5">{grammar.level}</StyledTitle>
       <GrammarExercises>
-        {grammar.levelExercises.map((exercise: IGrammarExercise) => (
+        {grammar.levelExercises?.map((exercise: IGrammarExercise) => (
           <GrammarCard key={exercise.title} exercise={exercise} />
         ))}
       </GrammarExercises>

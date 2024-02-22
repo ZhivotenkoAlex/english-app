@@ -93,6 +93,12 @@ export interface IGrammarLevel {
   level: string
   levelExercises: IGrammarExercise[]
 }
+
+export interface IGrammar {
+  id: string
+  level: string
+  exercises: IGrammarExercise[]
+}
 export type IGrammarExercise = Omit<CardItem, 'icon'> & {
   icon: string
 }
@@ -177,6 +183,7 @@ export interface IRule {
 export interface ITenseData {
   id: number
   items: ITenseItem[]
+  exercises: ITenseItem[]
   title: string
   translation: string
 }
