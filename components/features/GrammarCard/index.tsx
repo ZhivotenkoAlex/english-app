@@ -11,10 +11,16 @@ type PropTypes = {
 
 export default function GrammarCard({ exercise }: PropTypes) {
   const { slug, subtitle, icon, title } = exercise
+
   return (
     <Root href={`${ROUTES.GRAMMAR}/${slug}`}>
       <Container>
-        <StyledImage src={icon} alt="word cloud" width={100} height={100} />
+        <StyledImage
+          src={`/images/grammar/${icon}.png`}
+          alt="word cloud"
+          width={100}
+          height={100}
+        />
         <Description>
           <StyledTitle>{title}</StyledTitle>
           <Subtitle>{subtitle}</Subtitle>

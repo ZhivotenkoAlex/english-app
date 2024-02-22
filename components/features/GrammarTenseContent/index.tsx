@@ -14,22 +14,23 @@ export default function GrammarTensePage({ data, handleFinish, handleWrongWords 
   const [activeWordIndex, setActiveWordIndex] = useState(0)
   const [activeWord, setActiveWord] = useState(data[activeWordIndex])
   const [activeItemIndex, setActiveItemIndex] = useState(0)
-  const [activeItem, setActiveItem] = useState(activeWord.items[0])
+
+  const [activeItem, setActiveItem] = useState(activeWord.exerciseItems[0])
   const [answer, setAnswer] = useState<string[]>([])
   const [isModalOpen, setIsModalOpen] = useState(false)
   const getAnswer = useMemo(() => answer.join(' '), [answer])
-
-  const notPunctuationItems = activeWord.items.filter(item => !item.isPunctuation)
-  const punctuationItem = activeWord.items.find(item => item.isPunctuation)
+  const counterLabel = `${activeWordIndex + 1} / ${data.length}`
+  const notPunctuationItems = activeWord.exerciseItems.filter(item => !item.isPunctuation)
+  const punctuationItem = activeWord.exerciseItems.find(item => item.isPunctuation)
   const isAnswerCorrect = answer.join(' ') === activeWord.title
   const isAnswerComplete = notPunctuationItems.length === answer.length
   const isLastWord = activeWordIndex + 1 === data.length
   const isDeleteButtonDisplayed = answer.length > 0 && !isAnswerComplete
 
   useEffect(() => {
-    setActiveItem(activeWord.items[activeItemIndex])
+    setActiveItem(activeWord.exerciseItems[activeItemIndex])
     setActiveWord(data[activeWordIndex])
-  }, [activeItemIndex, activeWord.items, activeWordIndex, data])
+  }, [activeItemIndex, activeWord.exerciseItems, activeWordIndex, data])
 
   useEffect(() => {
     if (isAnswerCorrect) {
@@ -39,6 +40,7 @@ export default function GrammarTensePage({ data, handleFinish, handleWrongWords 
     } else if (!isAnswerCorrect && isAnswerComplete) {
       handleWrongWords(activeWord)
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeWord.title, activeWordIndex, answer, isAnswerCorrect])
 
@@ -80,6 +82,7 @@ export default function GrammarTensePage({ data, handleFinish, handleWrongWords 
     <Root>
       <WordContainer>
         <Word>{activeWord.translation}</Word>
+        <Counter label={counterLabel} $isDone={true} />
       </WordContainer>
       <AnswerContainer>
         <Answer $hasError={isAnswerComplete && !isAnswerCorrect}>{getAnswer}</Answer>
@@ -87,7 +90,7 @@ export default function GrammarTensePage({ data, handleFinish, handleWrongWords 
       </AnswerContainer>
       <ChipContainer>
         {activeItem?.variants?.map(word => (
-          <StyledChip key={word} label={word} onClick={handleChipClick} />
+          <StyledChip key={word.id} label={word.variant} onClick={handleChipClick} />
         ))}
       </ChipContainer>
       {isAnswerComplete && (
@@ -141,7 +144,7 @@ const Root = styled.div`
   border: 1px solid ${colors.green};
   padding: 24px;
   border-radius: 16px;
-  background: #f6ffff;
+  background: ${colors.extraLightGreen};
 
   @media screen and (max-width: 1439px) {
     width: 85%;
@@ -176,6 +179,16 @@ const WordContainer = styled.div`
   }
 `
 
+const Counter = styled(Chip)<{ $isDone: boolean }>`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: ${props => (props.$isDone ? colors.lightGreen : 'white')};
+  box-shadow:
+    rgba(0, 0, 0, 0.16) 0px 3px 6px,
+    rgba(0, 0, 0, 0.23) 0px 3px 6px;
+`
+
 const AnswerContainer = styled.div`
   display: flex;
   align-items: center;
@@ -199,6 +212,7 @@ const Word = styled.span`
 const Answer = styled.span<{ $hasError: boolean }>`
   font-size: 32px;
   text-transform: uppercase;
+  text-align: center;
   color: ${({ $hasError }) => ($hasError ? colors.lightWarning2 : colors.darkGrey)};
   text-decoration: ${({ $hasError }) => ($hasError ? 'line-through' : 'none')};
   text-decoration-thickness: 2px;

@@ -12,6 +12,7 @@ export const colors = {
   green: '#28c38a',
   successGreen: '#4caf50',
   lightGreen: '#98e2c7',
+  extraLightGreen: '#f6ffff',
   darkGreen: '#1c8d63',
   red: '#ee6044',
   warning: '#d32f2f',

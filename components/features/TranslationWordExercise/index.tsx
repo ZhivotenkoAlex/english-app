@@ -140,7 +140,7 @@ const Root = styled.div`
   border: 1px solid ${colors.green};
   padding: 24px;
   border-radius: 16px;
-  background: #f6ffff;
+  background: ${colors.extraLightGreen};
 
   @media screen and (max-width: 1439px) {
     width: 60%;

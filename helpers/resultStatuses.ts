@@ -30,3 +30,9 @@ export const getExerciseResultStatus = (
     return RESULT_STATUSES[2]
   }
 }
+
+export enum ExerciseStatus {
+  DONE = 'done',
+  IN_PROGRESS = 'in_progress',
+  NOT_STARTED = 'not_started',
+}

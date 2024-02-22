@@ -7,7 +7,7 @@ import img6 from '../public/images/vocabulary/listening.png'
 // import img7 from '../public/images/vocabulary/crossword.png'
 import img8 from '../public/images/vocabulary/forest.png'
 import img9 from '../public/images/vocabulary/sentence-builder.png'
-import img10 from '../public/images/vocabulary/Sprint.png'
+import img10 from '../public/images/vocabulary/sprint.png'
 import img11 from '../public/images/vocabulary/word-builder.png'
 import img12 from '../public/images/vocabulary/vocabulary-cards.png'
 

@@ -50,7 +50,7 @@ const Root = styled.div`
   border: ${colors.lightGrey2} 1px solid;
   border-radius: 15px;
   text-align: center;
-  background: #f6ffff;
+  background: ${colors.extraLightGreen};
   min-height: 500px;
   width: 50%;
   position: relative;
